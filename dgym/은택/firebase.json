@@ -1,0 +1,23 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": "app",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "/adminLogin",
+        "destination": "./administrator/views/adminLogin.html",
+        "type": 301
+      }
+    ]
+  },
+  "storage": {
+    "rules": "storage.rules"
+  }
+}
