@@ -5,7 +5,6 @@ $("#login_btn").click(() => {
     .auth()
     .signInWithEmailAndPassword(mem_email, mem_pw)
     .then((result) => {
-      console.log(result.user); //?useruid=${result.user.uid}
       window.location = "./adminHome.html";
     })
     .catch((error) => {

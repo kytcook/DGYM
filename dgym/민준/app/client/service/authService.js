@@ -38,7 +38,7 @@ function FacebookLogin() {
       var user = result.user;
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       var accessToken = credential.accessToken;
-      window.location = "./index.html";
+      window.location.href = "./index.html";
     })
     .catch((error) => {
       // Handle Errors here.
