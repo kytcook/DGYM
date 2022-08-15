@@ -32,8 +32,8 @@ $("#submit").click(function () {
       희망강사,
     })
     .then(() => {
-      console.log("입력 성공");
-      window.location.href = "./reservaion.html";
+      alert("접수가 완료 되었습니다.");
+      window.location = `./reservaion.html`;
     })
     .catch((error) => {
       console.error("Error removing document: ", error);

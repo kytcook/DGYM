@@ -1,7 +1,7 @@
 /*============= 가져오기 Start ============*/
-const fs = firebase.firestore();
+const db = firebase.firestore();
 let num = 0; //
-fs.collection("enquire")
+db.collection("enquire")
   .orderBy("등록날짜", "asc") //오름차순 정렬
   .get()
   .then((snapshot) => {
@@ -34,11 +34,11 @@ fs.collection("enquire")
     $(document).ready(function () {
       // $(deletebtn).click(function (e) {  }); // 사용시 : forEach삭제
       deletebtn.forEach((deletebtn) => {
+        // 버튼 클릭, 삭제
         deletebtn.addEventListener("click", (e) => {
-          // 버튼 클릭, 삭제
           e.stopPropagation(); // 이벤트가 발생한 상태에서 다른 이벤트나 움직임을 강제로 멈추는 기능
           let id = e.target.parentElement.getAttribute("id"); // 이벤트발생시 id가 가진 속성의 부모요소를 타게팅하여 변수에 저장
-          fs.collection("enquire") // enquire문서에서, 위에서 담은 변수 id 삭제
+          db.collection("enquire") // enquire문서에서, 위에서 담은 변수 id 삭제
             .doc(id)
             .delete()
             .then(() => {
