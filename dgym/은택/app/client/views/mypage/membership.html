@@ -33,6 +33,14 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <!-- firebase CDN -->
     <script src="../../config/config.js"></script>
+    <script src="../../service/logincheck.js" defer></script>
+
+    <style>
+      * {
+        /* border: 1px solid red; */
+      }
+    </style>
+
   <body
     class="d-flex flex-column min-vh-100"
     style="
@@ -40,6 +48,7 @@
       background-color: rgba(0, 0, 0, 0.945);
     "
   >
+
   <!---------------------------------- navbar  Start------------------------------->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <div class="container-fluid">
@@ -123,23 +132,24 @@
 
     <main class="ps-0 ps-md-5 flex-grow-1">
       <div class="container col-md-8 col-lg-10 col-sm-10 bg-black box-shadow mt-md-5">
-        <div class="col-12 text-white-50 d-flex justify-content-center mb-md-5">
+        <header class="col-12 text-white-50 d-flex justify-content-center mb-md-5">
           <h3>마이페이지</h3>
-        </div>
-        <div class="col-md-12 mx-auto pt-5 d-inline-block d-flex justify-content-center">
+        </header>
+        <article class="col-md-12 mx-auto pt-5 d-inline-block d-flex justify-content-center">
           <img src="../../img/default_img.png" alt="프로필사진" class="img" width="250" height="250">
-          <div class="text-white-50 col-4 d-inline-block ms-md-5 mt-md-5">
-            <p id="name"></p>
-            <p id="phone"></p>
-            <p id="email"></p>
-            <p></p>
-            <p class="float-start"></p> 
-            <button class="btn btn-outline-dark btn-sm ms-sm-3 text-white btn-success" >수정하기</button>
+          <div class="text-white-50 col-4 d-inline-block ms-md-5 mt-md-3">
+            <p id="intro-start"></p> <!-- 가져온 데이터가 아래쪽으로 붙는 곳입니다. -->
+            <!-- <p id="name">이름</p>
+            <p id="phone">연락처</p>
+            <p id="email">이메일</p>
+            <p id="email">생년월일</p> -->
+            <button type="button" class="btn btn-outline-dark btn-sm ms-sm-3 text-white btn-success" >수정하기</button>
+            <button type="button" id="user_delete" class="btn btn-outline-dark btn-sm ms-sm-3 text-white btn-danger">탈퇴하기</button>
           </div>
           <!-- <div class="d-flex">
             <input type="file">
           </div> -->
-          </div>
+          </article>
         </div>
       </main>
     </div>
@@ -157,61 +167,56 @@
       </footer>
     <!--------------------------------- Footer End ----------------------------------->
     <script>
-      window.onload = loadInfo;
-// 로그인 및 로그아웃 처리하려면 항상 onAuthStateChanged()사용하기
-function loadInfo() {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      const login = document.querySelector("#login");
-      login.textContent = "logout";
-      login.id = "logout";
-      login.addEventListener("click", logout);
-      login.classList.add("btn-danger");
-      // console.log(user);
-      // 마이페이지
-      const div = document.querySelector(".btn-group");
-      const mypage = document.createElement("a");
-      mypage.setAttribute("href", "./views/mypage/membership.html");
-      mypage.innerHTML = `
-              <button
-                type="button"
-                class="btn btn-secondary btn-sm"
-                id="mypage"
-              >${user.displayName}님
-              </button>
-      `;
-      div.appendChild(mypage);
-      document.querySelector(
-        "#name"
-      ).innerHTML = `이름 : ${user.displayName}`;
-      document.querySelector(
-        "#email"
-      ).innerHTML = `이메일 : ${user.email}`;
-
       const db = firebase.firestore();
-      db.collection("user")
-        .doc(user.uid)
-        .get()
-        .then((snapshot) => {
-          document.querySelector("#phone").innerHTML = `휴대폰 : ${
-            snapshot.data().mem_hp
-          }`;
-        });
-    } 
-  });
-}
-function logout() {
-  firebase
-    .auth()
-    .signOut()
-    .then(() => {
-      alert("로그아웃 처리 되었습니다");
-      window.location.replace("../../../index.html");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
+      /*============= 가져오기 Start ============*/
+      firebase.auth().onAuthStateChanged(function (user) {// 현재 로그인된 사용자 대조 api
+        firebase.database().ref('users/' + user.uid).once("value").then(function (snapshot) {
+          if (user) {
+            // console.log(user.uid); // uid가져왔니??
+            db.collection("user")
+              .doc(user.uid)
+              .get()
+              .then((doc) => {
+                  data = doc.data();
+                  console.log(data);
+                  /* ※ 전각공백문자가 포함되어 있습니다. ≒ &nbsp */
+                  const template = `
+                                  <p>이름   |  ${user.displayName}</p>
+                                  <p>연락처  |  ${data.mem_hp}</p>
+                                  <p>이메일  |  ${data.mem_email}</p>
+                                  <p>생년월일 |  ${data.mem_birth !=null ? data.mem_birth : "" }</p>
+                                  `;
+           $("#intro-start").append(template);       
+          })
+        }
+      })
+      /*============== 가져오기 End =============*/
+      /*=============== 삭제 Start ==============*/
+      document.getElementById("user_delete").addEventListener('click', (e) => {
+        // 탈퇴하기가 눌리면 Firestore의 문서를 먼저 삭제합니다.
+        const ok = confirm("정말로 삭제하시겠습니까??")
+        if(ok){
+        db.collection("user").doc(user.uid).delete().then(() =>{
+            console.log("Document successfully deleted!");
+            // 문서삭제가 완료된 후 사용자 Authentication의 id가 삭제됩니다.
+            user.delete().then(() => {
+              alert('회원탈퇴 되었습니다. \n이용해주셔서 감사합니다.');
+              window.location.replace("../../../login.html")
+                }).catch((error) => {
+                    console.log(error);
+                  })
+              })
+            } else {
+              alert("취소되었습니다.")
+              console.log("삭제취소함");
+            }
+
+          });
+        /*================ 삭제 End ===============*/
+      })/////////////end of onAuthStateChanged
+        
+  
+    
     </script>
   </body>
 </html>
