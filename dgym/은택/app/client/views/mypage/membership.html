@@ -194,6 +194,8 @@
       /*=============== 삭제 Start ==============*/
       document.getElementById("user_delete").addEventListener('click', (e) => {
         // 탈퇴하기가 눌리면 Firestore의 문서를 먼저 삭제합니다.
+        const ok = confirm("정말로 삭제하시겠습니까??")
+        if(ok){
         db.collection("user").doc(user.uid).delete().then(() =>{
             console.log("Document successfully deleted!");
             // 문서삭제가 완료된 후 사용자 Authentication의 id가 삭제됩니다.
@@ -204,7 +206,12 @@
                     console.log(error);
                   })
               })
-            })
+            } else {
+              alert("취소되었습니다.")
+              console.log("삭제취소함");
+            }
+
+          });
         /*================ 삭제 End ===============*/
       })/////////////end of onAuthStateChanged
         
