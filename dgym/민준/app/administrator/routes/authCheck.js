@@ -3,7 +3,6 @@ window.onload = checkLogin;
 function checkLogin() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      console.log(user);
     } else {
       alert("현재 페이지에 접근 권한이 없습니다❗");
       window.location = "/adminLogin";
