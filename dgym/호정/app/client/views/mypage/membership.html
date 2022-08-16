@@ -26,6 +26,9 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
@@ -33,6 +36,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <!-- firebase CDN -->
     <script src="../../config/config.js"></script>
+    
   <body
     class="d-flex flex-column min-vh-100"
     style="
@@ -121,29 +125,143 @@
     <!----------------------------------- sidebar end --------------------------------->
     <!----------------------------------- main start ---------------------------------->
 
-    <main class="ps-0 ps-md-5 flex-grow-1">
-      <div class="container col-md-8 col-lg-10 col-sm-10 bg-black box-shadow mt-md-5">
-        <div class="col-12 text-white-50 d-flex justify-content-center mb-md-5">
-          <h3>마이페이지</h3>
+        <main class="ps-0 ps-md-5 flex-grow-1">
+          <div class="container col-md-8 col-lg-10 col-sm-10 bg-black box-shadow mt-md-5">
+            <div class="col-12 text-white-50 d-flex justify-content-center mb-md-5">
+              <h3>마이페이지</h3>
+            </div>
+            <div class="col-md-12 mx-auto pt-5 d-inline-block d-flex justify-content-center">
+              <img src="../../img/default_img.png" alt="프로필사진" class="img" width="250" height="250">
+              <div class="text-white-50 col-4 d-inline-block ms-md-5 mt-md-5">
+                <p id="name"></p>
+                <p id="phone"></p>
+                <p id="email"></p>
+                <p></p>
+                <p class="float-start"></p> 
+                <button class="modybtn btn-outline-dark btn-sm ms-sm-3 text-white btn-success"
+                id="mem_modi"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">수정하기</button>
+              </div>
+              <!-- <div class="d-flex">
+                <input type="file">
+              </div> -->
+              </div>
+            </div>
+          </main>
         </div>
-        <div class="col-md-12 mx-auto pt-5 d-inline-block d-flex justify-content-center">
-          <img src="../../img/default_img.png" alt="프로필사진" class="img" width="250" height="250">
-          <div class="text-white-50 col-4 d-inline-block ms-md-5 mt-md-5">
-            <p id="name"></p>
-            <p id="phone"></p>
-            <p id="email"></p>
-            <p></p>
-            <p class="float-start"></p> 
-            <button class="btn btn-outline-dark btn-sm ms-sm-3 text-white btn-success" >수정하기</button>
-          </div>
-          <!-- <div class="d-flex">
-            <input type="file">
-          </div> -->
+        <!---------------------------------- main end ------------------------------------->
+    
+        <!------------------------------ Modal Start _ 수정하기 ------------------------------------->
+        <div
+        class="modal fade container-fluid"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <!--------------------------------- Modal content --------------------------------->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="staticBackdropLabel">
+                💜 회원 정보 수정 💜
+              </h4>
+            </div>
+            <!--------------------------------- Modal body --------------------------------->
+            <div class="modal-body">
+              <div class="card-body">
+                <div class="col-md-7 d-flex mb-lg-2">
+                  <label class="form-label" for="name" style="width: 65%"
+                    >이름</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="mem_name"
+                    type="text"
+                  />
+                </div>
+                <div class="col-md-7 d-flex mb-lg-2">
+                  <label class="form-label" for="age" style="width: 65%"
+                    >비밀번호</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="age"
+                    type="text"
+                  />
+                </div>
+    
+                <div class="col-md-7 d-flex mb-lg-2">
+                  <label class="form-label" for="working-day" style="width: 65%"
+                    >핸드폰번호</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="mem_hp"
+                    type="text"
+                  />
+                </div>
+                <div class="col-md-7 d-flex mb-lg-2">
+                  <label
+                    class="form-label"
+                    for="working-time"
+                    style="width: 65%"
+                    >생년월일</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="mem_birth"
+                    type="text"
+                  />
+                </div>
+                
+                <div class="col-md-12 d-flex mb-lg-3">
+                  <label class="form-label" for="student" style="width: 35%"
+                    ><b>프로필 사진 첨부🙍🏻‍♀️</b></label
+                  >
+                  <input type="file" id="mem_img"class="col-md-6" />
+                </div>
+              </div>
+            </div>
+            <!--------------------------------- Modal footer --------------------------------->
+            <div class="modal-footer d-flex">
+              <!-- <div class="col-md-7 d-flex mb-lg-2"> -->
+              <button
+              type="button"
+              class="btn btn-danger justify-content-start"
+              data-bs-dismiss="modal"
+            >
+              회원탈퇴
+            </button>
+    
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                닫기
+              </button>
+              <button
+                type="submit"
+                class="btn btn-default border-dark"
+                data-bs-dismiss="modal"
+                id="mem_save"
+              >
+                저장하기
+              </button>
+              </div>
+            </div>
           </div>
         </div>
-      </main>
-    </div>
-    <!---------------------------------- main end ------------------------------------->
+      </div>
+      <!------------------------------ Modal End _ 수정하기 ------------------------------------>
+
+
+
     <!----------------------------------  Footer start  ------------------------------->
       <footer class="footer mt-auto py-3">
         <div class="container d-md-flex flex-column align-items-center">
@@ -213,5 +331,6 @@ function logout() {
     });
 }
     </script>
+    <script src="./membership.js"></script>
   </body>
 </html>
