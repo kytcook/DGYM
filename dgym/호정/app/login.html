@@ -46,7 +46,7 @@
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <div class="container-fluid">
         <a class="navbar-brand ms-4 text-light" href="./index.html"
-          ><img src="./img/logo-white.png " alt="짐로고" width="100"
+          ><img src="./client/img/logo-white.png" alt="짐로고" width="100"
         /></a>
         <button
           class="navbar-toggler custom-toggler"
@@ -187,7 +187,7 @@
     <!--------------------------------- Footer End ------------------------------>
     <script type="module">
       // export default는 이름 바꿔서 쓸 수 있다
-      import auth from "../service/authService.js";
+      import auth from "./client/service/authService.js";
       $("#login_btn").click(() => {
         const email = $("#mem_email").val();
         const pw = $("#mem_pw").val();
