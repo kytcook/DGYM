@@ -5,8 +5,6 @@ $(function () {
   });
 });
 
-const user = firebase.auth().currentUser;
-const storage = firebase.storage();
 let docRef = ""; // 클릭한 데이터의 문서 id(전역변수)
 
 //수정하기 버튼 클릭 시 회원 정보 불러오기 ======= @@@@@@@수정필요.@@@@@
@@ -24,6 +22,7 @@ $(".modybtn").click(function () {
             const email = result.data().mem_email;
             const hp = result.data().mem_hp;
             const birth = result.data().mem_birth;
+            const img = result.data().image;
             // const career = result.data().p_career;
             console.log(result.data());
             $("#mem_name").attr("value", email);
@@ -108,8 +107,9 @@ $(document).ready(function () {
                   modi_date: new Date(),
                   image: url, //업로드에 성공한 이미지 url 담기
                 })
+                .then(() => {})
                 .then(() => {
-                  // window.location.href = "membership.html";
+                  window.location.href = "membership.html";
                 })
                 .catch((err) => {
                   console.log(err);

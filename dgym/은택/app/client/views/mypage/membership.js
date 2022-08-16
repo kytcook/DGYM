@@ -1,4 +1,6 @@
 const db = firebase.firestore();
+const storage = firebase.storage();
+
 /*============= 가져오기 Start ============*/
 firebase.auth().onAuthStateChanged(function (user) {
   // 현재 로그인된 사용자 대조 api
@@ -10,11 +12,13 @@ firebase.auth().onAuthStateChanged(function (user) {
     .then((doc) => {
       data = doc.data();
       console.log(data);
+
       /* ※ 전각공백문자가 포함되어 있습니다. ≒ &nbsp */
       const template = `
                             <p>이름   |  ${user.displayName}</p>
                             <p>연락처  |  ${data.mem_hp}</p>
                             <p>이메일  |  ${data.mem_email}</p>
+                            <p>이메일  |  ${data.imagage}</p>
                             <p>생년월일 |  ${
                               data.mem_birth != null ? data.mem_birth : ""
                             }</p>

@@ -29,27 +29,38 @@ $("#submit").click(function () {
     프로그램: $("#program").val(),
   };
 
-  if (!이름 || !성별) {
-    alert("아 좀 입력좀");
+  if (
+    !이름 ||
+    !성별 ||
+    !연락처 ||
+    !프로그램 ||
+    !등록날짜 ||
+    !예약날짜 ||
+    !문의유형 ||
+    !희망강사
+  ) {
+    alert(
+      "빈 칸을 채워주세요 \n      /)/)\n    ( -__-)     ∧ ∧    \n~~(>Δ< )  (ㅇㅇ )~~~~\n~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~"
+    );
   } else {
-    // db.collection("enquire")
-    //   .add({
-    //     이름,
-    //     성별,
-    //     연락처,
-    //     프로그램,
-    //     등록날짜,
-    //     예약날짜,
-    //     문의유형,
-    //     희망강사,
-    //   })
-    //   .then(() => {
-    //     alert("접수가 완료 되었습니다.");
-    //     window.location.replace("./reservation.html");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error removing document: ", error);
-    //   });
+    db.collection("enquire")
+      .add({
+        이름,
+        성별,
+        연락처,
+        프로그램,
+        등록날짜,
+        예약날짜,
+        문의유형,
+        희망강사,
+      })
+      .then(() => {
+        alert("접수가 완료 되었습니다.");
+        window.location.replace("./reservation.html");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
   }
 });
 /*===============  추가 End ===============*/
