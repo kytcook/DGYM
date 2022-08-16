@@ -22,16 +22,14 @@ $("#submit").click(function () {
   const 희망강사 = $("#teacher").val();
 
   const info = {
-    이름 : $("#name").val(),
-    성별 : $("#gender").val(),
-    연락처 : $("#phone1").val() + "-" + $("#phone2").val() + "-" + $("#phone3").val(),
-    프로그램 : $("#program").val(),
-  }
+    이름: $("#name").val(),
+    성별: $("#gender").val(),
+    연락처:
+      $("#phone1").val() + "-" + $("#phone2").val() + "-" + $("#phone3").val(),
+    프로그램: $("#program").val(),
+  };
 
-
-  if (
-    !이름 || !성별 || 
-  ) {
+  if (!이름 || !성별) {
     alert("아 좀 입력좀");
   } else {
     // db.collection("enquire")

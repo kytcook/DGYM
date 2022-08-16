@@ -26,6 +26,8 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
@@ -143,8 +145,13 @@
             <p id="phone">연락처</p>
             <p id="email">이메일</p>
             <p id="email">생년월일</p> -->
-            <button type="button" class="btn btn-outline-dark btn-sm ms-sm-3 text-white btn-success" >수정하기</button>
-            <button type="button" id="user_delete" class="btn btn-outline-dark btn-sm ms-sm-3 text-white btn-danger">탈퇴하기</button>
+            <button class="modybtn btn-outline-dark btn-sm ms-sm-3 text-white btn-success"
+            id="mem_modi"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop">수정하기</button>
+            <button class="change_pw btn-outline-dark btn-sm ms-sm-3 text-white btn-info"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop2">비밀번호 변경</button>
           </div>
           <!-- <div class="d-flex">
             <input type="file">
@@ -154,6 +161,114 @@
       </main>
     </div>
     <!---------------------------------- main end ------------------------------------->
+      <!------------------------------ Modal Start _ 수정하기 ------------------------------------->
+      <div
+      class="modal fade container-fluid"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <!--------------------------------- Modal content --------------------------------->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="staticBackdropLabel">
+              💜 회원 정보 수정 💜
+            </h4>
+          </div>
+          <!--------------------------------- Modal body --------------------------------->
+          <div class="modal-body">
+            <div class="card-body">
+              <div class="col-md-7 d-flex mb-lg-2">
+                <label class="form-label" for="name" style="width: 65%"
+                  >이름</label
+                >
+                <input
+                  class="form-control form-control-sm"
+                  id="mem_name"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-7 d-flex mb-lg-2">
+                <label class="form-label" for="age" style="width: 65%"
+                  >비밀번호</label
+                >
+                <input
+                  class="form-control form-control-sm"
+                  id="age"
+                  type="text"
+                />
+              </div>
+  
+              <div class="col-md-7 d-flex mb-lg-2">
+                <label class="form-label" for="working-day" style="width: 65%"
+                  >핸드폰번호</label
+                >
+                <input
+                  class="form-control form-control-sm"
+                  id="mem_hp"
+                  type="text"
+                />
+              </div>
+              <div class="col-md-7 d-flex mb-lg-2">
+                <label
+                  class="form-label"
+                  for="working-time"
+                  style="width: 65%"
+                  >생년월일</label
+                >
+                <input
+                  class="form-control form-control-sm"
+                  id="mem_birth"
+                  type="text"
+                />
+              </div>
+              
+              <div class="col-md-12 d-flex mb-lg-3">
+                <label class="form-label" for="student" style="width: 35%"
+                  ><b>프로필 사진 첨부🙍🏻‍♀️</b></label
+                >
+                <input type="file" id="mem_img"class="col-md-6" />
+              </div>
+            </div>
+          </div>
+          <!--------------------------------- Modal footer --------------------------------->
+          <div class="modal-footer d-flex">
+            <!-- <div class="col-md-7 d-flex mb-lg-2"> -->
+            <button
+            id="user_delete"
+            type="button"
+            class="btn btn-danger justify-content-start"
+            data-bs-dismiss="modal"
+          >
+            회원탈퇴
+          </button>
+  
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              닫기
+            </button>
+            <button
+              type="submit"
+              class="btn btn-default border-dark"
+              data-bs-dismiss="modal"
+              id="mem_save"
+            >
+              저장하기
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------------------------ Modal End _ 수정하기 ------------------------------------>
     <!----------------------------------  Footer start  ------------------------------->
       <footer class="footer mt-auto py-3">
         <div class="container d-md-flex flex-column align-items-center">
@@ -166,57 +281,7 @@
         </div>
       </footer>
     <!--------------------------------- Footer End ----------------------------------->
-    <script>
-      const db = firebase.firestore();
-      /*============= 가져오기 Start ============*/
-      firebase.auth().onAuthStateChanged(function (user) {// 현재 로그인된 사용자 대조 api
-        firebase.database().ref('users/' + user.uid).once("value").then(function (snapshot) {
-          if (user) {
-            // console.log(user.uid); // uid가져왔니??
-            db.collection("user")
-              .doc(user.uid)
-              .get()
-              .then((doc) => {
-                  data = doc.data();
-                  console.log(data);
-                  /* ※ 전각공백문자가 포함되어 있습니다. ≒ &nbsp */
-                  const template = `
-                                  <p>이름   |  ${user.displayName}</p>
-                                  <p>연락처  |  ${data.mem_hp}</p>
-                                  <p>이메일  |  ${data.mem_email}</p>
-                                  <p>생년월일 |  ${data.mem_birth !=null ? data.mem_birth : "" }</p>
-                                  `;
-           $("#intro-start").append(template);       
-          })
-        }
-      })
-      /*============== 가져오기 End =============*/
-      /*=============== 삭제 Start ==============*/
-      document.getElementById("user_delete").addEventListener('click', (e) => {
-        // 탈퇴하기가 눌리면 Firestore의 문서를 먼저 삭제합니다.
-        const ok = confirm("정말로 삭제하시겠습니까??")
-        if(ok){
-        db.collection("user").doc(user.uid).delete().then(() =>{
-            console.log("Document successfully deleted!");
-            // 문서삭제가 완료된 후 사용자 Authentication의 id가 삭제됩니다.
-            user.delete().then(() => {
-              alert('회원탈퇴 되었습니다. \n이용해주셔서 감사합니다.');
-              window.location.replace("../../../login.html")
-                }).catch((error) => {
-                    console.log(error);
-                  })
-              })
-            } else {
-              alert("취소되었습니다.")
-              console.log("삭제취소함");
-            }
-
-          });
-        /*================ 삭제 End ===============*/
-      })/////////////end of onAuthStateChanged
-        
-  
-    
-    </script>
+    <script src="./membership.js"></script>
+    <script src="./membershipModal.js" defer></script>
   </body>
 </html>
