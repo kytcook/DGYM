@@ -22,12 +22,12 @@ $(".modybtn").click(function () {
           .doc(user.uid)
           .get()
           .then((result) => {
-            const email = result.data().mem_email;
+            const name = user.displayName;
             const hp = result.data().mem_hp;
             const birth = result.data().mem_birth;
             // const career = result.data().p_career;
             console.log(result.data());
-            $("#mem_name").attr("value", email);
+            $("#mem_name").attr("value", name);
             $("#mem_hp").attr("value", hp);
             $("#mem_birth").attr("value", birth);
             // $("#career").attr("value", career);

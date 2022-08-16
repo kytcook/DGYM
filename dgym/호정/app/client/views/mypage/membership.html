@@ -141,7 +141,10 @@
                 <button class="modybtn btn-outline-dark btn-sm ms-sm-3 text-white btn-success"
                 id="mem_modi"
                 data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop">수정하기</button>
+                data-bs-target="#staticBackdrop">내 정보 수정</button>
+                <button class="change_pw btn-outline-dark btn-sm ms-sm-3 text-white btn-info"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop2">비밀번호 변경</button>
               </div>
               <!-- <div class="d-flex">
                 <input type="file">
@@ -184,7 +187,7 @@
                     type="text"
                   />
                 </div>
-                <div class="col-md-7 d-flex mb-lg-2">
+                <!-- <div class="col-md-7 d-flex mb-lg-2">
                   <label class="form-label" for="age" style="width: 65%"
                     >비밀번호</label
                   >
@@ -193,7 +196,7 @@
                     id="age"
                     type="text"
                   />
-                </div>
+                </div> -->
     
                 <div class="col-md-7 d-flex mb-lg-2">
                   <label class="form-label" for="working-day" style="width: 65%"
@@ -237,7 +240,15 @@
             >
               회원탈퇴
             </button>
-    
+            
+            <button
+              type="submit"
+              class="btn btn-default border-dark"
+              data-bs-dismiss="modal"
+              id="mem_save"
+            >
+              저장하기
+            </button>
               <button
                 type="button"
                 class="btn btn-secondary"
@@ -245,20 +256,93 @@
               >
                 닫기
               </button>
-              <button
-                type="submit"
-                class="btn btn-default border-dark"
-                data-bs-dismiss="modal"
-                id="mem_save"
-              >
-                저장하기
-              </button>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!------------------------------ Modal End _ 수정하기 ------------------------------------>
+
+              <!------------------------------ Modal Start _ 비밀번호 변경 ------------------------------------->
+              <div
+              class="modal fade container-fluid"
+              id="staticBackdrop2"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+              role="dialog"
+            >
+              <div class="modal-dialog" role="document">
+                <!--------------------------------- Modal content --------------------------------->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="staticBackdropLabel">
+                      💛 비밀번호 변경 💛
+                    </h4>
+                  </div>
+                  <!--------------------------------- Modal body --------------------------------->
+                  <div class="modal-body">
+                    <div class="card-body">
+                      <div class="col-md-9 d-flex mb-lg-2">
+                        <label class="form-label" for="name" style="width: 65%"
+                          ><b>현재 비밀번호</b></label
+                        >
+                        <input
+                          class="form-control form-control-sm"
+                          id="mem_name"
+                          type="text"
+                        />
+                      </div>
+                      <div class="col-md-9 d-flex mb-lg-2">
+                        <label class="form-label" for="age" style="width: 65%"
+                          ><b>변경할 비밀번호</b></label
+                        >
+                        <input
+                          class="form-control form-control-sm"
+                          id="age"
+                          type="text"
+                        />
+                      </div>
+          
+                      <div class="col-md-9 d-flex mb-lg-2">
+                        <label class="form-label" for="working-day" style="width: 65%"
+                          ><b>비밀번호 확인</b></label
+                        >
+                        <input
+                          class="form-control form-control-sm"
+                          id="mem_hp"
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <!--------------------------------- Modal footer --------------------------------->
+                  <div class="modal-footer d-flex">
+                    <!-- <div class="col-md-7 d-flex mb-lg-2"> -->
+                  
+                  <button
+                    type="submit"
+                    class="btn btn-default border-dark"
+                    data-bs-dismiss="modal"
+                    id="mem_save"
+                  >
+                    저장하기
+                  </button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      닫기
+                    </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!------------------------------ Modal End _ 수정하기 ------------------------------------>
 
 
 
