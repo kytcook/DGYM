@@ -19,9 +19,7 @@ $("#submit").click(function () {
   const 등록날짜 = year + "-" + month + "-" + date;
   const 예약날짜 = $("#time").val(); /* =(html)희망날짜 */
   const 문의유형 = $("#question").val();
-  const 희망강사 = $("#teacher").val();// 이 아래에 선생님 붙여줘야한다...
-
-  
+  const 희망강사 = $("#teacher").val();
 
   const info = {
     이름: $("#name").val(),
@@ -58,7 +56,7 @@ $("#submit").click(function () {
       })
       .then(() => {
         alert("접수가 완료 되었습니다.");
-        // window.location.replace("./reservation.html");
+        window.location.replace("./reservation.html");
       })
       .catch((error) => {
         console.error("Error removing document: ", error);
