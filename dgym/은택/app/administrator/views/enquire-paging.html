@@ -201,38 +201,38 @@
       console.log(`시작페이지는 ${startPage}페이지 입니다`); // 시작페이지
 
       // Database에서 데이터 가져오기
-      let num = 1;
+      let num = 0;
       db.collection("enquire")
-        .orderBy("등록날짜", "asc")
+        .orderBy("registDate", "asc")
         .get()
         .then((snapshot) => {
-          let i = 1;
-          snapshot.forEach((item) => {
-            const data = item.data();
+          snapshot.forEach((doc) => {
+            const data = doc.data();
             lastItemNum++;
             if (data.번호 >= 1 + (page - 1) * 3 && data.번호 <= page * 3) {
               const templete = `
+              <tr class = "table-secondary">
                         <th scope="row" class="table-primary">${++num}</th>
-                        <th>${data.이름}</th>
-                        <td>${data.성별}</td>
-                        <td>${data.연락처}</td>
-                        <td>${data.프로그램}</td>
-                        <td>${data.등록날짜}</td>
-                        <th class="table-danger">${data.예약날짜}</th>
-                        <th class="table-danger">${data.문의유형}</th>
-                        <td>${data.희망강사}</td>
-                        <td id="${item.id}" class="bg-white">
+                        <th>${data.name}</th>
+                        <td>${data.gender}</td>
+                        <td>${data.phone}</td>
+                        <td>${data.program}</td>
+                        <td>${data.registDate}</td>
+                        <th class="table-danger">${data.reservDate}</th>
+                        <th class="table-danger">${data.question}</th>
+                        <td>${data.teacher}</td>
+                        <td id="${doc.id}" class="bg-white">
                           <button class="del bg-warning">삭제하기</button></td>
                           </tr>
                     `;
-              $(".board-content").append(templete); // 데이터가 저장된 만큼 찍힌다.
+              $(".enquire-article").append(templete); // 데이터가 저장된 만큼 찍힌다.
             }
           });
-          lastPage = Math.ceil(lastItemNum / 3);
+          lastPage = Math.ceil(lastItemNum / 5);
           console.log(`마지막 페이지는 ${lastPage}페이지 입니다`); // 이전페이지 처리
           // lastPageBar함수가 외부에 있으면 시점의 문제로 먼저 수행되어 lastPage가 0으로 찍힌다
           //(페이지 번호 처리)
-          for (let i = 0; i < 3; i++) {
+          for (let i = 0; i <= 10; i++) {
             // startPage + i = 현재 페이지
             if (startPage + i <= lastPage) {
               const page = `
@@ -266,42 +266,6 @@
           });
         }
       }
-
-      // 글등록하기 이벤트
-      $("#insert").on("click", () => {
-        let today = new Date();
-        let year = String(today.getFullYear()).padStart(2, "0");
-        let month = String(today.getMonth() + 1).padStart(2, "0");
-        let date = String(today.getDate()).padStart(2, "0");
-        const title = $(".title").val();
-        const content = $(".content").val();
-        if (title !== "" && content !== "") {
-          console.log("등록 버튼 호출");
-          db.collection("board")
-            .add({
-              번호: ++lastItemNum,
-              제목: title,
-              작성자: "관리자",
-              작성일: `${year}-${month}-${date}`,
-              내용: content,
-            })
-            .then((docRef) => {
-              alert("글이 등록되었습니다");
-              window.location = `./notice.html?page=1`;
-            })
-            .catch((error) => {
-              console.error("Error adding document: ", error);
-            });
-        } else {
-          alert("내용을 입력해 주세요");
-        }
-      });
-
-      // 취소 이벤트(초기화)
-      $("#cancel").on("click", () => {
-        $(".title").val("");
-        $(".content").val("");
-      });
     </script>
   </body>
 </html>

@@ -27,6 +27,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     });
 });
 /*============== 가져오기 End =============*/
+
 // /*=============== 삭제 Start ==============*/
 // document.getElementById("user_delete").addEventListener("click", (e) => {
 //   // 탈퇴하기가 눌리면 Firestore의 문서를 먼저 삭제합니다.
