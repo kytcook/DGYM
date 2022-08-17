@@ -1,11 +1,5 @@
 const db = firebase.firestore();
-
-// Create a reference with an initial file path and name
 const storage = firebase.storage();
-let pathReference = storage.ref('images/');
-// Create a reference from a Google Cloud Storage URI
-// let gsReference = storage.refFromURL('gs://bucket/images/stars.jpg');
- 
 
 /*============= 가져오기 Start ============*/
 firebase.auth().onAuthStateChanged(function (user) {
@@ -17,17 +11,14 @@ firebase.auth().onAuthStateChanged(function (user) {
     .get()
     .then((doc) => {
       data = doc.data();
-      console.log(data.url);
-      // storageRef.child('images/stars.jpg').getDownloadURL()
-
+      console.log(data);
 
       /* ※ 전각공백문자가 포함되어 있습니다. ≒ &nbsp */
       const template = `
                             <p>이름   |  ${user.displayName}</p>
                             <p>연락처  |  ${data.mem_hp}</p>
                             <p>이메일  |  ${data.mem_email}</p>
-                            <p>이메일  |  ${data.mem_email}</p>
-                            <p>이메일  |  ${data.mem_email}</p>
+                            <p>이메일  |  ${data.imagage}</p>
                             <p>생년월일 |  ${
                               data.mem_birth != null ? data.mem_birth : ""
                             }</p>
