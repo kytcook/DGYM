@@ -2,26 +2,27 @@
 const db = firebase.firestore();
 let num = 0; //
 db.collection("enquire")
-  .orderBy("등록날짜", "asc") //오름차순 정렬
+  .orderBy("registDate", "asc") //오름차순 정렬
   .get()
   .then((snapshot) => {
     console.log(snapshot);
-    snapshot.forEach((item) => {
+    snapshot.forEach((doc) => {
+      console.log(doc);
       // doc -> item
       // console.log(item.data());
-      const data = item.data(); // doc.data() -> data
+      const data = doc.data(); // doc.data() -> data
       const template = `
                       <tr class = "table-secondary">
                         <th scope="row" class="table-primary">${++num}</th>
-                        <th>${data.이름}</th>
-                        <td>${data.성별}</td>
-                        <td>${data.연락처}</td>
-                        <td>${data.프로그램}</td>
-                        <td>${data.등록날짜}</td>
-                        <th class="table-danger">${data.예약날짜}</th>
-                        <th class="table-danger">${data.문의유형}</th>
-                        <td>${data.희망강사}</td>
-                        <td id="${item.id}" class="bg-white">
+                        <th>${data.name}</th>
+                        <td>${data.gender}</td>
+                        <td>${data.phone}</td>
+                        <td>${data.program}</td>
+                        <td>${data.registDate}</td>
+                        <th class="table-danger">${data.reservDate}</th>
+                        <th class="table-danger">${data.question}</th>
+                        <td>${data.teacher}</td>
+                        <td id="${doc.id}" class="bg-white">
                           <button class="del bg-warning">삭제하기</button></td>
                           </tr>
                           `;

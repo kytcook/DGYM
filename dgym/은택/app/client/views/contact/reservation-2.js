@@ -11,33 +11,33 @@ $("#submit").click(function () {
   // document.write(year + "-" + month + "-" + date);
   /* 현재날짜 */
 
-  const 이름 = $("#name").val();
-  const 성별 = $("#gender").val();
-  const 연락처 =
+  const name = $("#name").val();
+  const gender = $("#gender").val();
+  const phone =
     $("#phone1").val() + "-" + $("#phone2").val() + "-" + $("#phone3").val();
-  const 프로그램 = $("#program").val();
-  const 등록날짜 = year + "-" + month + "-" + date;
-  const 예약날짜 = $("#time").val(); /* =(html)희망날짜 */
-  const 문의유형 = $("#question").val();
-  const 희망강사 = $("#teacher").val();
+  const program = $("#program").val();
+  const registDate = year + "-" + month + "-" + date; // 등록날짜
+  const reservDate = $("#time").val(); /* 예약날짜 = (html)희망날짜 */
+  const question = $("#question").val();
+  const teacher = $("#teacher").val();
 
-  const info = {
-    이름: $("#name").val(),
-    성별: $("#gender").val(),
-    연락처:
-      $("#phone1").val() + "-" + $("#phone2").val() + "-" + $("#phone3").val(),
-    프로그램: $("#program").val(),
-  };
+  // 객체로 담아서 보내보기
+  // const info = {
+  //   이름: $("#name").val(),
+  //   성별: $("#gender").val(),
+  //   연락처:
+  //     $("#phone1").val() + "-" + $("#phone2").val() + "-" + $("#phone3").val(),
+  //   프로그램: $("#program").val(),
+  // };
 
   if (
-    !이름 ||
-    !성별 ||
-    !연락처 ||
-    !프로그램 ||
-    !등록날짜 ||
-    !예약날짜 ||
-    !문의유형 ||
-    !희망강사
+    !name ||
+    !gender ||
+    !phone ||
+    !program ||
+    !reservDate ||
+    !question ||
+    !teacher
   ) {
     alert(
       "빈 칸을 채워주세요 \n      /)/)\n    ( -__-)     ∧ ∧    \n~~(>Δ< )  (ㅇㅇ )~~~~\n~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~"
@@ -45,18 +45,18 @@ $("#submit").click(function () {
   } else {
     db.collection("enquire")
       .add({
-        이름,
-        성별,
-        연락처,
-        프로그램,
-        등록날짜,
-        예약날짜,
-        문의유형,
-        희망강사,
+        name,
+        gender,
+        phone,
+        program,
+        registDate,
+        reservDate,
+        question,
+        teacher,
       })
       .then(() => {
         alert("접수가 완료 되었습니다.");
-        window.location.replace("./reservation.html");
+        // window.location.replace("./reservation.html");
       })
       .catch((error) => {
         console.error("Error removing document: ", error);

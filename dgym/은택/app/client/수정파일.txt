@@ -1,0 +1,8 @@
+=================================contact
+- reservation-2.js 
+/ 변수명 : 한글 -> 영어
+=================================contact
+
+=================================membership
+- membership.js -membershipModal.js(호정)
+=================================membership
