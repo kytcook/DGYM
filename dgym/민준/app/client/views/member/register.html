@@ -8,14 +8,14 @@
       @import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
     </style>
     <!-- CSS only -->
-    <link rel="stylesheet" href="./client/style/register.css">
+    <link rel="stylesheet" href="../../style/member/register.css" />
+    <link rel="stylesheet" href="../../components/navbar.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./client/components/navbar.css" />
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -33,8 +33,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <!-- firebase CDN -->
-    <script src="./client/config/config.js"></script>
-    <script src="" defer></script>
+    <script src="../..//config/config.js"></script>
+    <script src="../../routes/register.js" defer></script>
   </head>
   <body
     class="d-flex flex-column min-vh-100"
@@ -46,8 +46,8 @@
     <!---------------------------------- navbar ------------------------------->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <div class="container-fluid">
-        <a class="navbar-brand ms-4 text-light" href="./index.html"
-          ><img src="./client/img/logo-white.png " alt="짐로고" width="100"
+        <a class="navbar-brand ms-4 text-light" href="../../../index.html"
+          ><img src="../..//img/logo-white.png " alt="짐로고" width="100"
         /></a>
         <button
           class="navbar-toggler custom-toggler"
@@ -66,29 +66,27 @@
             style="font-size: 1.2rem"
           >
             <li class="nav-item me-5">
-              <a class="nav-link text-light" href="./views/aboutus/aboutus.html"
+              <a class="nav-link text-light" href="../aboutus/aboutus.html"
                 >About Us</a
               >
             </li>
             <li class="nav-item me-5">
-              <a class="nav-link text-light" href="./views/program/program.html"
+              <a class="nav-link text-light" href="../program/program.html"
                 >Program</a
               >
             </li>
             <li class="nav-item me-5">
-              <a class="nav-link text-light" href="./views/center/center.html"
+              <a class="nav-link text-light" href="../center/center.html"
                 >Center</a
               >
             </li>
             <li class="nav-item me-5">
-              <a class="nav-link text-light" href="./views/contact/contact.html"
+              <a class="nav-link text-light" href="../contact/contact.html"
                 >Contact</a
               >
             </li>
             <li class="nav-item me-5">
-              <a
-                class="nav-link text-light"
-                href="../notice/notice.html?page=1"
+              <a class="nav-link text-light" href="../notice.html?page=1"
                 >Notice</a
               >
             </li>
@@ -109,10 +107,15 @@
     </nav>
     <!---------------------------------- navbar ------------------------------->
     <!---------------------------------- 회원가입 시작 ------------------------------->
-    <div class="container mt-3  col-5">
+    <div class="container mt-3 col-5">
       <div class="form-group mb-3">
         <label class="text-secondary">Name</label>
-        <input type="text" class="form-control" placeholder="name" id="mem_name" />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="name"
+          id="mem_name"
+        />
       </div>
       <div class="form-group mb-3">
         <label class="text-secondary">Phone-Number</label>
@@ -120,87 +123,48 @@
       </div>
       <div class="form-group mb-3">
         <label class="text-secondary">E-mail</label>
-        <div class="d-flex col-12 ">
+        <div class="d-flex col-12">
           <input
             type="text"
-            class="form-control mb-2 col-8 "
+            class="form-control mb-2 col-8"
             placeholder="email"
             id="mem_email"
-          /> 
-          <button type="button" class="btn btn-danger col-3 ms-2" id="emailCheckBtn">중복확인</button>
+          />
+          <button
+            type="button"
+            class="btn btn-danger col-3 ms-2"
+            id="emailCheckBtn"
+          >
+            중복확인
+          </button>
         </div>
       </div>
       <div class="form-group mb-3">
         <label class="text-secondary">Password</label>
-        <input type="password" class="form-control" placeholder="pw" id="mem_pw" />
+        <input
+          type="password"
+          class="form-control"
+          placeholder="pw"
+          id="mem_pw"
+        />
       </div>
       <div class="form-group mb-3">
         <label class="text-secondary">Password Check</label>
-        <input type="password" class="form-control" placeholder="pw" id="mem_pwCheck" />
+        <input
+          type="password"
+          class="form-control"
+          placeholder="pw"
+          id="mem_pwCheck"
+        />
       </div>
-      <!-- <div class="form-group mb-3">
-      <label class="text-secondary">Profile</label>
-      <input type="file" class="form-control" name="image" id="image">
-      </div> -->
-      <button type="button" class="btn btn-primary col-12" id="register" disabled>가입하기</button>
+      <button
+        type="button"
+        class="btn btn-primary col-12"
+        id="register"
+        disabled
+      >
+        가입하기
+      </button>
     </div>
-    </body>
-    <!---------------------------------- 회원가입 끝 ------------------------------->
-    <script>
-      const db = firebase.firestore();  
-      $("#register").click(()=>{
-      const storage = firebase.storage(); // 이미지 저장소(클라우드)
-      const mem_name = $("#mem_name").val();
-      const mem_email = $("#mem_email").val();
-      const mem_hp = $("#mem_hp").val();
-      const mem_pw = $("#mem_pw").val();
-        // 2. firebase.auth()
-        firebase.auth().createUserWithEmailAndPassword(mem_email, mem_pw)
-        .then((result) =>{
-          console.log(result.user);
-          const userInfo = {
-            mem_email: mem_email,
-            mem_hp: mem_hp,
-          };
-          db.collection('user').doc(result.user.uid).set(userInfo);
-          return result.user.updateProfile({
-              displayName: mem_name
-            }).then((displayName)=>{
-            console.log("displayName => "+mem_name);
-            alert("회원가입을 축하합니다👏")
-            window.location ="login.html";
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-      });
-      // 유효성 체크
-
-      // 이메일 중복체크
-      $("#emailCheckBtn").click(()=>{
-        const mem_email = $("#mem_email").val();
-        console.log(mem_email);
-        db.collection("user")
-        .get()
-        .then((snapshot)=>{
-          let isOk = true;
-          snapshot.forEach((item)=>{
-            if(mem_email == item.data().mem_email){
-              isOk = false;
-            } 
-          });
-          if(isOk){
-            alert("사용 가능합니다");
-            $("#register").attr("disabled", true );
-          }else
-            alert("이미 사용중인 이메일입니다");
-        });
-      })
-
-
-    
-      
-    </script>
   </body>
 </html>

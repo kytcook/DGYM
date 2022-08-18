@@ -9,19 +9,24 @@ function checkLogin() {
       login.id = "logout";
       login.addEventListener("click", logout);
       login.classList.add("btn-danger");
-      // console.log(user);
+      console.log(user);
       // 마이페이지
       const div = document.querySelector(".btn-group");
       const mypage = document.createElement("a");
+      let userName = null;
       mypage.setAttribute("href", "/client/views/mypage/membership.html");
+      user.displayName != null
+        ? (userName = user.displayName)
+        : (userName = "깃회원");
       mypage.innerHTML = `
               <button
                 type="button"
                 class="btn btn-secondary btn-sm"
                 id="mypage"
-              >${user.displayName}님
+              >${userName}님
               </button>
       `;
+
       div.appendChild(mypage);
     }
   });
@@ -33,7 +38,7 @@ function logout() {
     .signOut()
     .then(() => {
       alert("로그아웃 처리 되었습니다");
-      window.location.replace("../../../index.html"); //After successful login, user will be redirected to home.html
+      window.location.replace("../../../index.html");
     })
     .catch((error) => {
       console.log(error);
