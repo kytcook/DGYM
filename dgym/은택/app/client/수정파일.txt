@@ -1,13 +1,12 @@
 =================================contact
 - reservation-2.js 
 / 변수명 : 한글 -> 영어
+/ Firestore.instuctor.doc의 teacher 연동 (html/<!--희망강사-->)
 
+=================================membership(호정,택)
+- membership.html membership.js 
+/ 가져오기 
+// 이미지 분기해서 가져오기
 
-=================================membership
--membership.html membership.js -membershipModal.js / (호정,택)
-
-
-
-=================================reservaion
-- reservaion-2.js / Firestore.instuctor.doc의 teacher 연동
-	html/<!--희망강사-->
+- membershipModal.js 
+/ 수정하기 탈퇴하기
