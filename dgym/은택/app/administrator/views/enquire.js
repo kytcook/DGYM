@@ -30,6 +30,7 @@ db.collection("enquire")
       $(".enquire-article").append(template); // tbody에 fireStore에서 불러온 값들을 붙여준다
     });
     /*============== 가져오기 End =============*/
+
     /*=============== 삭제 Start ==============*/
     const deletebtn = document.querySelectorAll(".del"); // 클래스명이 del인 버튼(207)을 상수에 저장
     $(document).ready(function () {

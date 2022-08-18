@@ -38,7 +38,8 @@ $(".modybtn").click(function () {
       }); //////////end of addEventListener
     } //////////////end of if
 
-    /*=============== 삭제 Start ==============*/
+    /*=============================== 삭제 Start ==================================*/
+
     document.getElementById("user_delete").addEventListener("click", (e) => {
       // 탈퇴하기가 눌리면 Firestore의 문서를 먼저 삭제합니다.
       const ok = confirm("정말로 삭제하시겠습니까??");
@@ -48,7 +49,7 @@ $(".modybtn").click(function () {
           .delete()
           .then(() => {
             console.log("Document successfully deleted!");
-            // 문서삭제가 완료된 후 사용자 Authentication의 id가 삭제됩니다.
+            // 사용자 Authentication의 uid가 삭제된 후 해당 문서도 삭제됩니다.
             user
               .delete()
               .then(() => {
@@ -64,7 +65,8 @@ $(".modybtn").click(function () {
         console.log("삭제취소함");
       }
     });
-    /*================ 삭제 End ===============*/
+
+    /*================================ 삭제 End ===================================*/
   }); //////////////end of onAuthStateChanged
 });
 
