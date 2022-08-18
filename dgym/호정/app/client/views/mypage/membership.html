@@ -232,12 +232,11 @@
             </div>
             <!--------------------------------- Modal footer --------------------------------->
             <div class="modal-footer d-flex">
-              <!-- <div class="col-md-7 d-flex mb-lg-2"> -->
               <button
               type="button"
               class="btn btn-danger justify-content-start"
               data-bs-dismiss="modal"
-            >
+              >
               회원탈퇴
             </button>
             
@@ -273,7 +272,7 @@
               aria-labelledby="staticBackdropLabel"
               aria-hidden="true"
               role="dialog"
-            >
+              >
               <div class="modal-dialog" role="document">
                 <!--------------------------------- Modal content --------------------------------->
                 <div class="modal-content">
@@ -343,78 +342,76 @@
               </div>
             </div>
             <!------------------------------ Modal End _ 수정하기 ------------------------------------>
+            <!----------------------------------  Footer start  ------------------------------->
+              <footer class="footer mt-auto py-3">
+                <div class="container d-md-flex flex-column align-items-center">
+                  <span class="text-muted" style="font-size: 0.1rem">
+                  (주)D-GYM ㅣ 대표: 김민준 ㅣ 주소: 서울특별시 강남구 테헤란로 14길 6
+                  5층~7층 ㅣ 등록번호 123-12-123456 ㅣ info@dgym.co.kr ㅣ 전화번호
+                  02-123-1234</span>
+                  <span class="text-muted" style="font-size: 0.1rem">
+                  ⓒ2022 Supplies.Inc. All rights reserved.</span>
+                </div>
+              </footer>
+            <!--------------------------------- Footer End ----------------------------------->
+            <script>
+              window.onload = loadInfo;
+        // 로그인 및 로그아웃 처리하려면 항상 onAuthStateChanged()사용하기
+              function loadInfo() {
+                firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                  const login = document.querySelector("#login");
+                  login.textContent = "logout";
+                  login.id = "logout";
+                  login.addEventListener("click", logout);
+                  login.classList.add("btn-danger");
+                  // console.log(user);
+                  // 마이페이지
+                const div = document.querySelector(".btn-group");
+                const mypage = document.createElement("a");
+                mypage.setAttribute("href", "./views/mypage/membership.html");
+                mypage.innerHTML = `
+                                  <button
+                                    type="button"
+                                    class="btn btn-secondary btn-sm"
+                                    id="mypage"
+                                  >${user.displayName}님
+                                  </button>
+                                  `;
+                div.appendChild(mypage);
+                document.querySelector(
+                  "#name"
+                ).innerHTML = `이름 : ${user.displayName}`;
+                document.querySelector(
+                  "#email"
+                ).innerHTML = `이메일 : ${user.email}`;
 
-
-
-    <!----------------------------------  Footer start  ------------------------------->
-      <footer class="footer mt-auto py-3">
-        <div class="container d-md-flex flex-column align-items-center">
-          <span class="text-muted" style="font-size: 0.1rem">
-          (주)D-GYM ㅣ 대표: 김민준 ㅣ 주소: 서울특별시 강남구 테헤란로 14길 6
-          5층~7층 ㅣ 등록번호 123-12-123456 ㅣ info@dgym.co.kr ㅣ 전화번호
-          02-123-1234</span>
-          <span class="text-muted" style="font-size: 0.1rem">
-          ⓒ2022 Supplies.Inc. All rights reserved.</span>
-        </div>
-      </footer>
-    <!--------------------------------- Footer End ----------------------------------->
-    <script>
-      window.onload = loadInfo;
-// 로그인 및 로그아웃 처리하려면 항상 onAuthStateChanged()사용하기
-function loadInfo() {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      const login = document.querySelector("#login");
-      login.textContent = "logout";
-      login.id = "logout";
-      login.addEventListener("click", logout);
-      login.classList.add("btn-danger");
-      // console.log(user);
-      // 마이페이지
-      const div = document.querySelector(".btn-group");
-      const mypage = document.createElement("a");
-      mypage.setAttribute("href", "./views/mypage/membership.html");
-      mypage.innerHTML = `
-              <button
-                type="button"
-                class="btn btn-secondary btn-sm"
-                id="mypage"
-              >${user.displayName}님
-              </button>
-      `;
-      div.appendChild(mypage);
-      document.querySelector(
-        "#name"
-      ).innerHTML = `이름 : ${user.displayName}`;
-      document.querySelector(
-        "#email"
-      ).innerHTML = `이메일 : ${user.email}`;
-
-      const db = firebase.firestore();
-      db.collection("user")
-        .doc(user.uid)
-        .get()
-        .then((snapshot) => {
-          document.querySelector("#phone").innerHTML = `휴대폰 : ${
-            snapshot.data().mem_hp
-          }`;
-        });
-    } 
-  });
-}
-function logout() {
-  firebase
-    .auth()
-    .signOut()
-    .then(() => {
-      alert("로그아웃 처리 되었습니다");
-      window.location.replace("../../../index.html");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-    </script>
-    <script src="./membership.js"></script>
-  </body>
-</html>
+                const db = firebase.firestore();
+                db.collection("user")
+                  .doc(user.uid)
+                  .get()
+                  .then((snapshot) => {
+                    document.querySelector("#phone").innerHTML = `휴대폰 : ${
+                      snapshot.data().mem_hp
+                    }`;
+                  });
+                } 
+              });
+            }
+        
+                function logout() {
+                  firebase
+                    .auth()
+                    .signOut()
+                    .then(() => {
+                      alert("로그아웃 처리 되었습니다");
+                      window.location.replace("../../../index.html");
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    });
+                }
+            </script>
+            <script src="./membership.js"></script>
+          </body>
+        </html>
