@@ -5,12 +5,11 @@ $(function () {
   });
 });
 
-const user = firebase.auth().currentUser;
-const db = firebase.firestore();
-const storage = firebase.storage();
-let docRef = ""; // 클릭한 데이터의 문서 id(전역변수)
+const user = firebase.auth().currentUser; //현재의 유저 인증 정보에 접근?
+const db = firebase.firestore(); //FB DB 에 접근
+const storage = firebase.storage(); //FB storage 에 접근
 
-//수정하기 버튼 클릭 시 회원 정보 불러오기 ======= @@@@@@@수정필요.@@@@@
+//모달 내 우측하단, 수정하기 버튼 클릭 시 회원 정보 불러오기
 $(".modybtn").click(function () {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -25,18 +24,11 @@ $(".modybtn").click(function () {
             const name = user.displayName;
             const hp = result.data().mem_hp;
             const birth = result.data().mem_birth;
-            // const career = result.data().p_career;
             console.log(result.data());
             $("#mem_name").attr("value", name);
             $("#mem_hp").attr("value", hp);
             $("#mem_birth").attr("value", birth);
-            // $("#career").attr("value", career);
           });
-
-        // $(".modybtn").on("click", (event) => {
-        //   const docRef = event.currentTarget.getAttribute("id");
-        //   console.log(docRef);
-        // });
       });
     }
   });
@@ -82,7 +74,8 @@ $(document).ready(function () {
                   image: url, //업로드에 성공한 이미지 url 담기
                 })
                 .then(() => {
-                  window.location.href = "membership.html";
+                  // window.location.href = "membership.html";
+                  location.reload(); //데이터 추가 후 페이지 새로고침 처리
                 })
                 .catch((err) => {
                   console.log(err);
@@ -94,3 +87,47 @@ $(document).ready(function () {
     });
   });
 });
+
+//비밀번호 변경 부분
+//비밀번호 변경 모달창 내에 저장하기 버튼 클릭 시
+$("#pw_save").click(function () {
+  const newPW = $("#mem_password").val();
+  //여기
+  firebase.auth().onAuthStateChanged((user) => {
+    // reauthenticate = (password) => {
+    //   var user = firebase.auth().currentUser;
+    // var cred = firebase.auth.EmailAuthProvider.credential(
+    //   user.email,
+    //   user.password
+    // );
+    //   return user.reauthenticateWithCredential(cred);
+    // };
+    // user.auth.reauthenticate(cred).then(() => {
+    // console.log("User reauthenticated");
+    user
+      // .reauthenticate(cred)
+      .updatePassword(newPW)
+      .then(() => {
+        // Update successful.
+        console.log("사용자 id ===> " + user.uid);
+        window.alert("비밀번호가 변경되었습니다. 다시 로그인해주세요.");
+        window.location.replace("../member/login.html");
+      })
+      .catch(function (error) {
+        // An error ocurred
+        console.error("비밀번호 변경 시 에러: ", error);
+        switch (error.code) {
+          case "auth/requires-recent-login":
+            window.alert(
+              "비밀번호 변경하기 위해서는 최근 인증이 필요합니다. 이 요청을 재시도하기 전에 다시 로그인하십시오."
+            );
+            window.location.replace("../member/login.html");
+            break;
+          case "auth/weak-password":
+            window.alert("비밀번호는 6자리 이상으로 변경해주세요.");
+            break;
+        }
+      });
+  });
+});
+// });
