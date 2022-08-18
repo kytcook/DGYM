@@ -22,7 +22,10 @@ window.onload = function () {
           const worktime2 = result.data().p_worktime2;
           const student = result.data().p_student;
           const salary = result.data().p_salary;
+          const image = result.data().image;
+
           console.log(result.data());
+
           $("#name").attr("value", name);
           $("#age").attr("value", age);
           $("#category").attr("value", category);
@@ -32,6 +35,7 @@ window.onload = function () {
           $("#worktime2").attr("value", worktime2);
           $("#student").attr("value", student);
           $("#salary").attr("value", salary);
+          $("#input_img").attr("value", image);
         });
     });
   });
@@ -53,47 +57,77 @@ $(document).ready(function () {
     const p_worktime2 = $("#worktime2").val();
     const p_student = $("#student").val();
     const p_salary = $("#salary").val();
+    const image = $("#input_img").val();
 
     //파일 업로드 관련
     // files[0]은 querySelector로 선택된 파일에 접근할 수 있도록
-    const selectedFile = document.querySelector("#ins_img").files[0];
-    const storageRef = storage.ref();
-    const storagePath = storageRef.child("image/" + selectedFile.name);
-    const uploadImg = storagePath.put(selectedFile);
-    uploadImg.on(
-      "state_change",
-      null,
-      (error) => {
-        console.error(error);
-      },
-      function () {
-        uploadImg.snapshot.ref.getDownloadURL().then((url) => {
-          console.log("사용자가 선택한 이미지 파일 ===> " + selectedFile.name);
+    if (image !== "") {
+      // 이미지를 첨부한 경우
+      const selectedFile = document.querySelector("#input_img").files[0];
+      const storageRef = storage.ref();
+      const storagePath = storageRef.child("image/" + selectedFile.name);
+      const uploadImg = storagePath.put(selectedFile);
+      uploadImg.on(
+        "state_change",
+        null,
+        (error) => {
+          console.error(error);
+        },
+        function () {
+          uploadImg.snapshot.ref.getDownloadURL().then((url) => {
+            console.log(
+              "사용자가 선택한 이미지 파일 ===> " + selectedFile.name
+            );
 
-          db.collection("instructor")
-            .doc(id)
-            .update({
-              p_name: p_name,
-              p_age: p_age,
-              p_category: p_category,
-              p_career: p_career,
-              p_workday: p_workday,
-              p_worktime1: p_worktime1,
-              p_worktime2: p_worktime2,
-              p_student: p_student,
-              p_salary: p_salary,
-              modi_date: new Date(),
-              image: url, //업로드에 성공한 이미지 url 담기
-            })
-            .then(() => {
-              window.location.href = "instructor.html";
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+            db.collection("instructor")
+              .doc(id)
+              .update({
+                p_name: p_name,
+                p_age: p_age,
+                p_category: p_category,
+                p_career: p_career,
+                p_workday: p_workday,
+                p_worktime1: p_worktime1,
+                p_worktime2: p_worktime2,
+                p_student: p_student,
+                p_salary: p_salary,
+                modi_date: new Date(),
+                // image,
+                image: url, //업로드에 성공한 이미지 url 담기
+              })
+              .then(() => {
+                window.location.href = "instructor.html";
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        }
+      );
+    } else {
+      // 이미지를 첨부하지 않은 경우
+      db.collection("instructor")
+        .doc(id)
+        .update({
+          p_name: p_name,
+          p_age: p_age,
+          p_category: p_category,
+          p_career: p_career,
+          p_workday: p_workday,
+          p_worktime1: p_worktime1,
+          p_worktime2: p_worktime2,
+          p_student: p_student,
+          p_salary: p_salary,
+          modi_date: new Date(),
+          //image: url, //업로드에 성공한 이미지 url 담기
+        })
+        .then(() => {
+          window.location.href = "instructor.html";
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      }
-    );
+    }
   });
 });
 
