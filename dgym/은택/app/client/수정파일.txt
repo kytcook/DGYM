@@ -3,10 +3,11 @@
 / 변수명 : 한글 -> 영어
 / Firestore.instuctor.doc의 teacher 연동 (html/<!--희망강사-->)
 
-=================================membership(호정,택)
+=================================mypage(호정,택)
 - membership.html membership.js 
 / 가져오기 
 // 이미지 분기해서 가져오기
+/ 비밀번호 변경
 
 - membershipModal.js 
-/ 수정하기 탈퇴하기
+/ 수정하기, 파일첨부, 탈퇴하기
