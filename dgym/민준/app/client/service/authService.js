@@ -18,7 +18,7 @@ class AuthService {
       .auth()
       .signInWithPopup(authProvider)
       .then((result) => {
-        window.location.href = "./index.html";
+        window.location.replace("../../../index.html");
       })
       .catch((error) => {
         let errorMessage = error.message;
