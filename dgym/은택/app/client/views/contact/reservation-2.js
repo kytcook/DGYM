@@ -1,5 +1,21 @@
-/*===============  추가 Start ===============*/
+/*============= 강사연동 Start ============*/
+// 현재 로그인된 사용자 대조 api
+// console.log(user.uid); // uid가져왔니??
 const db = firebase.firestore();
+db.collection("instructor")
+  .orderBy("category", "asc")
+  .get()
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
+      data = doc.data();
+      console.log(data);
+      teacher = `<option value=${data.category}>${data.teacher}</option>`;
+      $("#teacher").append(teacher);
+    });
+  });
+/*============== 강사연동 End =============*/
+
+/*===============  추가 Start ===============*/
 //사용자가 입력한 이메일, 비번, 핸폰번호, 이름
 $("#submit").click(function () {
   /* 현재날짜 */

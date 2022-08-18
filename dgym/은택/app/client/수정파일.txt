@@ -1,8 +1,13 @@
 =================================contact
 - reservation-2.js 
 / 변수명 : 한글 -> 영어
-=================================contact
+
 
 =================================membership
-- membership.js -membershipModal.js(호정)
-=================================membership
+-membership.html membership.js -membershipModal.js / (호정,택)
+
+
+
+=================================reservaion
+- reservaion-2.js / Firestore.instuctor.doc의 teacher 연동
+	html/<!--희망강사-->
