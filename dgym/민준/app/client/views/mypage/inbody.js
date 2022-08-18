@@ -8,6 +8,7 @@ const db = firebase.firestore();
 const pupple = "rgb(204, 153, 255)";
 const yello = "rgb(255, 204, 000)";
 const pink = "rgb(255, 102, 153)";
+let userUid = "";
 
 // 필요한 변수가 뭐냐
 // title = 체중, 근육량 arr = weight / muscles
@@ -15,19 +16,19 @@ const pink = "rgb(255, 102, 153)";
 function dbSearch(title, arr, id, 함수, color) {
   db.collection("user")
     .doc(userUid)
-    .collection(title)
-    .orderBy("날짜", "asc")
+    .collection("inbody")
+    .orderBy("regDate", "asc")
     .get()
     .then((snapshot) => {
       snapshot.forEach((item) => {
         if (title == "체중") {
-          arr[i] = item.data().체중;
+          arr[i] = item.data().weight;
         } else if (title == "골격근량") {
-          arr[i] = item.data().골격근량;
+          arr[i] = item.data().muscles;
         } else if (title == "체지방량") {
-          arr[i] = item.data().체지방량;
+          arr[i] = item.data().fat;
         }
-        labels[i] = item.data().날짜;
+        labels[i] = item.data().regDate;
         i++;
       });
     })
@@ -47,13 +48,29 @@ function chartJs(title, arr, id, color) {
         backgroundColor: color,
         borderColor: color,
         data: arr,
+        tension: 0.2,
       },
     ],
   };
   let config = {
     type: "line",
     data: data,
-    options: {},
+    options: {
+      animations: {
+        radius: {
+          duration: 400,
+          easing: "linear",
+          loop: (context) => context.active,
+        },
+      },
+      hoverRadius: 12,
+      hoverBackgroundColor: color,
+      interaction: {
+        mode: "nearest",
+        intersect: false,
+        axis: "x",
+      },
+    },
   };
   new Chart(document.getElementById(id), config);
 }
@@ -153,3 +170,29 @@ function logout() {
       console.log(error);
     });
 }
+
+$("#btnInsert").click(() => {
+  let today = new Date();
+  let year = String(today.getFullYear()).padStart(2, "0");
+  let month = String(today.getMonth() + 1).padStart(2, "0");
+  let date = String(today.getDate()).padStart(2, "0");
+  const weight = $("#weightInput").val();
+  const muscles = $("#musclesInput").val();
+  const fat = $("#fatInput").val();
+  console.log(weight);
+  console.log(muscles);
+  console.log(fat);
+  db.collection("user")
+    .doc(userUid)
+    .collection("inbody")
+    .add({
+      weight: weight,
+      muscles: muscles,
+      fat: fat,
+      regDate: `${year}-${month}-${date}`,
+    })
+    .then(() => {
+      alert("인바디 정보가 등록되었습니다^o^");
+      window.location = `./inbody.html`;
+    });
+});

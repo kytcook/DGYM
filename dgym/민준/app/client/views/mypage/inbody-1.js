@@ -12,7 +12,7 @@ const pink = "rgb(255, 102, 153)";
 // 필요한 변수가 뭐냐
 // title = 체중, 근육량 arr = weight / muscles
 // 차트 그리기
-function dbSearch(title, arr, id, 함수, color) {
+function dbSearch(title, arr, id, charJs, color) {
   db.collection("user")
     .doc(userUid)
     .collection(title)

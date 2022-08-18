@@ -1,3 +1,41 @@
+// class AuthService {
+//   constructor(provider) {
+//       if (provider == "google") {
+//       this.provider =  new firebase.auth.GoogleAuthProvider();
+//     } else if (provider == "facebook") {
+//       this.provider = new firebase.auth.FacebookAuthProvider();
+//     } else {
+//       this.provider = new firebase.auth.GithubAuthProvider();
+//     }
+//   }
+//   Login() {
+//   firebase
+//     .auth()
+//     .signInWithPopup(provider)
+//     .then((result) => {
+//       window.location.href = "./index.html";
+//     })
+//     .catch((error) => {
+//       let errorMessage = error.message;
+//       console.log(errorMessage);
+//     });
+
+//   EmailLogin(mem_email, mem_pw) {
+//       firebase
+//         .auth()
+//         .signInWithEmailAndPassword(mem_email, mem_pw)
+//         .then((result) => {
+//           console.log(result.user);
+//           window.location.replace("./index.html"); //?useruid=${result.user.uid}
+//           // replace써야 로그인 후 로그인 페이지로 이동안됨. replace가 뒤로가기를 막아준다
+//         })
+//     .catch((error) => {
+//       window.alert("없는 회원입니다. 다시 확인하세요");
+//     });
+//   }
+//   }
+// }
+
 // 이메일 로그인
 function EmailLogin(mem_email, mem_pw) {
   firebase
@@ -12,6 +50,7 @@ function EmailLogin(mem_email, mem_pw) {
       window.alert("없는 회원입니다. 다시 확인하세요");
     });
 }
+
 // 구글 로그인
 let provider = new firebase.auth.GoogleAuthProvider();
 function GoogleLogin() {
@@ -49,6 +88,34 @@ function FacebookLogin() {
       var email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
+    });
+}
+
+var provider3 = new firebase.auth.GithubAuthProvider();
+function GithubLogin() {
+  firebase
+    .auth()
+    .signInWithPopup(provider3)
+    .then((result) => {
+      /** @type {firebase.auth.OAuthCredential} */
+      var credential = result.credential;
+
+      // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+      var token = credential.accessToken;
+
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
     });
 }
 
