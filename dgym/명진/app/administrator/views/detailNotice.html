@@ -28,7 +28,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <!-- firebase CDN -->
-    <script src="../../../config/config.js"></script>
+    <script src="../config/config.js"></script>
   </head>
   <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
     <script>
@@ -64,7 +64,7 @@
             class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
           >
             <a
-              href="/"
+              href="./adminHome.html"
               class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
             >
               <span class="fs-5 d-none d-sm-inline text-light">Home</span>
@@ -98,15 +98,39 @@
                 >
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
-                  <i class="fs-4 bi-house"></i>
+                <a
+                  href="#submenu3"
+                  data-bs-toggle="collapse"
+                  class="nav-link px-0 align-middle"
+                >
+                  <i class="fs-4 bi-grid"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >회원관리</span
-                  ></a
+                  >
+                </a>
+                <ul
+                  class="collapse nav flex-column ms-1"
+                  id="submenu3"
+                  data-bs-parent="#menu"
                 >
+                  <li class="w-100">
+                    <a href="./memRegister.html" class="nav-link px-0">
+                      <span class="d-none d-sm-inline text-light"
+                        >&nbsp;&nbsp;-신규 회원등록</span
+                      >
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./memSearch.html" class="nav-link px-0">
+                      <span class="d-none d-sm-inline text-light"
+                        >&nbsp;&nbsp;-회원조회</span
+                      >
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="./instructor.html" class="nav-link align-middle px-0">
                   <i class="fs-4 bi-house"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >강사관리</span
@@ -114,7 +138,10 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a
+                  href="./notice.html?page=1"
+                  class="nav-link px-0 align-middle"
+                >
                   <i class="fs-4 bi-people"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >게시판관리</span
@@ -146,7 +173,9 @@
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#">Log out</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" id="logout">Log out</a>
+                </li>
               </ul>
             </div>
           </div>
