@@ -8,13 +8,13 @@
       @import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
     </style>
     <!-- CSS only -->
+    <link rel="stylesheet" href="../../style/member/login.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./components/navbar.css" />
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -33,7 +33,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <!-- firebase CDN -->
     <script src="../../config/config.js"></script>
-    <script src="../../service/logincheck.js" defer></script>
+    <script type="module" src="../../routes/login.js" defer></script>
   </head>
   <body
     class="d-flex flex-column min-vh-100"
@@ -45,8 +45,8 @@
     <!---------------------------------- navbar ------------------------------->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <div class="container-fluid">
-        <a class="navbar-brand ms-4 text-light" href="./index.html"
-          ><img src="../../img/logo-white.png" alt="짐로고" width="100"
+        <a class="navbar-brand ms-4 text-light" href="../../../index.html"
+          ><img src="../../img/logo-white.png " alt="짐로고" width="100"
         /></a>
         <button
           class="navbar-toggler custom-toggler"
@@ -65,22 +65,22 @@
             style="font-size: 1.2rem"
           >
             <li class="nav-item me-5">
-              <a class="nav-link text-light" href="./views/aboutus/aboutus.html"
+              <a class="nav-link text-light" href="../aboutus/aboutus.html"
                 >About Us</a
               >
             </li>
             <li class="nav-item me-5">
-              <a class="nav-link text-light" href="./views/program/program.html"
+              <a class="nav-link text-light" href="../program/program.html"
                 >Program</a
               >
             </li>
             <li class="nav-item me-5">
-              <a class="nav-link text-light" href="./views/center/center.html"
+              <a class="nav-link text-light" href="../center/center.html"
                 >Center</a
               >
             </li>
             <li class="nav-item me-5">
-              <a class="nav-link text-light" href="./views/contact/contact.html"
+              <a class="nav-link text-light" href="../contact/contact.html"
                 >Contact</a
               >
             </li>
@@ -105,9 +105,6 @@
       </div>
     </nav>
     <!---------------------------------- navbar ------------------------------->
-    <!---------------------------------- Header ------------------------------->
-
-    <!---------------------------------- Header End------------------------------->
     <!----------------------------------   Main    ------------------------------->
     <div
       class="container-fluid mt-3 d-flex flex-column align-items-center col-4"
@@ -169,8 +166,21 @@
         </button>
       </div>
     </div>
-
     <!------------------------------   페이스북 로그인 END   ------------------------------->
+    <!------------------------------   깃헙 로그인   ------------------------------->
+    <div class="container mt-3 d-flex flex-column align-items-center">
+      <div class="row col-4">
+        <button class="col-md-12 btn btn-dark" id="githublogin">
+          <div class="me-2">
+            <img src="../../img/icon-github.svg" class="icon icon-git" /><span
+              class="ms-2"
+              >Github</span
+            >
+          </div>
+        </button>
+      </div>
+    </div>
+    <!------------------------------   깃헙 로그인 END   ------------------------------->
     <!----------------------------------  Main End ------------------------------->
     <!----------------------------------  Footer  ------------------------------->
     <footer class="footer mt-auto py-3">
@@ -185,26 +195,5 @@
       </div>
     </footer>
     <!--------------------------------- Footer End ------------------------------>
-    <script type="module">
-      // export default는 이름 바꿔서 쓸 수 있다
-      import auth from "./client/service/authService.js";
-      $("#login_btn").click(() => {
-        const email = $("#mem_email").val();
-        const pw = $("#mem_pw").val();
-        auth.EmailLogin(email, pw);
-      });
-
-      $("#register_btn").click(() => {
-        window.location.href = "./register.html";
-      });
-      // 구글로그인
-      document
-        .getElementById("googlelogin")
-        .addEventListener("click", auth.GoogleLogin);
-      // 페이스북 로그인
-      document
-        .getElementById("facebooklogin")
-        .addEventListener("click", auth.FacebookLogin);
-    </script>
   </body>
 </html>

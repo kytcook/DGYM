@@ -1,0 +1,12 @@
+🎀 Client page 🎀
+👉🏻 membership.html / membership.js
+==> 은택코드 + 호정코드 합치고 테스트 완료..
+==> 추가 구현 완료된 기능 : 회원정보 수정/비밀번호 변경/회원탈퇴 기능/회원선택 이미지or기본이미지 띄우기
+
+👑 Admin page 👑
+👉🏻 instructor.html / instructor.js
+==> 강사 등록 시, 사용자가 선택한 이미지에 따라 선택된 이미지 or 기본 이미지 띄워주도록 구현 완료
+
+👉🏻 insModify.html / insModify.js
+==> 매출페이지 변경됨에 따라 강사 월급 정보 삭제.
+==> 강사정보 수정 시, 이미지 선택을 하지 않아도 변경된 값만 업데이트 되도록 구현 완료

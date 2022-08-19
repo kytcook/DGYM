@@ -7,7 +7,6 @@ window.onload = function () {
     console.log("사용자가 선택한 item.id ===> " + id);
     $("#staticBackdrop").modal("show");
     const readModal = document.getElementById("staticBackdrop");
-    console.log(readModal);
     readModal.addEventListener("shown.bs.modal", () => {
       db.collection("instructor")
         .doc(id)
@@ -21,7 +20,6 @@ window.onload = function () {
           const worktime1 = result.data().p_worktime1;
           const worktime2 = result.data().p_worktime2;
           const student = result.data().p_student;
-          const salary = result.data().p_salary;
           const image = result.data().image;
 
           console.log(result.data());
@@ -34,7 +32,6 @@ window.onload = function () {
           $("#worktime1").attr("value", worktime1);
           $("#worktime2").attr("value", worktime2);
           $("#student").attr("value", student);
-          $("#salary").attr("value", salary);
           $("#input_img").attr("value", image);
         });
     });
@@ -56,7 +53,6 @@ $(document).ready(function () {
     const p_worktime1 = $("#worktime1").val();
     const p_worktime2 = $("#worktime2").val();
     const p_student = $("#student").val();
-    const p_salary = $("#salary").val();
     const image = $("#input_img").val();
 
     //파일 업로드 관련
@@ -90,9 +86,7 @@ $(document).ready(function () {
                 p_worktime1: p_worktime1,
                 p_worktime2: p_worktime2,
                 p_student: p_student,
-                p_salary: p_salary,
                 modi_date: new Date(),
-                // image,
                 image: url, //업로드에 성공한 이미지 url 담기
               })
               .then(() => {
@@ -117,7 +111,6 @@ $(document).ready(function () {
           p_worktime1: p_worktime1,
           p_worktime2: p_worktime2,
           p_student: p_student,
-          p_salary: p_salary,
           modi_date: new Date(),
           //image: url, //업로드에 성공한 이미지 url 담기
         })

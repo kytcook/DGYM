@@ -13,7 +13,7 @@ function checkLogin() {
       // 마이페이지
       const div = document.querySelector(".btn-group");
       const mypage = document.createElement("a");
-      mypage.setAttribute("href", "../client/views/mypage/membership.html");
+      mypage.setAttribute("href", "./client/views/mypage/membership.html");
       mypage.innerHTML = `
               <button
                 type="button"

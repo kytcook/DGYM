@@ -31,21 +31,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
-    <script src="./modify.js"></script>
-    <script>
-      // firebase 프로젝트 연결하기
-      const firebaseConfig = {
-        apiKey: "AIzaSyBrOnVewQ4kA4m6huwSTblCfUvOmbEaIiM",
-        authDomain: "semi-project-dgym.firebaseapp.com",
-        databaseURL:
-          "https://semi-project-dgym-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "semi-project-dgym",
-        storageBucket: "semi-project-dgym.appspot.com",
-        messagingSenderId: "877339507238",
-        appId: "1:877339507238:web:bdee7c64a03ea7273d04e7",
-      };
-      firebase.initializeApp(firebaseConfig);
-    </script>
+
+    <script src="../config/config.js"></script>
   </head>
   <body>
     <!------------------------------ Modal Start _ 수정하기 ------------------------------------->
@@ -144,16 +131,6 @@
                   type="text"
                 />
               </div>
-              <div class="col-md-4 d-flex m-2">
-                <label class="form-label" for="salary" style="width: 135%"
-                  >월급</label
-                >
-                <input
-                  class="form-control form-control-sm"
-                  id="salary"
-                  type="text"
-                />
-              </div>
               <div class="col-md-9 d-flex d-flex">
                 <label class="form-label" for="student" style="width: 135%"
                   ><b>강사 사진 첨부</b></label
@@ -172,7 +149,6 @@
             >
               삭제
             </button>
-
             <button
               type="button"
               class="btn btn-secondary"
@@ -181,7 +157,6 @@
             >
               닫기
             </button>
-
             <button
               id="save"
               type="button"
@@ -195,5 +170,6 @@
       </div>
     </div>
     <!------------------------------ Modal End _ 수정하기 ------------------------------------>
+    <script src="../routes/insModify.js" defer></script>
   </body>
 </html>
