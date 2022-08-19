@@ -33,7 +33,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <!-- firebase CDN -->
     <script src="../../config/config.js"></script>
-    <script src="../../logincheck.js" defer></script>
   <body
     class="d-flex flex-column min-vh-100"
     style="
@@ -44,7 +43,7 @@
   <!---------------------------------- navbar  Start------------------------------->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
       <div class="container-fluid">
-        <a class="navbar-brand ms-4 text-light" href="../../index.html"
+        <a class="navbar-brand ms-4 text-light" href="../../../index.html"
           ><img src="../../img/logo-white.png" alt="짐로고" width="100"
         /></a>
         <button
@@ -92,7 +91,7 @@
             </li>
           </ul>
           <div class="d-flex mt-3 btn-group" style="width: 12rem">
-            <a href="./login.html">
+            <a href="../../../login.html">
               <button
                 type="button"
                 class="btn btn-primary btn-sm me-1"
@@ -115,7 +114,10 @@
               <a class="nav-link text-info" href="./membership.html">Membership</a>
             </li>
             <li class="mb-2">
-              <a class="nav-link text-light" href="#">My plan</a>
+              <a class="nav-link text-light" href="./inbody.html">Inbody</a>
+            </li>
+            <li class="mb-2">
+              <a class="nav-link text-light" href="./payment.html">Payment</a>
             </li>
           </ul>            
         </aside>
@@ -125,17 +127,11 @@
     <main class="ps-0 ps-md-5 flex-grow-1">
       <div class="container col-md-8 col-lg-10 col-sm-10 bg-black box-shadow mt-md-5">
         <div class="col-12 text-white-50 d-flex justify-content-center mb-md-5">
-          <h3>마이페이지</h3>
+          <h3>결제내역</h3>
         </div>
-        <div class="col-md-12 mx-auto pt-5 d-inline-block d-flex justify-content-center">
-          <img src="../../img/default_img.png" alt="프로필사진" class="img" width="250" height="250">
-          <div class="text-white-50 col-4 d-inline-block ms-md-5 mt-md-5">
-            <p>이름 : 양호정</p>
-            <p>생년월일 : 1995년 12월 28일 </p>
-            <p>이용권 : 1:1 PT 이용권 30회 </p>
-            <p>잔여횟수 : 6회 / 총 30회 </p>
-            <p class="float-start">이용기간 : 2022.02.16 ~ 2023.02.15 </p> 
-            <button class="btn btn-outline-dark btn-sm ms-sm-3 text-white" style="background-color: rgb(238, 60, 90)">사용중</button>
+          <div class="modal-body">
+                    <!-- 결제 정보 들어 갈 곳 -->
+            </div>
           </div>
           <!-- <div class="d-flex">
             <input type="file">
@@ -157,5 +153,62 @@
         </div>
       </footer>
     <!--------------------------------- Footer End ----------------------------------->
+    <script>
+      window.onload = loadInfo;
+// 로그인 및 로그아웃 처리하려면 항상 onAuthStateChanged()사용하기
+function loadInfo() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      const login = document.querySelector("#login");
+      login.textContent = "logout";
+      login.id = "logout";
+      login.addEventListener("click", logout);
+      login.classList.add("btn-danger");
+      // console.log(user);
+      // 마이페이지
+      // const div = document.querySelector(".btn-group");
+      // const mypage = document.createElement("a");
+      // mypage.setAttribute("href", "./views/mypage/membership.html");
+      // mypage.innerHTML = `
+      //         <button
+      //           type="button"
+      //           class="btn btn-secondary btn-sm"
+      //           id="mypage"
+      //         >${user.displayName}님
+      //         </button>
+      // `;
+      // div.appendChild(mypage);
+      // document.querySelector(
+      //   "#name"
+      // ).innerHTML = `이름 : ${user.displayName}`;
+      // document.querySelector(
+      //   "#email"
+      // ).innerHTML = `이메일 : ${user.email}`;
+
+      // const db = firebase.firestore();
+      // db.collection("user")
+      //   .doc(user.uid)
+      //   .get()
+      //   .then((snapshot) => {
+      //     document.querySelector("#phone").innerHTML = `휴대폰 : ${
+      //       snapshot.data().mem_hp
+      //     }`;
+      //   });
+    } 
+  });
+}
+function logout() {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      alert("로그아웃 처리 되었습니다");
+      window.location.replace("../../../index.html");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+    </script>
   </body>
 </html>
