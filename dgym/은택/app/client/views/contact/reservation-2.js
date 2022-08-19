@@ -18,15 +18,16 @@ db.collection("instructor")
 /*===============  추가 Start ===============*/
 //사용자가 입력한 이메일, 비번, 핸폰번호, 이름
 $("#submit").click(function () {
-  /* 현재날짜 */
+  //현재날짜
   let today = new Date();
   let year = today.getFullYear();
   let month = ("0" + (today.getMonth() + 1)).slice(-2);
   let date = ("0" + today.getDate()).slice(-2);
   console.log(year + "-" + month + "-" + date);
-  // document.write(year + "-" + month + "-" + date);
-  /* 현재날짜 */
+  // document.write(year + "-" + month + "-" + date); 시험용
 
+  /* 사용자가 입력한 값 변수에 담기 */
+  // 이름, 성별, 연락처, 프로그램, 등록일자, 희망일자, 문의유형, 강사
   const name = $("#name").val();
   const gender = $("#gender").val();
   const phone =
@@ -37,15 +38,7 @@ $("#submit").click(function () {
   const question = $("#question").val();
   const teacher = $("#teacher").val();
 
-  // 객체로 담아서 보내보기
-  // const info = {
-  //   이름: $("#name").val(),
-  //   성별: $("#gender").val(),
-  //   연락처:
-  //     $("#phone1").val() + "-" + $("#phone2").val() + "-" + $("#phone3").val(),
-  //   프로그램: $("#program").val(),
-  // };
-
+  // is not null
   if (
     !name ||
     !gender ||
@@ -59,6 +52,7 @@ $("#submit").click(function () {
       "빈 칸을 채워주세요 \n      /)/)\n    ( -__-)     ∧ ∧    \n~~(>Δ< )  (ㅇㅇ )~~~~\n~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~"
     );
   } else {
+    // 파베DB 에 저장
     db.collection("enquire")
       .add({
         name,

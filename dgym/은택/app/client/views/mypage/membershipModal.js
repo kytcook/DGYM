@@ -54,7 +54,7 @@ $(".modybtn").click(function () {
               .delete()
               .then(() => {
                 alert("회원탈퇴 되었습니다. \n이용해주셔서 감사합니다.");
-                window.location.replace("../../../login.html");
+                window.location.replace("../member/login.html");
               })
               .catch((error) => {
                 console.log(error);
