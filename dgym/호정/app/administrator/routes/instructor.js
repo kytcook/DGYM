@@ -120,7 +120,7 @@ db.collection("instructor")
                                       class="text-decoration-none"
                                       style="color: black"
                                       data-bs-toggle="modal"
-                                      href="./modify.html?id=${item.id}">
+                                      href="../views/insModify.html?id=${item.id}">
                                       수정하기</a></button>
                         </div>
                       </div>
@@ -137,7 +137,6 @@ document.querySelector("#add_inst").addEventListener("click", () => {
   const db = firebase.firestore();
   const storage = firebase.storage();
   //강사등록 모달 페이지 내 '등록하기' 버튼 클릭 시 입력한 신규 정보 db에 추가하기
-  // $("#add_inst").click(function () {
   const p_name = $("#i_name").val();
   const p_age = $("#i_age").val();
   const p_category = $("#i_category").val();
@@ -147,46 +146,75 @@ document.querySelector("#add_inst").addEventListener("click", () => {
   const p_worktime2 = $("#i_worktime2").val();
   const p_student = $("#i_student").val();
   const p_salary = $("#i_salary").val();
+  const image = $("#file-select").val();
 
   //파일 업로드 관련
-  const selectedFile = document.querySelector("#file-select").files[0];
-  const storageRef = storage.ref();
-  const storagePath = storageRef.child("image/" + selectedFile.name);
-  const uploadImg = storagePath.put(selectedFile);
-  uploadImg.on(
-    "state_change",
-    null,
-    (error) => {
-      if (error) console.error(error);
-    },
-    //성공 시 동작하는 함수
-    function () {
-      console.log("사용자가 선택한 이미지 파일 ===> " + selectedFile.name);
-      uploadImg.snapshot.ref.getDownloadURL().then((url) => {
-        //snapshot.ref.getDownloadURL() ==> url을 가져오기 위해서 사용
-        const toSave = {
-          p_name,
-          p_age,
-          p_category,
-          p_career,
-          p_workday,
-          p_worktime1,
-          p_worktime2,
-          p_student,
-          p_salary,
-          date: new Date(),
-          image: url, //업로드에 성공한 이미지 url 담기
-        };
-        db.collection("instructor")
-          .add(toSave)
-          .then(() => {
-            console.log("image 저장 성공");
-            location.reload(); //데이터 추가 후 페이지 새로고침 처리
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+  if (image !== "") {
+    //사용자가 이미지를 선택했을 경우
+    const selectedFile = document.querySelector("#file-select").files[0];
+    const storageRef = storage.ref();
+    const storagePath = storageRef.child("image/" + selectedFile.name);
+    const uploadImg = storagePath.put(selectedFile);
+    uploadImg.on(
+      "state_change",
+      null,
+      (error) => {
+        if (error) console.error(error);
+      },
+      //성공 시 동작하는 함수
+      function () {
+        console.log("사용자가 선택한 이미지 파일 ===> " + selectedFile.name);
+        uploadImg.snapshot.ref.getDownloadURL().then((url) => {
+          //snapshot.ref.getDownloadURL() ==> url을 가져오기 위해서 사용하는 메서드
+          const toSave = {
+            p_name,
+            p_age,
+            p_category,
+            p_career,
+            p_workday,
+            p_worktime1,
+            p_worktime2,
+            p_student,
+            p_salary,
+            date: new Date(),
+            image: url, //업로드에 성공한 이미지 url 담기
+          };
+          db.collection("instructor")
+            .add(toSave)
+            .then(() => {
+              console.log("image 저장 성공");
+              location.reload(); //데이터 추가 후 페이지 새로고침 처리
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
+      }
+    );
+  } else {
+    //사용자가 이미지를 선택하지 않은 경우 ==> 기본 이미지로 저장됨
+    console.log("사용자가 이미지파일을 선택하지 않았음");
+    const toSave = {
+      p_name,
+      p_age,
+      p_category,
+      p_career,
+      p_workday,
+      p_worktime1,
+      p_worktime2,
+      p_student,
+      p_salary,
+      date: new Date(),
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/d-gym-demo.appspot.com/o/image%2Fdefault_img.png?alt=media&token=9abc6848-2417-4ab9-a321-3a5bd229fee4",
+    };
+    db.collection("instructor")
+      .add(toSave)
+      .then(() => {
+        location.reload(); //데이터 추가 후 페이지 새로고침 처리
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    }
-  );
+  }
 });

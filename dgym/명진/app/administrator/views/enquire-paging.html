@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>관리자 페이지</title>
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- CSS only -->
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- JavaScript Bundle with Popper -->
+    <!-- Firebase Connection -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    <script src="../config/config.js"></script>
+    <!-- Firebase Connection -->
+  </head>
+
+  <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+        <!---------------------------------------- Sidebar Start ---------------------------------------->
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div
+            class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+          >
+            <a
+              href="./adminHome.html"
+              class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+            >
+              <span class="fs-5 d-none d-sm-inline text-light">Home</span>
+            </a>
+            <ul
+              class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu"
+            >
+              <li class="nav-item">
+                <a href="#" class="nav-link align-middle px-0">
+                  <i class="fs-4 bi-house"></i>
+                  <span class="ms-1 d-none d-sm-inline text-light"
+                    >Dashboard</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a href="./sales.html" class="nav-link align-middle px-0">
+                  <i class="fs-4 bi-house"></i>
+                  <span class="ms-1 d-none d-sm-inline text-light"
+                    >매출조회</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a href="./enquire.html" class="nav-link align-middle px-0">
+                  <i class="fs-4 bi-house"></i>
+                  <span class="ms-1 d-none d-sm-inline text-light"
+                    >예약관리</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#submenu3"
+                  data-bs-toggle="collapse"
+                  class="nav-link px-0 align-middle"
+                >
+                  <i class="fs-4 bi-grid"></i>
+                  <span class="ms-1 d-none d-sm-inline text-light"
+                    >회원관리</span
+                  >
+                </a>
+                <ul
+                  class="collapse nav flex-column ms-1"
+                  id="submenu3"
+                  data-bs-parent="#menu"
+                >
+                  <li class="w-100">
+                    <a href="./memRegister.html" class="nav-link px-0">
+                      <h6 class="d-none d-sm-inline">
+                        <small class="text-muted"
+                          >&nbsp;&nbsp;- 신규 회원등록</small
+                        >
+                      </h6>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./memSearch.html" class="nav-link px-0">
+                      <h6 class="d-none d-sm-inline">
+                        <small class="text-muted">&nbsp;&nbsp;- 회원조회</small>
+                      </h6>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="./instructor.html" class="nav-link align-middle px-0">
+                  <i class="fs-4 bi-house"></i>
+                  <span class="ms-1 d-none d-sm-inline text-light"
+                    >강사관리</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="./notice.html?page=1"
+                  class="nav-link px-0 align-middle"
+                >
+                  <i class="fs-4 bi-people"></i>
+                  <span class="ms-1 d-none d-sm-inline text-light"
+                    >게시판관리</span
+                  >
+                </a>
+              </li>
+            </ul>
+            <hr />
+            <div class="dropdown pb-4 fixed-bottom ms-3">
+              <a
+                href="#"
+                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                id="dropdownUser1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://odong2.github.io/Web/필라테스강사1.jpg"
+                  alt="hugenerd"
+                  width="30"
+                  height="30"
+                  class="rounded-circle"
+                />
+                <span class="d-none d-sm-inline mx-1 ms-2">관리자</span>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark text-small shadow ms-4 mb-2"
+              >
+                <li>
+                  <a class="dropdown-item" href="#" id="logout">Log out</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!---------------------------------------- Sidebar End ---------------------------------------->
+        <!---------------------------------------- Main Start ---------------------------------------->
+        <main class="container col py-3 ms-5 p-5">
+          <!--================ header Start ================-->
+          <header class="pb-5">
+            <h1><b>예약 관리</b></h1>
+            <hr />
+          </header>
+          <!--================ header Start ================-->
+          <!--================= 본문 Start =================-->
+          <article>
+            <table class="table table-hover text-center">
+              <thead class="table-dark">
+                <tr class>
+                  <th scope="col">N</th>
+                  <th scope="col">이름</th>
+                  <th scope="col">성별</th>
+                  <th scope="col">연락처</th>
+                  <th scope="col">프로그램</th>
+                  <th scope="col">등록날짜</th>
+                  <th scope="col">예약날짜</th>
+                  <th scope="col">문의유형</th>
+                  <th scope="col">희망강사</th>
+                </tr>
+              </thead>
+              <tbody class="enquire-article"></tbody>
+            </table>
+          </article>
+          <!--================= 본문 End =================-->
+          <!--============= pagination Start =============-->
+          <footer class="col-8 justify-content-end">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link pre" href="#">Previous</a>
+                </li>
+                <div class="pagination justify-content-center" id="pagination">
+                  <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                </div>
+                <li class="page-item">
+                  <a class="page-link next" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </footer>
+          <!--============== pagination End ==============-->
+        </main>
+        <!---------------------------------------- Main End ---------------------------------------->
+      </div>
+    </div>
+    <!-- <script src="./enquire.js"></script> -->
+    <script>
+      const db = firebase.firestore();
+      // 페이징 처리
+      let params = new URL(document.location).searchParams;
+      let page = params.get("page");
+      let title_ = params.get("title"); // 사용자 전달 제목(검색)
+      let title = "title"; // 기본값
+      console.log(`현재 페이지는 ${page}페이지 입니다`);
+
+      // 로드 될 때 page 1에 해당하는 것만 불러와
+      // page 2에 해당하는 것만 불러와라
+      let startPage = page - ((page - 1) % 3);
+      let lastPage = 0;
+      let lastItemNum = 0;
+      console.log(`시작페이지는 ${startPage}페이지 입니다`); // 시작페이지
+
+      // Database에서 데이터 가져오기
+      let num = 0;
+      db.collection("enquire")
+        .orderBy("registDate", "asc")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            lastItemNum++;
+            if (data.번호 >= 1 + (page - 1) * 3 && data.번호 <= page * 3) {
+              const templete = `
+              <tr class = "table-secondary">
+                        <th scope="row" class="table-primary">${++num}</th>
+                        <th>${data.name}</th>
+                        <td>${data.gender}</td>
+                        <td>${data.phone}</td>
+                        <td>${data.program}</td>
+                        <td>${data.registDate}</td>
+                        <th class="table-danger">${data.reservDate}</th>
+                        <th class="table-danger">${data.question}</th>
+                        <td>${data.teacher}</td>
+                        <td id="${doc.id}" class="bg-white">
+                          <button class="del bg-warning">삭제하기</button></td>
+                          </tr>
+                    `;
+              $(".enquire-article").append(templete); // 데이터가 저장된 만큼 찍힌다.
+            }
+          });
+          lastPage = Math.ceil(lastItemNum / 5);
+          console.log(`마지막 페이지는 ${lastPage}페이지 입니다`); // 이전페이지 처리
+          // lastPageBar함수가 외부에 있으면 시점의 문제로 먼저 수행되어 lastPage가 0으로 찍힌다
+          //(페이지 번호 처리)
+          for (let i = 0; i <= 10; i++) {
+            // startPage + i = 현재 페이지
+            if (startPage + i <= lastPage) {
+              const page = `
+                  <li class="page-item"><a class="page-link" href="?page=${
+                    startPage + i
+                  }">${startPage + i}</a></li>
+                  `;
+              $("#pagination").append(page);
+            }
+          }
+          lastPageBar();
+        });
+      // 이전페이지 판별하는 함수
+      if (startPage - 1 > 0) {
+        $(".pre").attr("href", `?page=${startPage - 1}`);
+      } else if (startPage - 1 <= 0) {
+        $(".pre").on("click", () => {
+          alert("이전페이지는 존재하지 않습니다❗");
+        });
+      }
+
+      // 마지막 페이지 판별하는 함수
+      function lastPageBar() {
+        if (startPage + 3 <= lastPage) {
+          // 다음 이동시 마지막 페이지 처리//
+          // 현재 15페이지에 있더라도 전역변수 startPage는 12이므로 +3을 해줘야한다
+          $(".next").attr("href", `?page=${startPage + 3}`);
+        } else if (startPage + 3 > lastPage) {
+          $(".next").on("click", () => {
+            alert("다음페이지는 존재하지 않습니다❗");
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
+<!-- 삭제하기 구현성공 버전  -->
+<!--
+  22.08.06
+  오늘은 addEventListener을 forEach와 분리해보고, reload를 처리해봅시다
+  
+  분리(?)  : querySelectorAll을 사용하려면 forEach나 for문 사용해야함. 
+          ※ if 반복문 사용X - 코드 주석처리 해둠
+
+  reload 처리 성공 : .then(()=>{ }) 에다가 넣음
+-->
+<!-- 
+  확인순서 insert -> Firestore -> enquire : 가져오기 =>삭제하기
+ -->
