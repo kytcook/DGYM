@@ -29,7 +29,14 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <!-- firebase CDN -->
     <script src="../config/config.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+      integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="../routes/authCheck.js" defer></script>
+    <script src="../routes/adminHome.js" defer></script>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
@@ -160,6 +167,57 @@
         <!---------------------------------------- Sidebar End ---------------------------------------->
         <main class="col py-3">
           <h2>Admin Page</h2>
+          <wrap class="d-flex" style="margin-bottom: 10rem; height: 30rem">
+            <section class="py-5 col-4" style="width: 30rem">
+              <div class="container px-5">
+                <h1 class="fw-bolder fs-5 mb-4">Dgym 회원수 현황</h1>
+                <div class="card border-0 shadow rounded-3">
+                  <div class="card-body p-0">
+                    <div class="p-4 p-md-5">
+                      <h5 class="text-center fw-bolde">총 회원수</h5>
+                      <p class="text-center mb-4" id="totalMem"></p>
+                      <h5 class="text-center fw-bolde">헬스 회원</h5>
+                      <p class="text-center mb-4" id="healthMem"></p>
+                      <h5 class="text-center fw-bolde">필라테스 회원</h5>
+                      <p class="text-center mb-4" id="pilatesMem"></p>
+                      <h5 class="text-center fw-bolde">크로스핏 회원</h5>
+                      <p class="text-center mb-4" id="crossfitMem"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- chart -->
+            <section class="py-5 col-4" style="width: 30rem">
+              <div class="container px-5">
+                <h1 class="fw-bolder fs-5 mb-4">멤버십 판매 현황</h1>
+                <div class="card border-0 shadow rounded-3">
+                  <div class="card-body p-0">
+                    <div class="p-4 p-md-5">
+                      <div class="" style="width: 300px">
+                        <canvas id="myChart"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- 사이트 회원관련 -->
+            <section class="py-5 col-4" style="width: 30rem">
+              <div class="container px-5">
+                <h1 class="fw-bolder fs-5 mb-4">온라인 회원 현황</h1>
+                <div class="card border-0 shadow rounded-3">
+                  <div class="card-body p-0">
+                    <div class="p-4 p-md-5">
+                      <h5 class="text-center fw-bolde">총 회원수</h5>
+                      <p class="text-center mb-4" id="totalUser"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </wrap>
+          <!--  -->
           <section class="py-5">
             <div class="container px-5">
               <h1 class="fw-bolder fs-5 mb-4">Company Blog</h1>
@@ -181,22 +239,7 @@
                           elit. Similique delectus ab doloremque, qui doloribus
                           ea officiis...
                         </p>
-                        <a
-                          class="stretched-link text-decoration-none"
-                          href="#!"
-                        >
-                          Read more
-                          <i class="bi bi-arrow-right"></i>
-                        </a>
                       </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-7">
-                      <div
-                        class="bg-featured-blog"
-                        style="
-                          background-image: url('https://dummyimage.com/700x350/343a40/6c757d');
-                        "
-                      ></div>
                     </div>
                   </div>
                 </div>

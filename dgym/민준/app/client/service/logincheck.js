@@ -1,6 +1,5 @@
 // 로그인 및 로그아웃 처리하려면 항상 onAuthStateChanged()사용하기
 window.onload = checkLogin;
-
 function checkLogin() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -28,6 +27,7 @@ function checkLogin() {
       `;
 
       div.appendChild(mypage);
+      return user;
     }
   });
 }

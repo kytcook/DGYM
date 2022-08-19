@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  margin-top: 3rem;
+}
+
+.board-detail {
+  margin: 0 10rem;
+  height: 30rem;
+}
+
+.board-top {
+  margin: 0 5rem;
+  padding: 1rem;
+  border-bottom: solid 1px rgba(255, 255, 255);
+}
+
+#form-content {
+  margin: 0 5rem;
+  height: 15rem;
+}

@@ -123,7 +123,6 @@
         </aside>
     <!----------------------------------- sidebar end --------------------------------->
     <!----------------------------------- main start ---------------------------------->
-
     <main class="ps-0 ps-md-5 flex-grow-1">
       <div class="container col-md-8 col-lg-10 col-sm-10 bg-black box-shadow mt-md-5">
         <div class="col-12 text-white-50 d-flex justify-content-center mb-md-5">
@@ -160,7 +159,7 @@
       </footer>
     <!--------------------------------- Footer End ----------------------------------->
     <script>
-      window.onload = loadInfo;
+    window.onload = loadInfo;
 // 로그인 및 로그아웃 처리하려면 항상 onAuthStateChanged()사용하기
 function loadInfo() {
   firebase.auth().onAuthStateChanged((user) => {
