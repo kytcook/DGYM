@@ -3,6 +3,8 @@
 / 변수명 : 한글 -> 영어
 / Firestore.instuctor.doc의 teacher 연동 (html/<!--희망강사-->)
 
+-contact.html
+/ 전체적인 디자인 다듬음
 =================================mypage(호정,택)
 - membership.html membership.js 
 / 가져오기 
@@ -11,3 +13,12 @@
 
 - membershipModal.js 
 / 수정하기, 파일첨부, 탈퇴하기
+
+=================================program
+수정
+-crossfit.html
+-health.html 
+-program.html 
+
+추가
+-program.css 
