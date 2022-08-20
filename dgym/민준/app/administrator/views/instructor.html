@@ -24,6 +24,14 @@
     ></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+
+    <script src="../config/config.js" defer></script>
   </head>
   <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
     <div class="container-fluid">
@@ -52,7 +60,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="" class="nav-link align-middle px-0">
                   <i class="fs-4 bi-house"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >매출조회</span
@@ -68,12 +76,36 @@
                 >
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
-                  <i class="fs-4 bi-house"></i>
+                <a
+                  href="#submenu3"
+                  data-bs-toggle="collapse"
+                  class="nav-link px-0 align-middle"
+                >
+                  <i class="fs-4 bi-grid"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >회원관리</span
-                  ></a
+                  >
+                </a>
+                <ul
+                  class="collapse nav flex-column ms-1"
+                  id="submenu3"
+                  data-bs-parent="#menu"
                 >
+                  <li class="w-100">
+                    <a href="./memRegister.html" class="nav-link px-0">
+                      <span class="d-none d-sm-inline text-light"
+                        >&nbsp;&nbsp;-신규 회원등록</span
+                      >
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./memSearch.html" class="nav-link px-0">
+                      <span class="d-none d-sm-inline text-light"
+                        >&nbsp;&nbsp;-회원조회</span
+                      >
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li>
                 <a href="./instructor.html" class="nav-link align-middle px-0">
@@ -84,7 +116,10 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a
+                  href="./notice.html?page=1"
+                  class="nav-link px-0 align-middle"
+                >
                   <i class="fs-4 bi-people"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >게시판관리</span
@@ -122,6 +157,7 @@
           </div>
         </aside>
         <!---------------------------------------- Sidebar End ---------------------------------------->
+
         <!---------------------------------------- Main Start ---------------------------------------->
         <main class="col py-3">
           <h2>Admin Page</h2>
@@ -129,7 +165,7 @@
             <div class="d-flex justify-content-center">
               <h3 class="mb-3" style="font-weight: bolder">강사 관리</h3>
             </div>
-            <div class="box d-flex flex-wrap justify-content-end mt-5"></div>
+            <div class="box d-flex flex-wrap mt-5 ms-5"></div>
             <input
               type="button"
               class="float-end me-5 mt-5"
@@ -139,201 +175,9 @@
               value="강사등록"
             />
           </div>
-          <!-- 여기서까지 forEach -->
         </main>
       </div>
       <!---------------------------------------- Main End ---------------------------------------->
-
-      <!------------------------------ Modal Start _ 수정하기 ------------------------------------->
-      <div
-        class="modal fade container-fluid"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-        role="dialog"
-      >
-        <div class="modal-dialog" role="document">
-          <!--------------------------------- Modal content --------------------------------->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="staticBackdropLabel">
-                강사 정보 수정
-              </h4>
-              <!-- <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
-                ×
-              </button> -->
-            </div>
-            <!--------------------------------- Modal body --------------------------------->
-            <div class="modal-body">
-              <div class="card-body">
-                <div class="col-md-4 d-flex">
-                  <label class="form-label" for="name" style="width: 40%"
-                    >이름</label
-                  >
-                  <input
-                    class="form-control form-control-sm"
-                    id="name"
-                    type="text"
-                  />
-                </div>
-                <div class="col-md-4 d-flex">
-                  <label class="form-label" for="age" style="width: 40%"
-                    >나이</label
-                  >
-                  <input
-                    class="form-control form-control-sm"
-                    id="age"
-                    type="text"
-                  />
-                </div>
-                <div class="col-md-4 d-flex">
-                  <label class="form-label" for="event" style="width: 40%"
-                    >종목</label
-                  >
-                  <input
-                    class="form-control form-control-sm"
-                    id="category"
-                    type="text"
-                  />
-                </div>
-                <div class="col-md-4 d-flex">
-                  <label class="form-label" for="career" style="width: 40%"
-                    >경력</label
-                  >
-                  <input
-                    class="form-control form-control-sm"
-                    id="career"
-                    type="text"
-                  />
-                </div>
-                <div class="col-md-6 d-flex">
-                  <label class="form-label" for="working-day" style="width: 55%"
-                    >근무요일</label
-                  >
-                  <input
-                    class="form-control form-control-sm"
-                    id="workday"
-                    type="text"
-                  />
-                </div>
-                <div class="col-md-7 d-flex">
-                  <label
-                    class="form-label"
-                    for="working-time"
-                    style="width: 110%"
-                    >근무시간</label
-                  >
-                  <input
-                    class="form-control form-control-sm"
-                    id="worktime1"
-                    type="text"
-                  />
-                  ~
-                  <input
-                    class="form-control form-control-sm"
-                    id="worktime2"
-                    type="text"
-                  />
-                </div>
-                <div class="col-md-4 d-flex">
-                  <label class="form-label" for="student" style="width: 135%"
-                    >수강인원</label
-                  >
-                  <input
-                    class="form-control form-control-sm"
-                    id="student"
-                    type="text"
-                  />
-                </div>
-                <div class="col-md-9 d-flex d-flex">
-                  <label class="form-label" for="student" style="width: 135%"
-                    ><b>강사 사진 첨부</b></label
-                  >
-                  <input type="file" class="col-md-9" />
-                </div>
-              </div>
-            </div>
-            <!--------------------------------- Modal footer --------------------------------->
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                닫기
-              </button>
-              <button
-                type="submit"
-                class="btn btn-default border-dark"
-                data-bs-dismiss="modal"
-              >
-                저장하기
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!------------------------------ Modal End _ 수정하기 ------------------------------------>
-
-      <!------------------------------ Modal Start _ 삭제하기 ---------------------------------->
-      <!-- <div
-        class="modal fade container-fluid"
-        id="staticBackdrop2"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-      >
-        <div class="modal-dialog" role="document"> -->
-      <!--------------------------------- Modal content --------------------------------->
-      <!-- <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="exampleModalLabel">데이터 삭제</h4>
-              <button
-                type="button"
-                class="close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div> -->
-      <!--------------------------------- Modal body --------------------------------->
-      <!-- <label class="modal-body"
-              >해당 강사의 데이터를 삭제하시겠습니까?</label
-            > -->
-      <!--------------------------------- Modal footer --------------------------------->
-      <!-- <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                취소
-              </button>
-              <button
-                id="delete"
-                type="submit"
-                class="btn btn-default border-dark"
-                data-bs-dismiss="modal"
-              >
-                삭제
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!------------------------------ Modal End _ 삭제하기 ------------------------------------>
 
       <!------------------------------ Modal Start _ 강사등록 ---------------------------------->
       <div
@@ -434,11 +278,21 @@
                     type="text"
                   />
                 </div>
+                <div class="col-md-4 d-flex">
+                  <label class="form-label" for="salary" style="width: 135%"
+                    >월급</label
+                  >
+                  <input
+                    class="form-control form-control-sm"
+                    id="i_salary"
+                    type="text"
+                  />
+                </div>
                 <div class="col-md-9 d-flex d-flex">
                   <label class="form-label" for="student" style="width: 135%"
                     ><b>강사 사진 첨부</b></label
                   >
-                  <input type="file" class="col-md-9" />
+                  <input type="file" id="file-select" class="col-md-9" />
                 </div>
               </div>
             </div>
@@ -456,7 +310,6 @@
                 type="submit"
                 class="btn btn-default border-dark"
                 data-bs-dismiss="modal"
-                onclick="reload()"
               >
                 등록하기
               </button>
@@ -466,241 +319,6 @@
       </div>
       <!------------------------------ Modal End _ 강사등록 ------------------------------------>
     </div>
-
-    <!----------------------- 모달창 드래그로 움직이게 하기 ----------------------->
-    <script>
-      $(function () {
-        $(".modal-dialog").draggable({
-          handle: ".modal-header",
-        });
-      });
-    </script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
-
-    <script>
-      // firebase 프로젝트 연결하기
-      const firebaseConfig = {
-        apiKey: "AIzaSyBrOnVewQ4kA4m6huwSTblCfUvOmbEaIiM",
-        authDomain: "semi-project-dgym.firebaseapp.com",
-        databaseURL:
-          "https://semi-project-dgym-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "semi-project-dgym",
-        storageBucket: "semi-project-dgym.appspot.com",
-        messagingSenderId: "877339507238",
-        appId: "1:877339507238:web:bdee7c64a03ea7273d04e7",
-      };
-      firebase.initializeApp(firebaseConfig);
-
-      // firebase에서 db 가져오기
-      // 수정하기 버튼 클릭 시 해당되는 강사의 db정보 불러와서 띄우기
-      $("#modybutton").click(function () {
-        const db = firebase.firestore();
-
-        const readModal = document.getElementById("staticBackdrop");
-        $("#staticBackdrop").modal("show");
-        readModal.addEventListener("shown.bs.modal", () => {
-          db.collection("instructor")
-            .doc("36Y10Qh7pNu8EZd1Qvkn")
-            .get()
-            .then((result) => {
-              const name = result.data().p_name;
-              const age = result.data().p_age;
-              const category = result.data().p_category;
-              const career = result.data().p_career;
-              const workday = result.data().p_workday;
-              const worktime1 = result.data().p_worktime1;
-              const worktime2 = result.data().p_worktime2;
-              const student = result.data().p_student;
-              console.log(result.data());
-              $("#name").attr("value", name);
-              $("#age").attr("value", age);
-              $("#category").attr("value", category);
-              $("#career").attr("value", career);
-              $("#workday").attr("value", workday);
-              $("#worktime1").attr("value", worktime1);
-              $("#worktime2").attr("value", worktime2);
-              $("#student").attr("value", student);
-            });
-        });
-      });
-      //강사등록 버튼 클릭 후 입력한 신규 정보 db에 추가하기
-      $("#add_inst").click(function () {
-        //강사등록 모달 페이지 내 '등록하기' 버튼 클릭 시 처리되는 이벤트
-        const p_name = $("#i_name").val();
-        const p_age = $("#i_age").val();
-        const p_category = $("#i_category").val();
-        const p_career = $("#i_career").val();
-        const p_workday = $("#i_workday").val();
-        const p_worktime1 = $("#i_worktime1").val();
-        const p_worktime2 = $("#i_worktime2").val();
-        const p_student = $("#i_student").val();
-
-        db.collection("instructor")
-          .add({
-            p_name,
-            p_age,
-            p_category,
-            p_career,
-            p_workday,
-            p_worktime1,
-            p_worktime2,
-            p_student,
-          })
-          .then(() => {
-            console.log("데이터 입력 성공");
-
-            location.reload(); //데이터 추가 후 페이지 새로고침 처리
-          });
-      });
-      //강사 정보 삭제하기
-      const del = document.querySelectorAll(".del_btn");
-      del.forEach((del) => {
-        del.addEventListener("click", (e) => {
-          let id = e.currentTarget.getAttribute("id");
-          db.collection("instructor").doc(id).delete();
-          console.log("데이터 삭제 성공");
-        });
-      });
-      // $("#delete").click(function () {
-      //   const ok = window.confirm("해당 강사의 데이터를 삭제하시겠습니까?");
-      //   const db = firebase.firestore();
-      //   if (ok) {
-      //     db.collection("instructor").doc().delete();
-      //   }
-      //   // window.location.reload();
-      //   console.log("데이터 삭제 성공");
-      // });
-
-      //db에서 데이터 불러와 화면에 띄우기
-      const db = firebase.firestore();
-      db.collection("instructor")
-        .get()
-        .then((snapshot) => {
-          console.log(snapshot);
-          snapshot.forEach((item) => {
-            const data = item.data();
-            const template = `
-            <div class="col-lg-5 d-flex mt-5">
-            <div
-              class="ms-4 pe-5"
-              style="
-                background-color: rgb(243, 218, 218);
-                border-radius: 5%;
-              "
-            >
-              <div class="name d-flex">
-                <label
-                  class="form-label"
-                  for="name"
-                  style="font-weight: bolder"
-                  >이름 :</label
-                >
-                <p class="mb-1 ms-1" style="font-size: 1.2rem">${data.p_name}</p>
-              </div>
-
-              <div class="age d-flex">
-                <label
-                  class="form-label"
-                  for="age"
-                  style="font-weight: bolder"
-                  >나이 :</label
-                >
-                <p class="mb-1 ms-1" style="font-size: 1.2rem">${data.p_age}</p>
-              </div>
-
-              <div class="category d-flex">
-                <label
-                  class="form-label"
-                  for="category"
-                  style="font-weight: bolder"
-                  >종목 :</label
-                >
-                <p class="mb-1 ms-1" style="font-size: 1.2rem">${data.p_category}</p>
-              </div>
-  
-              <div class="career d-flex">
-                <label
-                  class="form-label"
-                  for="career"
-                  style="font-weight: bolder"
-                  >경력 :</label
-                >
-                <p class="mb-1 ms-1" style="font-size: 1.2rem">${data.p_career}</p>
-              </div>
-  
-              <div class="career d-flex">
-                <label
-                  class="form-label"
-                  for="working-day"
-                  style="font-weight: bolder"
-                  >근무요일 :</label
-                >
-                <p class="mb-1 ms-1" style="font-size: 1.2rem">
-                  ${data.p_workday}
-                </p>
-              </div>
-  
-              <div class="career d-flex">
-                <label
-                  class="form-label"
-                  for="working-time"
-                  style="font-weight: bolder"
-                  >근무시간 :</label
-                >
-                <p class="mb-1 ms-1" style="font-size: 1.2rem">
-                  ${data.p_worktime1} ~ ${data.p_worktime2}
-                </p> 
-              </div>
-  
-              <div class="career d-flex">
-                <label
-                  class="form-label"
-                  for="student"
-                  style="font-weight: bolder"
-                  >수강생 :
-                </label>
-                <p class="mb-2 ms-1" style="font-size: 1.2rem">${data.p_student}</p>
-              </div>
-  
-              <div class="container d-flex justify-content-end">
-                <input
-                  type="button"
-                  class="btn-modal"
-                  id="modybutton"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                  value="수정하기"
-                />
-                <input
-                  type="button"
-                  class="btn-modal2"
-                  id="del_btn"
-
-                  value="삭제하기"
-                />
-              </div>
-            </div>
-          </div>
-            `;
-            $(".box").append(template);
-            console.log(item.id);
-          });
-        });
-
-      //dd
-
-      $("#del_btn").click(function (e) {
-        snapshot.forEach((item) => {
-          const data = item.data();
-          let id = e.target.getAttribute("id");
-          console.log(item.id);
-        });
-      });
-    </script>
+    <script src="../routes/instructor.js" defer></script>
   </body>
 </html>

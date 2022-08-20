@@ -10,10 +10,9 @@ const yello = "rgb(255, 204, 000)";
 const pink = "rgb(255, 102, 153)";
 let userUid = "";
 
-// 필요한 변수가 뭐냐
 // title = 체중, 근육량 arr = weight / muscles
 // 차트 그리기
-function dbSearch(title, arr, id, 함수, color) {
+function dbSearch(title, arr, id, chartJs, color) {
   db.collection("user")
     .doc(userUid)
     .collection("inbody")
@@ -88,7 +87,7 @@ firebase.auth().onAuthStateChanged((user) => {
     // 마이페이지
     const div = document.querySelector(".btn-group");
     const mypage = document.createElement("a");
-    mypage.setAttribute("href", "./views/mypage/membership.html");
+    mypage.setAttribute("href", "/client/views/mypage/membership.html");
     mypage.innerHTML = `
                   <button
                     type="button"
