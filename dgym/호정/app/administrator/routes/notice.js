@@ -10,11 +10,10 @@ let startPage = page - ((page - 1) % numPerPage);
 let lastPage = 0;
 console.log(`시작페이지는 ${startPage}페이지 입니다`); // 시작페이지
 // Database에서 데이터 가져오기
-db.collection("enquire")
-  .orderBy("registDate", "asc")
+db.collection("board")
+  .orderBy("작성일", "desc")
   .get()
   .then((snapshot) => {
-    console.log(snapshot.docs.data().name);
     let lastItemNum = snapshot.docs.length;
     console.log("총 데이터 건수는 " + lastItemNum + " 입니다");
     for (let i = page * numPerPage; i < page * numPerPage + numPerPage; i++) {
@@ -22,15 +21,26 @@ db.collection("enquire")
       console.log(num);
       if (lastItemNum === i - numPerPage) break;
       const templete = `
-                                  <tr>
-                                    <th scope="row" class="text-center ">${++num}</th>
-                                    <td class="text-center">
-                                      ${
-                                        snapshot.docs[i - numPerPage].data()
-                                          .name
-                                      }</td>
-                                  </tr>
-              `;
+                                        <tr>
+                                          <th scope="row" class="text-center ">${++num}</th>
+                                          <td class="text-center"><a href="./detailNotice.html?id=${
+                                            snapshot.docs[i - numPerPage].id
+                                          }" style="text-decoration: none; color:black;" >
+                                            ${
+                                              snapshot.docs[
+                                                i - numPerPage
+                                              ].data().제목
+                                            }</a></td>
+                                          <td class="text-center">${
+                                            snapshot.docs[i - numPerPage].data()
+                                              .작성자
+                                          }</td>
+                                          <td class="text-center">${
+                                            snapshot.docs[i - numPerPage].data()
+                                              .작성일
+                                          }</td>
+                                        </tr>
+                    `;
       $(".board-content").append(templete); // 데이터가 저장된 만큼 찍힌다.
     }
     lastPage = Math.ceil(lastItemNum / numPerPage);
@@ -41,10 +51,10 @@ db.collection("enquire")
       // startPage + i = 현재 페이지
       if (startPage + i <= lastPage) {
         const page = `
-            <li class="page-item"><a class="page-link" href="?page=${
-              startPage + i
-            }">${startPage + i}</a></li>
-            `;
+                  <li class="page-item"><a class="page-link" href="?page=${
+                    startPage + i
+                  }">${startPage + i}</a></li>
+                  `;
         $("#pagination").append(page);
       }
     }

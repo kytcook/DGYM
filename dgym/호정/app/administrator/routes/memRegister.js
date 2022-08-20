@@ -25,15 +25,20 @@ function nullCheck() {
 function membershipPrice() {
   const membership = $("#membership option:selected").text();
   if (membership == "헬스3개월") {
+    sort = "health";
     return 300000;
   } else if (membership == "pt30회") {
+    sort = "health";
     return 600000;
   } else if (membership == "필라테스3개월") {
+    sort = "pilates";
     return 400000;
   } else if (membership == "크로스핏3개월") {
+    sort = "crossfit";
     return 450000;
   }
 }
+let sort = null; // 운동 분류
 
 // 사용자 입력값 db에 저장하는 함수
 function memInsert() {
@@ -46,6 +51,23 @@ function memInsert() {
   const payment = $("#payment option:selected").text();
   const teacher = $("#teacher option:selected").text();
   const price = membershipPrice();
+  let memNum = 0;
+
+  // 멤버 등록시 sort컬렉션에 헬스 or 크로스핏 or 필라테스 멤버 +1 (대시보드에서 사용)
+  db.collection("sort")
+    .doc(sort)
+    .get()
+    .then((doc) => {
+      memNum = doc.data().member;
+      addMemNum(memNum);
+    });
+  function addMemNum(memNum) {
+    db.collection("sort")
+      .doc(sort)
+      .update({
+        member: memNum + 1,
+      });
+  }
 
   db.collection("member")
     .add({
