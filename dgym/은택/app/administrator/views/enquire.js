@@ -20,10 +20,9 @@ db.collection("enquire")
                         <td>${data.program}</td>
                         <td>${data.registDate}</td>
                         <th class="table-danger">${data.reservDate}</th>
-                        <th class="table-danger">${data.question}</th>
                         <td>${data.teacher}</td>
                         <td id="${doc.id}" class="bg-white">
-                          <button class="del bg-warning">삭제하기</button></td>
+                          <button class="del bg-warning">상담완료</button></td>
                           </tr>
                           `;
       // <th>${data.userInfo}</th>

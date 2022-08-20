@@ -29,7 +29,6 @@ db.collection("enquire")
                                         snapshot.docs[i - numPerPage].data()
                                           .name
                                       }</td>
-
                                   </tr>
               `;
       $(".board-content").append(templete); // 데이터가 저장된 만큼 찍힌다.

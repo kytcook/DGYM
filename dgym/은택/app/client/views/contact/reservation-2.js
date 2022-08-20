@@ -10,7 +10,7 @@ db.collection("instructor")
       data = doc.data();
       console.log(data);
       teacher = `<option value=${data.category}>${data.teacher}</option>`;
-      $("#teacher").append(teacher);
+      $("#p_name").append(teacher);
     });
   });
 /*============== 강사연동 End =============*/
@@ -35,19 +35,10 @@ $("#submit").click(function () {
   const program = $("#program").val();
   const registDate = year + "-" + month + "-" + date; // 등록날짜
   const reservDate = $("#time").val(); /* 예약날짜 = (html)희망날짜 */
-  const question = $("#question").val();
-  const teacher = $("#teacher").val();
+  const teacher = $("#p_name").val();
 
   // is not null
-  if (
-    !name ||
-    !gender ||
-    !phone ||
-    !program ||
-    !reservDate ||
-    !question ||
-    !teacher
-  ) {
+  if (!name || !gender || !phone || !program || !reservDate || !teacher) {
     alert(
       "빈 칸을 채워주세요 \n      /)/)\n    ( -__-)     ∧ ∧    \n~~(>Δ< )  (ㅇㅇ )~~~~\n~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~"
     );
@@ -61,8 +52,7 @@ $("#submit").click(function () {
         program,
         registDate,
         reservDate,
-        question,
-        teacher,
+        p_,
       })
       .then(() => {
         alert("접수가 완료 되었습니다.");
