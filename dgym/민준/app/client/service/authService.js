@@ -19,9 +19,8 @@ class AuthService {
       .auth()
       .signInWithPopup(authProvider)
       .then((result) => {
-        result.user; // user의 uid 구할 수 있음
-        console.log(result.user);
-        userIsCheck(result.user);
+        const user = result.user; // user의 uid 구할 수 있음
+        userIsCheck(user);
       })
       .catch((error) => {
         let errorMessage = error.message;
@@ -35,7 +34,6 @@ class AuthService {
       .signInWithEmailAndPassword(mem_email, mem_pw)
       .then((result) => {
         console.log(result.user);
-        window.location.replace("../../../index.html");
       })
       .catch((error) => {
         window.alert("없는 회원입니다. 다시 확인하세요");

@@ -240,7 +240,6 @@ firebase.auth().onAuthStateChanged(function (user) {
     .then((doc) => {
       data = doc.data();
       console.log(data);
-
       const template = `
                             <p>이름 : ${user.displayName}</p>
                             <p>이메일 : ${data.mem_email}</p>
