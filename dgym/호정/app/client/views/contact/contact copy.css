@@ -1,0 +1,35 @@
+* {
+  /* border: 1px solid red; */
+}
+
+/*-------------------- About article ----------------*/
+/* About article one */
+.section1 {
+  text-decoration: line-through;
+}
+
+/* About article two */
+#section2 {
+  color: rgb(204, 215, 224);
+}
+.image1 {
+  border: 8px solid rgb(94, 25, 25);
+}
+
+/* About article three */
+.info {
+  font: 25px bold;
+  color: whitesmoke;
+}
+.info > div {
+  background-color: rgb(16, 16, 16);
+  border: 5px solid rgb(74, 21, 21);
+}
+
+/*--------------------- About aricle -----------------*/
+
+/*-------------------------- 주의사항 --------------------*/
+.pbox {
+  color: rgb(152, 151, 150);
+}
+/*-------------------------- 주의사항 --------------------*/

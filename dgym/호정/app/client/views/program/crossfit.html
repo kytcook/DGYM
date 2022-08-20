@@ -6,6 +6,9 @@
     <title>Welcome to DGYM-HOME</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
+      * {
+        /* border: 1px solid red; */
+      }
     </style>
     <!-- CSS only -->
     <link
@@ -34,6 +37,7 @@
     <!-- firebase CDN -->
     <script src="../../config/config.js"></script>
     <script src="../../service/logincheck.js" defer></script>
+    <link rel="stylesheet" href="./program.css">
   <body
     class="d-flex flex-column min-vh-100"
     style="
@@ -83,7 +87,7 @@
                 >Contact</a
               >
             </li>
-              <li class="nav-item me-5">
+            <li class="nav-item me-5">
               <a
                 class="nav-link text-light"
                 href="../notice/notice.html?page=1"
@@ -106,7 +110,8 @@
       </div>
     </nav>
     <!---------------------------------- navbar ------------------------------->
-    <!-- SIDEBAR ~ section START -->
+
+    <!-- SIDEBAR ~ section -->
     <div class="container-fluid d-flex flex-row">
       <!------------------------ SIDEBAR START -------------------->
       <aside
@@ -125,11 +130,12 @@
         </ul>
       </aside>
       <!------------------------- SIDEBAR END --------------------->
+      
       <!------------------------- section START ------------------->
       <section
         class="w-75 col-lg-9 col-md-10 col-sm-10 container row-cols-7 px-5 center"
       >
-        <!--============ header START ============-->
+        <!--============= header START ============-->
         <header class="my-5 text-center text-xl-start">
           <h1 class="display-4 fw-bolder text-white mb-3 text-center">
             PROGRAM
@@ -142,80 +148,80 @@
           </h3>
           <hr class="bg-white p-1" />
         </header>
-        <!--============ header END ============-->
-        <!--=========== article START ==========-->
-        <article class="card mb-3 w-100 bg-dark text-white-50 p-3" >
-          <div class="row g-0">
-            <div class="col-md-7">
-              <div class="card-body m-1">
-                <h2>전신 협응력 강화 프로그램</h2>
-                <p>
-                  <h5> 신체의 특정 부분을 단련시키는 것이 아닌 <br>
+        <!--============= header END ============-->
+
+        <section class="outline container card bg-transparent ">
+          <!--========= 프로그램 소개 START ========-->
+          <article class="card bg-transparent text-white p-3" >
+            <div class="row g-0">
+              <div class="col-md-7">
+                <div class="card-body m-5">
+                  <h2>전신 협응력 강화 프로그램</h2>
+                    <p class="text-muted">
+                      신체의 특정 부분을 단련시키는 것이 아닌 <br>
                       심폐지구력, 근력, 유연성, 순발력, 균형감각, 정확성 등<br>
-                      신체에 필요한 모든 요소를 단시간 안에 향상시킬 수 있는 고강도 프로그램
-                </p>
-<!--                 <div class="w-50">
-                  <img
-                    src="../img/crossfit1.jpg"
-                    class="w-100 p-3 overlay"
-                    alt="crossfit1.jpg"
-                  />
-                </div> --> 
+                      신체에 필요한 모든 요소를 단시간 안에 향상시킬 수 있는 고강도 프로그램s
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit voluptate porro
+                      molestiae aliquam perspiciatis esse? Quam dolore eius accusamus saepe minus
+                      fugiat repudiandae cupiditate ea. Itaque consequatur voluptate recusandae ipsa.
+                    </p>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <img
+                  src="../../img/crossfit2.jpg"
+                  class="w-100 rounded-start p-1"
+                  height="85%"
+                  alt="crossfit2.jpg"
+                />
               </div>
             </div>
-            <div class="col-lg-5 bg-">
-              <img
-                src="../../img/crossfit2.jpg"
-                class="w-100 rounded-start p-4"
-                height="100%"
-                alt="crossfit2.jpg"
-              />
+          </article>
+          <!--========== 프로그램 소개  End ========-->
+          <p class="mt-5" style="border: 1px solid rgba(62, 62, 62, 0.35);"></p>
+          <!--=========== 강사소개 START ===========-->
+          <article class=" ms-4 p-5"  >
+            <div class="row g-0">
+              <div class="col-7" style="width: 30rem">
+                <img src="../../img/크로스핏강사1.jpg" class="img-fluid rounded-start" width="400" alt="헬스강사1">
+              </div>
+              <div class="col d-flex ps-5">
+                <div class="card-body align-self-center">
+                  <h3 class="card-title text-white">줄 리 아</h3>
+                  <h5 class="text-white"> 경력 : 8년</h5>
+                  <h4 class="card-text text-white-50 mt-5">살고자하면 죽을 것이고,<br/> 죽고자 하면 살 것이다.<br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias fugiat doloremque 
+                        cum eveniet repellat mollitia earum,
+                  </h4>
+                </div>
+              </div>
             </div>
-          </div>
-        </article>
-        <!--============ article END ===========-->
-        <!--=========== footer START ===========-->
-        <footer class="row bg-transparent justify-content-lg-between mt-5 mb-5">
-          <div
-            class="card col-lg-6 col-md-3 col-xl-1 bg-transparent"
-            style="width: 30rem"
-          >
-            <img
-              src="../../img/크로스핏강사1.jpg"
-              class="card-img-top"
-              height="500"
-              alt="크로스핏강사1.jpg"
-            />
-                <ul class="list-group list-group-flush h6">
-                  <li class="list-group-item text-white bg-transparent">이름   : [ 줄리아 ]</li>
-                  <li class="list-group-item text-white bg-transparent">나이   : [ 31 ] </li>
-                  <li class="list-group-item text-white bg-transparent">경력   : [ 8년] </li>
-                  <li class="list-group-item text-white bg-transparent">자격증 : [ 물리치료사 자격증] </li>
-                </ul>
-          </div>
-          <div
-            class="card col-lg-6 col-md-3 col-xl-1 bg-transparent"
-            style="width: 30rem"
-          >
-            <img
-              src="../../img/크로스핏강사2.jpg"
-              class="card-img-top"
-              height="500"
-              alt="크로스핏강사2.jpg"
-            />
-                <ul class="list-group list-group-flush h6">
-                  <li class="list-group-item text-white bg-transparent">이름   : [ 헤라클레스 ]</li>
-                  <li class="list-group-item text-white bg-transparent">나이   : [ 36 ] </li>
-                  <li class="list-group-item text-white bg-transparent">경력   : [ 12년] </li>
-                  <li class="list-group-item text-white bg-transparent">자격증 : [ -- 자격증] </li>
-                </ul>
-          </div>
-        </footer>
-        <!--=========== footer END ===========-->
+          </article>
+
+          <article class=" ms-4 p-5"  >
+            <div class="row g-0">
+              <div class="col-7" style="width: 30rem">
+                <img src="../../img/크로스핏강사2.jpg" class="img-fluid rounded-start" width="400" alt="헬스강사2">
+              </div>
+              <div class="col d-flex ps-5">
+                <div class="card-body align-self-center">
+                  <h3 class="card-title text-white">헤 라 클 래 스</h3>
+                  <h5 class="text-white"> 경력 : 300년</h5>
+                  <h4 class="card-text text-white-50 mt-5">살고자하면 죽을 것이고,<br/> 죽고자 하면 살 것이다.<br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias fugiat doloremque 
+                        cum eveniet repellat mollitia earum,
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!--============ 강사소개 End ============-->
       </section>
       <!------------------------- section END ------------------->
     </div>
-    <!-- SIDEBAR ~ section END -->
+    <!-- SIDEBAR ~ section -->
+    
     <!----------------------- FOOTER START ---------------------->
     <footer class="footer mt-auto py-3">
       <div class="container d-md-flex flex-column align-items-center">
