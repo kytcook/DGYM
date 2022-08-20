@@ -31,8 +31,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    <script src="https://kit.fontawesome.com/b77ffddccf.js" crossorigin="anonymous"></script>
 
     <script src="../config/config.js"></script>
+    <link rel="stylesheet" href="../style/style.css"></script>
+
   </head>
   <body>
     <!------------------------------ Modal Start _ 수정하기 ------------------------------------->
@@ -55,8 +58,8 @@
           <!--------------------------------- Modal body --------------------------------->
           <div class="modal-body">
             <div class="card-body">
-              <div class="col-md-4 d-flex">
-                <label class="form-label" for="name" style="width: 40%"
+              <div class="col-md-6 d-flex mb-1">
+                <label class="form-label" for="name" style="width: 55%"
                   >이름</label
                 >
                 <input
@@ -65,8 +68,8 @@
                   type="text"
                 />
               </div>
-              <div class="col-md-4 d-flex">
-                <label class="form-label" for="age" style="width: 40%"
+              <div class="col-md-6 d-flex mb-1">
+                <label class="form-label" for="age" style="width: 55%"
                   >나이</label
                 >
                 <input
@@ -75,8 +78,8 @@
                   type="text"
                 />
               </div>
-              <div class="col-md-4 d-flex">
-                <label class="form-label" for="event" style="width: 40%"
+              <div class="col-md-6 d-flex mb-1">
+                <label class="form-label" for="event" style="width: 55%"
                   >종목</label
                 >
                 <input
@@ -85,8 +88,8 @@
                   type="text"
                 />
               </div>
-              <div class="col-md-4 d-flex">
-                <label class="form-label" for="career" style="width: 40%"
+              <div class="col-md-6 d-flex mb-1">
+                <label class="form-label" for="career" style="width: 55%"
                   >경력</label
                 >
                 <input
@@ -95,7 +98,7 @@
                   type="text"
                 />
               </div>
-              <div class="col-md-6 d-flex">
+              <div class="col-md-6 d-flex mb-1">
                 <label class="form-label" for="working-day" style="width: 55%"
                   >근무요일</label
                 >
@@ -105,8 +108,8 @@
                   type="text"
                 />
               </div>
-              <div class="col-md-7 d-flex">
-                <label class="form-label" for="working-time" style="width: 110%"
+              <div class="col-md-7 d-flex mb-1">
+                <label class="form-label" for="working-time" style="width: 115%"
                   >근무시간</label
                 >
                 <input
@@ -114,15 +117,15 @@
                   id="worktime1"
                   type="text"
                 />
-                ~
+                &nbsp;⁓&nbsp;
                 <input
                   class="form-control form-control-sm"
                   id="worktime2"
                   type="text"
                 />
               </div>
-              <div class="col-md-4 d-flex">
-                <label class="form-label" for="student" style="width: 135%"
+              <div class="col-md-6 d-flex mb-1">
+                <label class="form-label" for="student" style="width: 55%"
                   >수강인원</label
                 >
                 <input
@@ -131,11 +134,11 @@
                   type="text"
                 />
               </div>
-              <div class="col-md-9 d-flex d-flex">
-                <label class="form-label" for="student" style="width: 135%"
+              <div class="col-md-9 d-flex">
+                <label class="form-label" for="student" style="width: 55%"
                   ><b>강사 사진 첨부</b></label
                 >
-                <input type="file" class="col-md-9" id="input_img" />
+                <input type="file" id="input_img" class="col-md-9" />
               </div>
             </div>
           </div>
@@ -170,6 +173,6 @@
       </div>
     </div>
     <!------------------------------ Modal End _ 수정하기 ------------------------------------>
-    <script src="../routes/insModify.js" defer></script>
+    <script src="../routes/insModify.js"></script>
   </body>
 </html>

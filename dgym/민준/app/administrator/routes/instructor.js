@@ -24,12 +24,12 @@ db.collection("instructor")
                         alt="강사사진"
                         />
                       <div
-                        class="ms-4 pe-5"
+                        class="textbox ms-4 pe-5"
                         style="
                           background-color: rgb(243, 218, 218);
                           border-radius: 5%;
                         ">
-                        <div class="d-flex ms-2">
+                        <div class="d-flex ms-2 mt-2">
                           <label
                             class="form-label"
                             for="name"
@@ -103,16 +103,6 @@ db.collection("instructor")
                           <p class="mb-2 ms-1" style="font-size: 1.2rem">${data.p_student}</p>
                         </div>
 
-                        <div class="d-flex ms-2">
-                        <label
-                          class="form-label"
-                          for="student"
-                          style="font-weight: bolder"
-                          >월급 :
-                        </label>
-                        <p class="mb-2 ms-1" style="font-size: 1.2rem">${data.p_salary}</p>
-                      </div>
-
                         <div class="container">
                               <button class="btn-modal ms-5 m-2"
                                       id="modybutton"
@@ -130,22 +120,6 @@ db.collection("instructor")
       console.log(item.id);
     });
   });
-// sort 컬렉션에 저장하기 위해 분기하는 함수
-function sortIns(p_category) {
-  if (p_category == "헬스") {
-    return "health";
-  } else if (p_category == "필라테스") {
-    return "pilates";
-  } else return "crossfit";
-}
-
-function addInsNum(insNum, sort) {
-  db.collection("sort")
-    .doc(sort)
-    .update({
-      instructor: insNum + 1,
-    });
-}
 
 //file upload
 //버튼 클릭 시 function 실행
@@ -163,15 +137,6 @@ document.querySelector("#add_inst").addEventListener("click", () => {
   const p_student = $("#i_student").val();
   const p_salary = $("#i_salary").val();
   const image = $("#file-select").val();
-  const sort = sortIns(p_category);
-
-  db.collection("sort")
-    .doc(sort)
-    .get()
-    .then((doc) => {
-      insNum = doc.data().instructor;
-      addInsNum(insNum, sort);
-    });
 
   //파일 업로드 관련
   if (image !== "") {
@@ -200,7 +165,6 @@ document.querySelector("#add_inst").addEventListener("click", () => {
             p_worktime1,
             p_worktime2,
             p_student,
-            p_salary,
             date: new Date(),
             image: url, //업로드에 성공한 이미지 url 담기
           };
@@ -228,7 +192,6 @@ document.querySelector("#add_inst").addEventListener("click", () => {
       p_worktime1,
       p_worktime2,
       p_student,
-      p_salary,
       date: new Date(),
       image:
         "https://firebasestorage.googleapis.com/v0/b/d-gym-demo.appspot.com/o/image%2Fdefault_img.png?alt=media&token=9abc6848-2417-4ab9-a321-3a5bd229fee4",
