@@ -45,7 +45,7 @@ const pieChart = new Chart(chartOne, {
     },
   },
 });
-
+// 멤버 현황 조회
 db.collection("member")
   .get()
   .then((snapshot) => {
@@ -70,7 +70,7 @@ db.collection("member")
         $("#crossfitMem").html(`${cMem}명`);
       });
   });
-
+// 온라인 현황 조회
 db.collection("user")
   .get()
   .then((snapshot) => {
@@ -78,6 +78,38 @@ db.collection("user")
     console.log(totalUser);
     $("#totalUser").html(`${totalUser}명`);
   });
+
+// 강사 현황 조회
+db.collection("insturctor")
+  .get()
+  .then((snapshot) => {
+    let hIns = 0;
+    let pIns = 0;
+    let cIns = 0;
+    /////////////////////////////////////
+    db.collection("sort")
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((item) => {
+          if (item.id == "health") hIns = item.data().instructor;
+          else if (item.id == "pilates") pIns = item.data().instructor;
+          else cIns = item.data().instructor;
+        });
+      })
+      .then(() => {
+        $("#healthIns").html(`${hIns}명`);
+        $("#pilatesIns").html(`${pIns}명`);
+        $("#crossfitIns").html(`${cIns}명`);
+      });
+  });
+
+// db.collection("user")
+//   .get()
+//   .then((snapshot) => {
+//     let totalUser = snapshot.docs.length;
+//     console.log(totalUser);
+//     $("#").html(`${totalUser}명`);
+//   });
 
 // 모든 문서 돌아야할 때
 // function searchList(snapshot, totalMem, hMem, pMem, cMem, callback) {
