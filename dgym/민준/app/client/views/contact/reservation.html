@@ -1,19 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Welcome to DGYM-HOME</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
-        .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservation</title>
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -21,7 +12,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../../components/navbar.css" />
+    <!-- CSS only -->
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -33,86 +24,85 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+    <!-- JavaScript Bundle with Popper -->
+    <!-- Firebase Connection -->
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
-    <!-- firebase CDN -->
     <script src="../../config/config.js"></script>
     <script src="../../service/logincheck.js" defer></script>
-  <body
-    class="d-flex flex-column min-vh-100"
-    style="
-      font-family: Archivo, sans-serif;
-      background-color: rgba(0, 0, 0, 0.945);
-    "
-  >
+    <!-- Firebase Connection -->
+    <link rel="stylesheet" href="../../components/navbar.css"/>
+    </head>
+  
+  <body class="d-flex flex-column min-vh-100 " style=" font-family:Archivo, sans-serif; background-color: rgba(0, 0, 0, 0.945)">
   <!---------------------------------- navbar  Start------------------------------->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-      <div class="container-fluid">
-        <a class="navbar-brand ms-4 text-light" href="../../../index.html"
-          ><img src="../../img/logo-white.png" alt="짐로고" width="100"
-        /></a>
-        <button
-          class="navbar-toggler custom-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-4 text-light" href="../../../index.html"
+        ><img src="../../img/logo-white.png" alt="짐로고" width="100"
+      /></a>
+      <button
+        class="navbar-toggler custom-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul
+          class="navbar-nav me-auto mb-2 mb-lg-0 container-fluid justify-content-center ms-4 mt-3"
+          style="font-size: 1.2rem"
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul
-            class="navbar-nav me-auto mb-2 mb-lg-0 container-fluid justify-content-center ms-4 mt-3"
-            style="font-size: 1.2rem"
-          >
+          <li class="nav-item me-5">
+            <a class="nav-link text-light" href="../aboutus/aboutus.html"
+              >About Us</a
+            >
+          </li>
+          <li class="nav-item me-5">
+            <a class="nav-link text-light" href="../program/program.html"
+              >Program</a
+            >
+          </li>
+          <li class="nav-item me-5">
+            <a class="nav-link text-light" href="../center/center.html"
+              >Center</a
+            >
+          </li>
+          <li class="nav-item me-5">
+            <a class="nav-link text-light" href="./contact.html"
+              >Contact</a
+            >
+          </li>
             <li class="nav-item me-5">
-              <a class="nav-link text-light" href="../aboutus/aboutus.html"
-                >About Us</a
-              >
-            </li>
-            <li class="nav-item me-5">
-              <a class="nav-link text-light" href="../program/program.html"
-                >Program</a
-              >
-            </li>
-            <li class="nav-item me-5">
-              <a class="nav-link text-light" href="../center/center.html"
-                >Center</a
-              >
-            </li>
-            <li class="nav-item me-5">
-              <a class="nav-link text-light" href="./contact.html"
-                >Contact</a
-              >
-            </li>
-              <li class="nav-item me-5">
-              <a
-                class="nav-link text-light"
-                href="../notice/notice.html?page=1"
-                >Notice</a
-              >
-            </li>
-          </ul>
-          <div class="d-flex mt-3 btn-group" style="width: 12rem">
-            <a href="../member/login.html">
-              <button
-                type="button"
-                class="btn btn-primary btn-sm me-1"
-                id="login"
-              >
-                login
-              </button>
-            </a>
-          </div>
+            <a
+              class="nav-link text-light"
+              href="../notice/notice.html?page=1"
+              >Notice</a
+            >
+          </li>
+        </ul>
+        <div class="d-flex mt-3 btn-group" style="width: 12rem">
+          <a href="../../../login.html">
+            <button
+              type="button"
+              class="btn btn-primary btn-sm me-1"
+              id="login"
+            >
+              login
+            </button>
+          </a>
         </div>
       </div>
-    </nav>
-    <!---------------------------------- navbar ------------------------------->
+    </div>
+  </nav>
+  <!---------------------------------- navbar ------------------------------->
     <!---------------------------------- body 시작 ------------------------------>
     <body>
       <!----------------------------------- sidebar start -------------------------------->
@@ -135,68 +125,82 @@
                     <div class="section-title ms-5 mt-4">
                       <h4 class="title mb-3 text-white-50 font-weight-medium pt-lg-4">상담 예약하기</h4>
                       <form class="form-row align-items-center">
+                        <!--====== 이름S ======-->
                         <div class="form group col-md-11 input-group-sm">
                           <label class="text-white-50 font-weight-medium mb-1">이름</label>
-                            <input type="text" class="form-control mb-3" id="name" placeholder="내용을 입력해주세요" required>
+                          <input type="text" class="form-control mb-3" id="name" placeholder="내용을 입력해주세요" required>
                         </div>
+                        <!--====== 이름E ======-->
+                        <!--====== 성별S ======-->
                         <div class="form group col-md-11 input-group-sm">
                           <label class="text-white-50 font-weight-medium mb-1">성별</label>
-                            <select class="form-control basic-select select2-hidden-accesible d-block mb-3" id="gender" role="combobox" data-select2-id="gender" tabindex="-1" aria-hidden="true">
-                              <option value="choice">(선택)</option>
-                              <option value="woman" id="woman">여자</option>
-                              <option value="man" id="man">남자</option>
-                            </select>
+                          <select class="form-control basic-select select2-hidden-accesible d-block mb-3" id="gender"  role="combobox" data-select2-id="gender" tabindex="-1" aria-hidden="true">
+                            <option value="choice" disabled selected hidden>(성별)</option><!-- disabled selected hidden을 줘서 like placeholder처럼 -->
+                            <option value="여자" id="woman">여자</option>
+                            <option value="남자" id="man">남자</option>
+                          </select>
                         </div>
+                        <!--====== 성별E ======-->  
+                        <!--===== 연락처S =====-->
                         <div class="form group col-md-3">
                           <label class="text-white-50 font-weight-medium mb-1">연락처</label>
                         </div>
                         <div class="form group input-group-sm col-md-1 text-white-50 font-weight-medium d-inline-block">
-                            <input type="text" class="form-control" id="phone1" maxlength="3" required>
-                          </div>
-                          <span class="text-white-50 font-weight-medium">-</span>
-                        <div class="form group input-group-sm col-md-1 text-white-50 font-weight-medium d-inline-block">
-                            <input type="text" class="form-control" id="phone2" maxlength="4" required>
-                          </div>
-                          <span class="text-white-50 font-weight-medium">-</span>
-                        <div class="form group input-group-sm col-md-1 d-inline-block">
-                            <input type="text" class="form-control mb-3" id="phone3" maxlength="4" required>
+                          <input type="text" class="form-control" id="phone1" maxlength="3" required>
                         </div>
+                        <span class="text-white-50 font-weight-medium">-</span>
+                        <div class="form group input-group-sm col-md-1 text-white-50 font-weight-medium d-inline-block">
+                          <input type="text" class="form-control" id="phone2" maxlength="4" required>
+                        </div>
+                        <span class="text-white-50 font-weight-medium">-</span>
+                        <div class="form group input-group-sm col-md-1 d-inline-block">
+                          <input type="text" class="form-control mb-3" id="phone3" maxlength="4" required>
+                        </div>
+                        <!--===== 연락처E =====-->        
+                        <!--==== 프로그램S ====-->
                         <div class="form group col-md-11 input-group-sm">
                           <label class="text-white-50 font-weight-medium mb-1">프로그램</label>
                           <select class="form-control basic-select select2-hidden-accesible d-block mb-3" id="program" data-select2-id="program" tabindex="-1" aria-hidden="true">
-                            <option value="choice">(선택)</option>
-                            <option value="health" id="health">헬스</option>
-                            <option value="crossfit" id="crossfit">크로스핏</option>
-                            <option value="pilates" id="pilates">필라테스</option>
+                            <option value="choice" disabled selected hidden>(선택)</option>
+                            <option value="헬스" id="health">헬스</option>
+                            <option value="크로스핏" id="crossfit">크로스핏</option>
+                            <option value="필라테스" id="pilates">필라테스</option>
                           </select>
                         </div>
+                        <!--==== 프로그램E ====-->      
+                        <!--==== 희망날짜S ====-->
                         <div class="form group col-md-11 input-group-sm mb-3">
                           <label class="text-white-50 font-weight-medium mb-1">희망하는 상담 시간 *평일 기준</label>
-                            <input type="text" class="form-control" id="time" placeholder="MM월 DD일 오전/오후 HH시 MM분" required>
+                          <input type="text" class="form-control" id="time" placeholder="MM월 DD일 오전/오후 HH시 MM분" required>
                         </div>
-                         <div class="form group col-md-11 input-group-sm">
+                        <!--==== 희망날짜E ====-->
+                        <!--==== 문의유형S ====--> 
+                        <div class="form group col-md-11 input-group-sm">
                           <label class="text-white-50 font-weight-medium mb-1">문의유형</label>
-                          <select class="form-control basic-select select2-hidden-accesible d-block mb-3" id="program" data-select2-id="program" tabindex="-1" aria-hidden="true">
-                            <option value="choice">(선택)</option>
-                            <option value="health" id="health">가격</option>
-                            <option value="crossfit" id="crossfit">시간</option>
-                            <option value="pilates" id="pilates">기타</option>
+                          <select class="form-control basic-select select2-hidden-accesible d-block mb-3" id="question" data-select2-id="program" tabindex="-1" aria-hidden="true">
+                            <option value="choice" disabled selected hidden>(선택)</option>
+                            <option value="가격">가격</option>
+                            <option value="시간">시간</option>
+                            <option value="기타">기타</option>
+                          </select>  
+                        <!--==== 문의유형E ====--> 
+                        <!--==== 희망강사S ====-->
+                        <div class="form group col-md-11 input-group-sm">
+                          <label class="text-white-50 font-weight-medium mb-1">찾으시는 선생님</label>
+                          <select class="form-control basic-select select2-hidden-accesible d-block mb-3" id="teacher" data-select2-id="teacher" tabindex="-1" aria-hidden="true">
+                            <option value="choice" disabled selected hidden>(선택)</option>
+                                <!--※ 디비에서 동적으로 처리됨  
+                                    <option value="김땡">김땡</option> 
+                                    <option value="다니엘">다니엘</option>
+                                    <option value="송림">송림</option> -->
                           </select>
                         </div>
-                        <div class="form group col-md-11 input-group-sm mb-3">
-                          <label class="text-white-50 font-weight-medium mb-1">찾으시는 선생님</label>
-                            <input type="text" class="form-control" id="teacher" placeholder="내용을 입력해주세요" required>
-                        </div>
-                        <hr class="mb-4 bg-white">
-                        <div class="form group col-md-11 input-group-sm">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" id="jb-checkbox" class="custom-control-input">
-                            <label class="text-white-50 font-weight-medium mb-1">개인정보 수집 및 이용에 동의합니다.</label>
-                          </div>
-                        </div>
+                        <!--==== 희망강사E ====-->                                                                                                    
+                        <!--====== 제출S ======-->
                         <div class="form group col-sm-11 input-group-sm d-flex justify-content-end">
-                          <button class="btn btn-primary btn-lg btn-block mt-2 mb-4" type="submit">제출</button>
+                          <button id="submit" class="btn btn-primary btn-lg btn-block mt-2 mb-4" type="button">제출</button><!-- type="submit -> button" -->
                         </div>
+                        <!--====== 제출E ======-->
                       </form>
                     </div>
                   </div>
@@ -217,6 +221,11 @@
     </div>
   </footer>
     <!--------------------------------- Footer End ------------------------------>
+    <script src="../../routes/reservation.js"></script>
   </body>
   <!--------------------------------- body End ------------------------------>
 </html>
+<!-- 
+  22.08.08
+  상담예약 
+ -->

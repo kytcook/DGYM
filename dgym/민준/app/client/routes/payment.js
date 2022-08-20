@@ -63,7 +63,7 @@ function searchPh(userUid) {
       searchMem(mem_hp);
     });
 }
-
+// member 컬렉션에서 해당 클라이언트의 폰번호와 일치하는 member가 있는지 찾는다
 function searchMem(mem_hp) {
   db.collection("member")
     .get()
