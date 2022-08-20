@@ -3,7 +3,7 @@
 // console.log(user.uid); // uid가져왔니??
 const db = firebase.firestore();
 db.collection("instructor")
-  .orderBy("category", "asc")
+  .orderBy("p_category", "asc")
   .get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
@@ -57,7 +57,7 @@ $("#submit").click(function () {
       })
       .then(() => {
         alert("접수가 완료 되었습니다.");
-        // window.location.replace("./reservation.html");
+        window.location.replace("./reservation.html");
       })
       .catch((error) => {
         console.error("Error removing document: ", error);
