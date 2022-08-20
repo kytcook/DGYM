@@ -136,7 +136,15 @@ function sortIns(p_category) {
     return "health";
   } else if (p_category == "필라테스") {
     return "pilates";
-  } else return "crosfit";
+  } else return "crossfit";
+}
+
+function addInsNum(insNum, sort) {
+  db.collection("sort")
+    .doc(sort)
+    .update({
+      instructor: insNum + 1,
+    });
 }
 
 //file upload
@@ -157,6 +165,14 @@ document.querySelector("#add_inst").addEventListener("click", () => {
   const image = $("#file-select").val();
   const sort = sortIns(p_category);
 
+  db.collection("sort")
+    .doc(sort)
+    .get()
+    .then((doc) => {
+      insNum = doc.data().instructor;
+      addInsNum(insNum, sort);
+    });
+
   //파일 업로드 관련
   if (image !== "") {
     //사용자가 이미지를 선택했을 경우
@@ -172,20 +188,6 @@ document.querySelector("#add_inst").addEventListener("click", () => {
       },
       //성공 시 동작하는 함수
       function () {
-        db.collection("sort")
-          .doc(sort)
-          .get()
-          .then((doc) => {
-            insNum = doc.data().instructor;
-            addInsNum(insNum);
-          });
-        function addInsNum(insNum) {
-          db.collection("sort")
-            .doc(sort)
-            .update({
-              instructor: insNum + 1,
-            });
-        }
         console.log("사용자가 선택한 이미지 파일 ===> " + selectedFile.name);
         uploadImg.snapshot.ref.getDownloadURL().then((url) => {
           //snapshot.ref.getDownloadURL() ==> url을 가져오기 위해서 사용하는 메서드

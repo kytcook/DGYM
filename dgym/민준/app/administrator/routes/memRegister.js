@@ -53,6 +53,7 @@ function memInsert() {
   const price = membershipPrice();
   let memNum = 0;
 
+  // 멤버 등록시 sort컬렉션에 헬스 or 크로스핏 or 필라테스 멤버 +1 (대시보드에서 사용)
   db.collection("sort")
     .doc(sort)
     .get()
