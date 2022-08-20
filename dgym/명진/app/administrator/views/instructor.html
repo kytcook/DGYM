@@ -24,17 +24,18 @@
     ></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
+  <body class="d-flex flex-column">
     <div class="container-fluid">
       <div class="row flex-nowrap">
         <!---------------------------------------- Sidebar Start ---------------------------------------->
-        <aside class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           <div
             class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
           >
             <a
-              href="/"
+              href="./adminHome.html"
               class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
             >
               <span class="fs-5 d-none d-sm-inline text-light">Home</span>
@@ -52,7 +53,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="./sales.html" class="nav-link align-middle px-0">
                   <i class="fs-4 bi-house"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >매출조회</span
@@ -60,7 +61,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="./enquire.html" class="nav-link align-middle px-0">
                   <i class="fs-4 bi-house"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >예약관리</span
@@ -68,12 +69,38 @@
                 >
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
-                  <i class="fs-4 bi-house"></i>
+                <a
+                  href="#submenu3"
+                  data-bs-toggle="collapse"
+                  class="nav-link px-0 align-middle"
+                >
+                  <i class="fs-4 bi-grid"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >회원관리</span
-                  ></a
+                  >
+                </a>
+                <ul
+                  class="collapse nav flex-column ms-1"
+                  id="submenu3"
+                  data-bs-parent="#menu"
                 >
+                  <li class="w-100">
+                    <a href="./memRegister.html" class="nav-link px-0">
+                      <h6 class="d-none d-sm-inline">
+                        <small class="text-muted"
+                          >&nbsp;&nbsp;- 신규 회원등록</small
+                        >
+                      </h6>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./memSearch.html" class="nav-link px-0">
+                      <h6 class="d-none d-sm-inline">
+                        <small class="text-muted">&nbsp;&nbsp;- 회원조회</small>
+                      </h6>
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li>
                 <a href="./instructor.html" class="nav-link align-middle px-0">
@@ -84,7 +111,10 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a
+                  href="./notice.html?page=1"
+                  class="nav-link px-0 align-middle"
+                >
                   <i class="fs-4 bi-people"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >게시판관리</span
@@ -93,7 +123,7 @@
               </li>
             </ul>
             <hr />
-            <div class="dropdown pb-4">
+            <div class="dropdown pb-4 fixed-bottom ms-3">
               <a
                 href="#"
                 class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
@@ -108,23 +138,22 @@
                   height="30"
                   class="rounded-circle"
                 />
-                <span class="d-none d-sm-inline mx-1">관리자</span>
+                <span class="d-none d-sm-inline mx-1 ms-2">관리자</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">비밀번호 변경</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+              <ul
+                class="dropdown-menu dropdown-menu-dark text-small shadow ms-4 mb-2"
+              >
                 <li>
-                  <hr class="dropdown-divider" />
+                  <a class="dropdown-item" href="#" id="logout">Log out</a>
                 </li>
-                <li><a class="dropdown-item" href="#">Log out</a></li>
               </ul>
             </div>
           </div>
-        </aside>
+        </div>
         <!---------------------------------------- Sidebar End ---------------------------------------->
         <!---------------------------------------- Main Start ---------------------------------------->
         <main class="col py-3">
-          <h2>Admin Page</h2>
+          <h2>강사관리 Page</h2>
           <div class="container-fluid pt-5 ps-2">
             <div class="d-flex justify-content-center">
               <h3 class="mb-3" style="font-weight: bolder">강사 관리</h3>
