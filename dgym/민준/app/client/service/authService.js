@@ -22,7 +22,6 @@ class AuthService {
         result.user; // user의 uid 구할 수 있음
         console.log(result.user);
         userIsCheck(result.user);
-        window.location.replace("../../../index.html");
       })
       .catch((error) => {
         let errorMessage = error.message;
@@ -58,6 +57,9 @@ function userIsCheck(user) {
       } else {
         db.collection("user").doc(user.uid).set(userInfo);
       }
+    })
+    .then(() => {
+      window.location.replace("../../../index.html");
     });
 }
 export { AuthService };
