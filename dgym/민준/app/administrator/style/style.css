@@ -4,12 +4,12 @@
   width: 5em;
 }
 
-#body {
+body {
   background-color: white;
   font-family: "Roboto", "Noto Sans KR", "sans-serif";
 }
 
-#main {
+* {
   font-family: "Roboto", "Noto Sans KR", "sans-serif";
 }
 @font-face {
