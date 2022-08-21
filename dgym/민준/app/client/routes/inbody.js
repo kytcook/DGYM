@@ -19,17 +19,33 @@ function dbSearch(title, arr, id, chartJs, color) {
     .orderBy("regDate", "asc")
     .get()
     .then((snapshot) => {
-      snapshot.forEach((item) => {
-        if (title == "체중") {
-          arr[i] = item.data().weight;
-        } else if (title == "골격근량") {
-          arr[i] = item.data().muscles;
-        } else if (title == "체지방량") {
-          arr[i] = item.data().fat;
+      let i = 0;
+      const totalData = snapshot.docs.length;
+      // 최근 등록한 인바디 정보 6건에 대해서만 보여준다
+      if (totalData > 6) {
+        for (let j = totalData - 6; j < totalData; j++) {
+          if (title == "체중") {
+            arr[i] = snapshot.docs[j].data().weight;
+          } else if (title == "골격근량") {
+            arr[i] = snapshot.docs[j].data().muscles;
+          } else if (title == "체지방량") {
+            arr[i] = snapshot.docs[j].data().fat;
+          }
+          labels[i] = snapshot.docs[j].data().regDate;
+          ++i;
         }
-        labels[i] = item.data().regDate;
-        i++;
-      });
+      } else {
+        for (let k = 0; k < totalData; k++) {
+          if (title == "체중") {
+            arr[k] = snapshot.docs[k].data().weight;
+          } else if (title == "골격근량") {
+            arr[k] = snapshot.docs[k].data().muscles;
+          } else if (title == "체지방량") {
+            arr[k] = snapshot.docs[k].data().fat;
+          }
+          labels[k] = snapshot.docs[k].data().regDate;
+        }
+      }
     })
     .then(() => {
       i = 0;
@@ -83,7 +99,6 @@ firebase.auth().onAuthStateChanged((user) => {
     login.id = "logout";
     login.addEventListener("click", logout);
     login.classList.add("btn-danger");
-
     // 마이페이지
     const div = document.querySelector(".btn-group");
     const mypage = document.createElement("a");
@@ -119,7 +134,6 @@ document.getElementById("bodyFat").addEventListener("click", () => {
         label: "체지방률",
         data: bodyFatPercent,
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",
           "rgba(255, 205, 86, 0.2)",
           "rgba(75, 192, 192, 0.2)",
@@ -128,7 +142,6 @@ document.getElementById("bodyFat").addEventListener("click", () => {
           "rgba(201, 203, 207, 0.2)",
         ],
         borderColor: [
-          "rgb(255, 99, 132)",
           "rgb(255, 159, 64)",
           "rgb(255, 205, 86)",
           "rgb(75, 192, 192)",
@@ -169,7 +182,7 @@ function logout() {
       console.log(error);
     });
 }
-
+// 인바디 등록 이벤트
 $("#btnInsert").click(() => {
   let today = new Date();
   let year = String(today.getFullYear()).padStart(2, "0");
@@ -178,9 +191,6 @@ $("#btnInsert").click(() => {
   const weight = $("#weightInput").val();
   const muscles = $("#musclesInput").val();
   const fat = $("#fatInput").val();
-  console.log(weight);
-  console.log(muscles);
-  console.log(fat);
   db.collection("user")
     .doc(userUid)
     .collection("inbody")

@@ -8,7 +8,6 @@ function checkLogin() {
       login.id = "logout";
       login.addEventListener("click", logout);
       login.classList.add("btn-danger");
-      console.log(user);
       // 마이페이지
       const div = document.querySelector(".btn-group");
       const mypage = document.createElement("a");
