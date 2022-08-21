@@ -88,7 +88,9 @@ $("#insert").on("click", () => {
   let month = String(today.getMonth() + 1).padStart(2, "0");
   let date = String(today.getDate()).padStart(2, "0");
   const title = $(".title").val();
-  const content = $(".content").val();
+  let content = $(".content").val();
+  // 개행 처리
+  content = content.replace(/(\n|\r\n)/g, "<br>");
   if (title !== "" && content !== "") {
     db.collection("board")
       .add({
