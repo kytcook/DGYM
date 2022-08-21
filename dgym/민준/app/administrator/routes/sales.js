@@ -189,7 +189,7 @@ function searchSales() {
           $(".totalsalestb").append(template);
           const label = ["HEALTH", "PT", "PILATES", "CROSSFIT"];
           const data = [healthSales, ptSales, pilatesSales, crossfitSales];
-          barChart(label, data, bar, "myChart");
+          barChart(label, data, "bar", "myChart");
         });
     });
 }
