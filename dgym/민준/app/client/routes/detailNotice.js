@@ -15,9 +15,9 @@ $(document).ready(function () {
           const regdate = item.data().작성일;
           let content = item.data().내용;
           content = content.replace(/(\n|\r\n)/g, "<br>");
-          $("#title").html(`제목 :  <strong>${title}</strong>`);
-          $("#writer").html(`작성자: ${writer}`);
-          $("#regdate").html(`등록일: ${regdate}`);
+          $("#title").html(`${title}`);
+          $("#writer").html(`${writer} &nbsp; | &nbsp;`);
+          $("#regdate").html(` ${regdate}`);
           $("#content").html(`${content}`);
         }
       });
