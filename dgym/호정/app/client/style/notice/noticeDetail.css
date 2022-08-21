@@ -2,6 +2,20 @@
   box-sizing: border-box;
 }
 
+/* .column {
+  position: relative;
+  width: 1260px;
+  height: 100%;
+  margin: 0 auto;
+  transition: all 0.5s ease-in-out;
+} */
+
+/* body {
+  font-size: 100%;
+  line-height: 1.45;
+  letter-spacing: -0.5px;
+} */
+
 main {
   margin-top: 3rem;
 }
