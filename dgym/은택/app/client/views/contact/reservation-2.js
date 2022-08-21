@@ -3,14 +3,14 @@
 // console.log(user.uid); // uid가져왔니??
 const db = firebase.firestore();
 db.collection("instructor")
-  .orderBy("category", "asc")
+  .orderBy("p_category", "asc")
   .get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
       data = doc.data();
       console.log(data);
-      teacher = `<option value=${data.category}>${data.teacher}</option>`;
-      $("#p_name").append(teacher);
+      p_name = `<option value=${data.p_name}>${data.p_name}</option>`;
+      $("#p_name").append(p_name);
     });
   });
 /*============== 강사연동 End =============*/
@@ -35,10 +35,10 @@ $("#submit").click(function () {
   const program = $("#program").val();
   const registDate = year + "-" + month + "-" + date; // 등록날짜
   const reservDate = $("#time").val(); /* 예약날짜 = (html)희망날짜 */
-  const teacher = $("#p_name").val();
+  const p_name = $("#p_name").val();
 
   // is not null
-  if (!name || !gender || !phone || !program || !reservDate || !teacher) {
+  if (!name || !gender || !phone || !program || !reservDate || !p_name) {
     alert(
       "빈 칸을 채워주세요 \n      /)/)\n    ( -__-)     ∧ ∧    \n~~(>Δ< )  (ㅇㅇ )~~~~\n~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~"
     );
@@ -52,7 +52,7 @@ $("#submit").click(function () {
         program,
         registDate,
         reservDate,
-        p_,
+        p_name,
       })
       .then(() => {
         alert("접수가 완료 되었습니다.");

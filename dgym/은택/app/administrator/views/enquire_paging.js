@@ -19,6 +19,7 @@ class PageBar {
   //적용할 페이지 이름
   pagePath;
   pagination;
+
   // 자바와는 다르게 오버로딩을 지원하지 않아...컨벤션
   constructor(numPerPage, totalRecord, nowPage, pagePath) {
     this.numPerPage = numPerPage;
@@ -106,6 +107,7 @@ nowPage = params.get("nowPage");
 // 페이징 처리에 필요한 변수 선언 //
 
 db.collection("enquire")
+  .orderBy("registDate", "desc")
   .get()
   .then((snapshot) => {
     console.log(snapshot); // [Object , object] -> JSON.parse() or JSON.stringify()
@@ -137,15 +139,45 @@ db.collection("enquire")
                                 <td>${snapshot.docs[i].data().program}</td>
                                 <td>${snapshot.docs[i].data().registDate}</td>
                                 <td>${snapshot.docs[i].data().reservDate}</td>
-                                <td>${snapshot.docs[i].data().}</td>
+                                <td>${snapshot.docs[i].data().p_name}</td>
+                                <td id="${
+                                  snapshot.docs[i].data().id
+                                }" class="bg-white">
+                                <button class="del bg-warning">상담완료</button></td>
+                                </tr>
                               </tr>
             `;
       $(".enquire-article").append(template);
     } //////// end of for
 
     /* 페이지 네비게이션 처리 위치 */
-    const pagePath = "list.html";
+    const pagePath = "./enquire-paging.html";
     const pb = new PageBar(numPerPage, total, nowPage, pagePath);
     //console.log(pb.getPageBar()) class PageBar에서 생성되는 링크 출력해봄
     $(".pagenation").append(pb.getPageBar());
+
+    /*=============== 삭제 Start ==============*/
+    const deletebtn = document.querySelectorAll(".del"); // 클래스명이 del인 버튼(207)을 상수에 저장
+    $(document).ready(function () {
+      // $(deletebtn).click(function (e) {  }); // 사용시 : forEach삭제
+      deletebtn.forEach((deletebtn) => {
+        // 버튼 클릭, 삭제
+        deletebtn.addEventListener("click", (e) => {
+          e.stopPropagation(); // 이벤트가 발생한 상태에서 다른 이벤트나 움직임을 강제로 멈추는 기능
+          let id = e.target.parentElement.getAttribute("id"); // 이벤트발생시 id가 가진 속성의 부모요소를 타게팅하여 변수에 저장
+          db.collection("enquire") // enquire문서에서, 위에서 담은 변수 id 삭제
+            .doc(id)
+            .delete()
+            .then(() => {
+              console.log("Document successfully deleted!");
+              location.reload(); // 삭제성공 -> 새로고침
+              // window.location.href = "./enquire_1-4f.html";
+            })
+            .catch((error) => {
+              console.error("Error removing document: ", error);
+            });
+        });
+      });
+    });
+    /*================ 삭제 End ===============*/
   }); ///////// end of callback
