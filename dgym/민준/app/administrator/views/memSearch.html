@@ -37,8 +37,8 @@
   <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
     <div class="container-fluid">
       <div class="row flex-nowrap">
-        <!---------------------------------------- Sidebar Start ---------------------------------------->
-        <aside class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+        <!---------------------------------------수정된 Sidebar Start ---------------------------------------->
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           <div
             class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
           >
@@ -61,7 +61,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="./sales.html" class="nav-link align-middle px-0">
                   <i class="fs-4 bi-house"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >매출조회</span
@@ -69,7 +69,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="./enquire.html" class="nav-link align-middle px-0">
                   <i class="fs-4 bi-house"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >예약관리</span
@@ -94,16 +94,18 @@
                 >
                   <li class="w-100">
                     <a href="./memRegister.html" class="nav-link px-0">
-                      <span class="d-none d-sm-inline text-light"
-                        >&nbsp;&nbsp;-신규 회원등록</span
-                      >
+                      <h6 class="d-none d-sm-inline">
+                        <small class="text-muted"
+                          >&nbsp;&nbsp;- 신규 회원등록</small
+                        >
+                      </h6>
                     </a>
                   </li>
                   <li>
                     <a href="./memSearch.html" class="nav-link px-0">
-                      <span class="d-none d-sm-inline text-light"
-                        >&nbsp;&nbsp;-회원조회</span
-                      >
+                      <h6 class="d-none d-sm-inline">
+                        <small class="text-muted">&nbsp;&nbsp;- 회원조회</small>
+                      </h6>
                     </a>
                   </li>
                 </ul>
@@ -129,7 +131,7 @@
               </li>
             </ul>
             <hr />
-            <div class="dropdown pb-4">
+            <div class="dropdown pb-4 fixed-bottom ms-3">
               <a
                 href="#"
                 class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
@@ -144,72 +146,73 @@
                   height="30"
                   class="rounded-circle"
                 />
-                <span class="d-none d-sm-inline mx-1">관리자</span>
+                <span class="d-none d-sm-inline mx-1 ms-2">관리자</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">비밀번호 변경</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
+              <ul
+                class="dropdown-menu dropdown-menu-dark text-small shadow ms-4 mb-2"
+              >
                 <li>
                   <a class="dropdown-item" href="#" id="logout">Log out</a>
                 </li>
               </ul>
             </div>
           </div>
-        </aside>
-        <!---------------------------------------- Sidebar End ---------------------------------------->
-        <main class="col py-3">
-          <section class="container row justify-content-center ms-5">
-            <div class="col-2">
-              <select
-                class="form-select"
-                aria-label="분류선택"
-                id="gubun"
-                name="gubun"
-              >
-                <option disabled selected>분류선택</option>
-                <option value="name">이름</option>
-                <option value="phone">휴대폰</option>
-                <option value="teacher">배정강사</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <input
-                type="text"
-                name="keyword"
-                id="keyword"
-                class="form-control"
-                placeholder="검색어를 입력해주세요"
-                aria-label="Search"
-                aria-describedby=""
-              />
-            </div>
-            <div class="col-2">
-              <button
-                class="btn btn-outline-success"
-                type="submit"
-                id="btnSearch"
-                onclick="searchList()"
-              >
-                검색
-              </button>
-              <button
-                class="btn btn-outline-danger"
-                type="submit"
-                onclick="searchTotalList()"
-              >
-                초기화
-              </button>
-            </div>
-          </section>
+        </div>
+        <!---------------------------------------- 수정된 Sidebar End ---------------------------------------->
+        <main class="col py-1" id="main">
           <section class="intro">
             <div class="bg-image h-100" style="background-color: #f5f7fa">
               <div class="mask d-flex align-items-center h-100">
                 <div class="container">
                   <div class="row justify-content-center">
                     <div class="col-12">
+                      <!-- -----------위치문제------------------ -->
+                      <section
+                        class="container row justify-content-center ms-5 mb-5"
+                      >
+                        <div class="col-2">
+                          <select
+                            class="form-select"
+                            aria-label="분류선택"
+                            id="gubun"
+                            name="gubun"
+                          >
+                            <option disabled selected>분류선택</option>
+                            <option value="name">이름</option>
+                            <option value="phone">휴대폰</option>
+                            <option value="teacher">배정강사</option>
+                          </select>
+                        </div>
+                        <div class="col-4">
+                          <input
+                            type="text"
+                            name="keyword"
+                            id="keyword"
+                            class="form-control"
+                            placeholder="검색어를 입력해주세요"
+                            aria-label="Search"
+                            aria-describedby=""
+                          />
+                        </div>
+                        <div class="col-2">
+                          <button
+                            class="btn btn-outline-success"
+                            type="submit"
+                            id="btnSearch"
+                            onclick="searchList()"
+                          >
+                            검색
+                          </button>
+                          <button
+                            class="btn btn-outline-danger"
+                            type="submit"
+                            onclick="searchTotalList()"
+                          >
+                            초기화
+                          </button>
+                        </div>
+                      </section>
+                      <!-- -----------위치문제끝------------------ -->
                       <h6 class="text-center" id="totalTitle"></h6>
                       <div class="card">
                         <div class="card-body p-0">
