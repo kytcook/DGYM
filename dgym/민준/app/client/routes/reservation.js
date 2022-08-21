@@ -9,7 +9,7 @@ db.collection("instructor")
     snapshot.forEach((doc) => {
       data = doc.data();
       console.log(data);
-      p_name = `<option value=${data.p_category}>${data.p_name}</option>`;
+      p_name = `<option value=${data.p_name}>${data.p_name}</option>`;
       $("#p_name").append(p_name);
       console.log(p_name);
     });
