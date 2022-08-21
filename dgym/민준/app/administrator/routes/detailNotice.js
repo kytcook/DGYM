@@ -23,7 +23,7 @@ $(document).ready(function () {
 // 수정 클릭시
 $(".btn-primary").on("click", () => {
   const title = $("#title").text();
-  const content = $("#content").text();
+  let content = $("#content").text();
   $(".btn-group").html(
     `
           <button class="btn btn-success" onclick="update()">수정 완료</button>
@@ -66,10 +66,12 @@ function update() {
       });
     });
   const boardRef = db.collection("board").doc(id);
+  let content = $(".content").val();
+  content = content.replace(/(\n|\r\n)/g, "<br>");
   return boardRef
     .update({
       제목: $(".title").val(),
-      내용: $(".content").val(),
+      내용: content,
       작성일: `${year}-${month}-${date}`,
     })
     .then(() => {
