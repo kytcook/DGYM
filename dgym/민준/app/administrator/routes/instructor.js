@@ -38,7 +38,6 @@ db.collection("instructor")
                           >
                           <p class="mb-1 ms-1" id="pname" style="font-size: 1.2rem">${data.p_name}</p>
                         </div>
-
                         <div class="d-flex ms-2">
                           <label
                             class="form-label"
@@ -48,7 +47,6 @@ db.collection("instructor")
                           >
                           <p class="mb-1 ms-1" style="font-size: 1.2rem">${data.p_age}</p>
                         </div>
-
                         <div class="d-flex ms-2">
                           <label
                             class="form-label"
@@ -58,7 +56,6 @@ db.collection("instructor")
                           >
                           <p class="mb-1 ms-1" style="font-size: 1.2rem">${data.p_category}</p>
                         </div>
-
                         <div class="d-flex ms-2">
                           <label
                             class="form-label"

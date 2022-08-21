@@ -31,7 +31,7 @@
     <!-- firebase CDN -->
     <script src="../config/config.js"></script>
     <script src="../routes/authCheck.js" defer></script>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="../style/style.css" />
   </head>
   <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
     <div class="container-fluid">
@@ -52,7 +52,7 @@
               id="menu"
             >
               <li class="nav-item">
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="./adminHome.html" class="nav-link align-middle px-0">
                   <i class="fs-4 bi-house"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >Dashboard</span
@@ -236,16 +236,13 @@
                   </select>
                 </div>
                 <!-- 배정강사 -->
-                <div class="dropdown mb-3">
+                <div class="dropdown mb-3 teacherContainer">
                   <select class="mdb-select md-form col-12" id="teacher">
                     <option value="" disabled selected>
                       &nbsp;&nbsp;배정강사
                     </option>
                     <option value="1">&nbsp;&nbsp;없음</option>
-                    <option value="2">&nbsp;&nbsp;김명진</option>
-                    <option value="3">&nbsp;&nbsp;임은택</option>
-                    <option value="4">&nbsp;&nbsp;양호정</option>
-                    <option value="5">&nbsp;&nbsp;김민준</option>
+                    <!-- 배정강사 이름 동적바인딩 되는 곳 -->
                   </select>
                 </div>
                 <!-- Submit Button-->
