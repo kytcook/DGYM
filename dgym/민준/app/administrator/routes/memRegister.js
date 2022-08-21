@@ -1,6 +1,27 @@
+const db = firebase.firestore();
+
+// 배정강사 동적으로 바인딩
+let teacherName = [];
+db.collection("instructor")
+  .get()
+  .then((snapshot) => {
+    snapshot.forEach((item) => {
+      let pName = item.data().p_name;
+      teacherName.push(pName);
+    });
+  })
+  .then(() => {
+    const select = $("#teacher");
+    teacherName.forEach((item, i) => {
+      const template2 = `
+          <option value="${i + 2}">${item}</option>
+    `;
+      select.append(template2);
+    });
+  });
+
 $("#btnInsert").click(() => {
   if (nullCheck()) {
-    // console.log("빈값은 없습니다");
     memInsert();
   } else {
     console.log("값을 모두 입력하세요");
@@ -38,11 +59,10 @@ function membershipPrice() {
     return 450000;
   }
 }
-let sort = null; // 운동 분류
-
+// 운동 분류
+let sort = null;
 // 사용자 입력값 db에 저장하는 함수
 function memInsert() {
-  const db = firebase.firestore();
   const name = $("#name").val();
   const age = $("#age").val();
   const phone = $("#phone").val();
