@@ -13,7 +13,8 @@
       crossorigin="anonymous"
     />
     <!-- CSS only -->
-    <!-- JavaScript Bundle with Popper -->
+    <!-- JavaScript Bundle with Popp
+      er -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -33,8 +34,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <script src="../config/config.js"></script>
     <!-- Firebase Connection -->
-    <link rel="stylesheet" href="enquire.css" />
   </head>
+
   <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
     <div class="container-fluid">
       <div class="row flex-nowrap">
@@ -140,95 +141,50 @@
             <hr />
           </header>
           <!--================ header Start ================-->
-          <!--================ article Start ===============-->
-          <section class="intro">
-            <div class="bg-image h-100" style="background-color: #f5f7fa">
-              <div class="mask d-flex align-items-center h-100">
-                <div class="container">
-                  <div class="row justify-content-center">
-                    <div class="col-12">
-                      <h6 class="text-center" id="totalTitle"></h6>
-                      <div class="card">
-                        <div class="card-body p-0">
-                          <div
-                            class="table-responsive table-scroll"
-                            data-mdb-perfect-scrollbar="true"
-                            style="position: relative; height: 700px"
-                          >
-                            <table class="table table-striped mb-0">
-                              <thead style="background-color: #002d72">
-                                <tr>
-                                  <th class="text-center" scope="col">N</th>
-                                  <th class="text-center" scope="col">이름</th>
-                                  <th class="text-center" scope="col">성별</th>
-                                  <th class="text-center" scope="col">
-                                    연락처
-                                  </th>
-                                  <th class="text-center" scope="col">
-                                    프로그램
-                                  </th>
-                                  <th class="text-center" scope="col">
-                                    등록날짜
-                                  </th>
-                                  <th class="text-center" scope="col">
-                                    예약날짜
-                                  </th>
-                                  <th class="text-center" scope="col">
-                                    희망강사
-                                  </th>
-                                </tr>
-                              </thead>
-                              <tbody class="enquire-article">
-                                <!-- 테이블 내용 -->
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div>
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-12">
-            <h6 class="text-center" id="totalTitle"></h6>
-            <div class="card">
-              <div class="card-body p-0">
-                <div>
-                  <table class="table table-hover text-center">
-                    <thead class="table-dark">
-                      <tr class>
-                        <th scope="col">N</th>
-                        <th scope="col">이름</th>
-                        <th scope="col">성별</th>
-                        <th scope="col">연락처</th>
-                        <th scope="col">프로그램</th>
-                        <th scope="col">등록날짜</th>
-                        <th scope="col">예약날짜</th>
-                        <th scope="col">희망강사</th>
-                      </tr>
-                    </thead>
-                    <tbody class="enquire-article"></tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-          </div>
-          </div>
+          <!--================= 본문 Start =================-->
+          <article>
+            <table class="table table-hover text-center">
+              <thead class="table-dark">
+                <tr class>
+                  <th scope="col">N</th>
+                  <th scope="col">이름</th>
+                  <th scope="col">성별</th>
+                  <th scope="col">연락처</th>
+                  <th scope="col">프로그램</th>
+                  <th scope="col">등록날짜</th>
+                  <th scope="col">예약날짜</th>
+                  <th scope="col">희망강사</th>
+                </tr>
+              </thead>
+              <tbody class="enquire-article"></tbody>
+            </table>
           </article>
-          <!--================ article End ===============-->
+          <!--================= 본문 End =================-->
+
+          <!--============= pagination Start =============-->
+          <footer class="col-8 justify-content-end">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link pre" href="#">Previous</a>
+                </li>
+                <div class="pagination justify-content-center" id="pagination">
+                  <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                </div>
+                <li class="page-item">
+                  <a class="page-link next" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </footer>
+          <!--============== pagination End ==============-->
         </main>
         <!---------------------------------------- Main End ---------------------------------------->
       </div>
     </div>
-    <script src="./enquire.js"></script>
+    <script src="./enquire_paging.js"></script>
   </body>
 </html>
 <!-- 삭제하기 구현성공 버전  -->
