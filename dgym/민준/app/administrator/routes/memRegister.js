@@ -14,7 +14,7 @@ db.collection("instructor")
     const select = $("#teacher");
     teacherName.forEach((item, i) => {
       const template2 = `
-          <option value="${i + 2}">${item}</option>
+          <option value="${i + 2}">&nbsp;&nbsp;${item}</option>
     `;
       select.append(template2);
     });
