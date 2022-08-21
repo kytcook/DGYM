@@ -10,7 +10,6 @@ const yello = "rgb(255, 204, 000)";
 const pink = "rgb(255, 102, 153)";
 let userUid = "";
 
-// 필요한 변수가 뭐냐
 // title = 체중, 근육량 arr = weight / muscles
 // 차트 그리기
 function dbSearch(title, arr, id, chartJs, color) {

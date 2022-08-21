@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+/* .column {
+  position: relative;
+  width: 1260px;
+  height: 100%;
+  margin: 0 auto;
+  transition: all 0.5s ease-in-out;
+} */
+
+/* body {
+  font-size: 100%;
+  line-height: 1.45;
+  letter-spacing: -0.5px;
+} */
+
+main {
+  margin-top: 3rem;
+}
+
+.board-box {
+  width: 1460px;
+}
+.board-detail {
+  margin: 0 10rem;
+  height: 30rem;
+}
+
+.board-top {
+  margin: 0 5rem;
+  padding: 1rem;
+  border-top: solid 2px rgb(216, 214, 214);
+  border-bottom: dashed 1px rgb(245, 239, 239);
+}
+
+#form-content {
+  margin: 0 5rem;
+  height: 15rem;
+}
+
+.btn-lg {
+  border-radius: 45px;
+  font-size: 18px;
+  padding: 10px 40px;
+  line-height: 25px;
+  background-color: rgb(36, 43, 151);
+}
+
+#form-content {
+  border-bottom: solid 2px rgb(216, 214, 214);
+}

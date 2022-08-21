@@ -5,21 +5,14 @@
 }
 
 body {
-  /* background-color: white; */
+  background-color: white;
   font-family: "Roboto", "Noto Sans KR", "sans-serif";
 }
 
-main {
+* {
   font-family: "Roboto", "Noto Sans KR", "sans-serif";
 }
 
-div {
-  font-family: "Roboto", "Noto Sans KR", "sans-serif";
-}
-
-p {
-  font-family: "Roboto", "Noto Sans KR", "sans-serif";
-}
 @font-face {
   font-family: "Roboto";
   font-style: normal;
