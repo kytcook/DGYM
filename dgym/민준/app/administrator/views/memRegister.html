@@ -36,7 +36,7 @@
   <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
     <div class="container-fluid">
       <div class="row flex-nowrap">
-        <!---------------------------------------- Sidebar Start ---------------------------------------->
+        <!---------------------------------------수정된 Sidebar Start ---------------------------------------->
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           <div
             class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
@@ -60,7 +60,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="./sales.html" class="nav-link align-middle px-0">
                   <i class="fs-4 bi-house"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >매출조회</span
@@ -68,7 +68,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="./enquire.html" class="nav-link align-middle px-0">
                   <i class="fs-4 bi-house"></i>
                   <span class="ms-1 d-none d-sm-inline text-light"
                     >예약관리</span
@@ -93,16 +93,18 @@
                 >
                   <li class="w-100">
                     <a href="./memRegister.html" class="nav-link px-0">
-                      <span class="d-none d-sm-inline text-light"
-                        >&nbsp;&nbsp;-신규 회원등록</span
-                      >
+                      <h6 class="d-none d-sm-inline">
+                        <small class="text-muted"
+                          >&nbsp;&nbsp;- 신규 회원등록</small
+                        >
+                      </h6>
                     </a>
                   </li>
                   <li>
                     <a href="./memSearch.html" class="nav-link px-0">
-                      <span class="d-none d-sm-inline text-light"
-                        >&nbsp;&nbsp;-회원조회</span
-                      >
+                      <h6 class="d-none d-sm-inline">
+                        <small class="text-muted">&nbsp;&nbsp;- 회원조회</small>
+                      </h6>
                     </a>
                   </li>
                 </ul>
@@ -128,7 +130,7 @@
               </li>
             </ul>
             <hr />
-            <div class="dropdown pb-4">
+            <div class="dropdown pb-4 fixed-bottom ms-3">
               <a
                 href="#"
                 class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
@@ -143,14 +145,11 @@
                   height="30"
                   class="rounded-circle"
                 />
-                <span class="d-none d-sm-inline mx-1">관리자</span>
+                <span class="d-none d-sm-inline mx-1 ms-2">관리자</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">비밀번호 변경</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
+              <ul
+                class="dropdown-menu dropdown-menu-dark text-small shadow ms-4 mb-2"
+              >
                 <li>
                   <a class="dropdown-item" href="#" id="logout">Log out</a>
                 </li>
@@ -158,8 +157,8 @@
             </div>
           </div>
         </div>
-        <!---------------------------------------- Sidebar End ---------------------------------------->
-        <main class="col py-3">
+        <!---------------------------------------- 수정된 Sidebar End ---------------------------------------->
+        <main class="col py-3" id="main">
           <section class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
             <div class="text-center mb-5">
               <div
@@ -217,28 +216,42 @@
                 <!-- 멤버십 -->
                 <div class="dropdown mb-3">
                   <select class="mdb-select md-form col-12" id="membership">
-                    <option value="" disabled selected>멤버십</option>
-                    <option value="1">헬스3개월</option>
-                    <option value="2">pt30회</option>
-                    <option value="3">필라테스3개월</option>
-                    <option value="4">크로스핏3개월</option>
+                    <option value="" disabled selected>
+                      &nbsp;&nbsp;멤버십
+                    </option>
+                    <option value="1">&nbsp;&nbsp;헬스3개월</option>
+                    <option value="2">&nbsp;&nbsp;pt30회</option>
+                    <option value="3">&nbsp;&nbsp;필라테스3개월</option>
+                    <option value="4">&nbsp;&nbsp;크로스핏3개월</option>
                   </select>
                 </div>
                 <!-- 결제수단 -->
                 <div class="dropdown mb-3">
                   <select class="mdb-select md-form col-12" id="payment">
-                    <option value="" disabled selected>결제수단</option>
-                    <option value="1">카드</option>
-                    <option value="2">현금</option>
-                    <option value="3">계좌이체</option>
+                    <option value="" disabled selected>
+                      &nbsp;&nbsp;결제수단
+                    </option>
+                    <option value="1">&nbsp;&nbsp;카드</option>
+                    <option value="2">&nbsp;&nbsp;현금</option>
                   </select>
                 </div>
                 <!-- 배정강사 -->
                 <div class="dropdown mb-3 teacherContainer">
                   <select class="mdb-select md-form col-12" id="teacher">
+<<<<<<< HEAD
                     <option value="" disabled selected>배정강사</option>
                     <option value="1">없음</option>
                     <!-- 배정강사 이름 동적바인딩 되는 곳 -->
+=======
+                    <option value="" disabled selected>
+                      &nbsp;&nbsp;배정강사
+                    </option>
+                    <option value="1">&nbsp;&nbsp;없음</option>
+                    <option value="2">&nbsp;&nbsp;김명진</option>
+                    <option value="3">&nbsp;&nbsp;임은택</option>
+                    <option value="4">&nbsp;&nbsp;양호정</option>
+                    <option value="5">&nbsp;&nbsp;김민준</option>
+>>>>>>> e7292e070c54d97412833a0fa37c91fa24a66179
                   </select>
                 </div>
                 <!-- Submit Button-->
