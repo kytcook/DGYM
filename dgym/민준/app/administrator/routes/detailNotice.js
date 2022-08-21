@@ -74,7 +74,7 @@ function update() {
     })
     .then(() => {
       alert("수정이 완료 되었습니다^o^");
-      window.location = `./notice.html`;
+      window.location = `./notice.html?page=1`;
     })
     .catch((error) => {
       console.error("수정 중 오류발생: ", error);
