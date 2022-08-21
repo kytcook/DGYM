@@ -138,7 +138,6 @@ function changeSelect() {
         .then((snapshot) => {
           // --------------3번
           const totalData = snapshot.docs.length; // member collection 내에 존재하는 문서갯수
-
           for (let i = 0; i < totalData; i++) {
             // --------------4번
             db.collection("member")
@@ -146,9 +145,6 @@ function changeSelect() {
               .collection("payment")
               .get()
               .then((snapshot) => {
-                //------------------5번
-                //  for (let i = 0; i < totalData; i++) {
-                //------------------6번
                 snapshot.forEach((item) => {
                   //
                   //------------------7번
@@ -199,7 +195,6 @@ function changeSelect() {
                             pilatesSales =
                               pilatesSales + item.data().payment.price;
                           }
-
                           break;
 
                         case "크로스핏": // if (productName === '크로스핏')
@@ -214,7 +209,6 @@ function changeSelect() {
                               crossfitSales + item.data().payment.price;
                           }
                           break;
-
                         case "PT":
                           if (item.data().payment == "현금") {
                             ptCash++;

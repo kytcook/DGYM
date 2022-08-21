@@ -30,30 +30,16 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <script>
-      //import(ES6 type=module) or require(NodeJS CommonJS)
-const firebaseConfig = {
-  apiKey: "AIzaSyDZb-mDiFLwd4e2Wro0fGJArqbnvMJRIV8",
-  authDomain: "dgym-pj.firebaseapp.com",
-  databaseURL: "https://dgym-pj-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "dgym-pj",
-  storageBucket: "dgym-pj.appspot.com",
-  messagingSenderId: "503689130686",
-  appId: "1:503689130686:web:8835c2f807fb4f84bca4ef",
-  measurementId: "G-LYDFWHR7RD"
-};
-
-
-
-      firebase.initializeApp(firebaseConfig);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
-     <script src="../routes/sales.js" defer></script>;
+    <script src="../config/config.js"></script>
+    <script src="../routes/sales copy.js" defer></script>;
   </head>
 
   <body class="d-flex flex-column" style="font-family: Archivo, sans-serif">
     <div class="container-fluid">
       <div class="row flex-nowrap">
- <!---------------------------------------- Sidebar Start ---------------------------------------->
+<!---------------------------------------- Sidebar Start ---------------------------------------->
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           <div
             class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
@@ -176,17 +162,17 @@ const firebaseConfig = {
         </div>
         <!---------------------------------------- Sidebar End ---------------------------------------->
         <!---------------------------------------- Main Start ---------------------------------------->
-       <main class="container col py-3 ms-5 p-3">
+        <main class="container col py-3 ms-5 p-3">
           <!------------------ header Start ------------------>
-          <header class="pb-2">
+          <header class="pb-2 ">
             <h1><b>매출관리</b></h1>
             <hr />
           </header>
           <!-------------------- header End ------------------->
           <!-- ----------------------------------기간선택, 조회 버튼 처리 시작-------------------------- -->
           <div class="container select button ">
-            <select id="period" onchange="changeSelect()" class="form-select mt-1" aria-label="dateselect">
-              <option selected>기간조회</option>
+            <select id="period" class="form-select mt-1" aria-label="dateselect">
+              <option disabled selected>기간조회</option>
               <option value="3">3개월</option>
               <option value="6">6개월</option>
               <option value="12">1년</option>
@@ -200,13 +186,11 @@ const firebaseConfig = {
             <table class="table  table-hover text-center table-bordered mt-3 mb-5" id="totalsalestb">
               <thead class="table-dark">
                 <tr>
-                  <th scope="col">날짜</th>
                   <th scope="col">상품명</th>
                   <th scope="col">매출</th>
                   <th scope="col">현금결제</th>
                   <th scope="col">카드결제</th>
                 </tr>
-                
               </thead>
               <tr>
                 <td>PT</td>
@@ -220,32 +204,27 @@ const firebaseConfig = {
                 <td>헬스현금결제건수</td>
                 <td>헬스카드결제건수</td>
               </tr>
-                    <tr>
+              <tr>
                 <td>필라테스</td>
                 <td>필라테스매출액</td>
                 <td>필라테스현금결제건수</td>
                 <td>필라테스카드결제건수</td>
               </tr>
-                  <tr>
-                      <td>크로스핏</td>
+              <tr>
+                <td>크로스핏</td>
                 <td>크로스핏매출액</td>
                 <td>크로스핏현금결제건수</td>
                 <td>크로스핏카드결제건수</td>
               </tr>
               <tbody class="totalsalestb"></tbody>
-              <tr>
-                <th colspan="4">총매출: </th>
-              </tr>
             </table>
           </div>
           <!-- ------------------------------------매출조회표 끝--------------------------------- -->
 
           <!-- -----------------------------항목별 매출 그래프 시작------------------------------- -->
-          <div class="d-flex justify-content-center">
-         
+          <div class="d-flex justify-content-center" id="chartContainer">
             <canvas id="myChart"  width="500" height="500"></canvas>    <!-- chart size 동적처리 ? -->
-<script src ="../routes/chart.js"></script>
-</div>
+          </div>
           <!-- ----------------------------항목별 매출 그래프 끝-------------------------------- -->
 
           <!-- -----------------강사별 매출 그래프 시작----------------------- -->

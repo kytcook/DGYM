@@ -21,10 +21,6 @@ class AuthService {
       .then((result) => {
         const user = result.user; // user의 uid 구할 수 있음
         userIsCheck(user);
-      })
-      .catch((error) => {
-        let errorMessage = error.message;
-        console.log(errorMessage);
       });
   }
   // 이메일 로그인
@@ -33,7 +29,7 @@ class AuthService {
       .auth()
       .signInWithEmailAndPassword(mem_email, mem_pw)
       .then((result) => {
-        console.log(result.user);
+        window.location.replace("../../../index.html");
       })
       .catch((error) => {
         window.alert("없는 회원입니다. 다시 확인하세요");
