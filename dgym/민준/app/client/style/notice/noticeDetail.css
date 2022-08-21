@@ -6,6 +6,9 @@ main {
   margin-top: 3rem;
 }
 
+.board-box {
+  width: 1460px;
+}
 .board-detail {
   margin: 0 10rem;
   height: 30rem;
@@ -14,10 +17,23 @@ main {
 .board-top {
   margin: 0 5rem;
   padding: 1rem;
-  border-bottom: solid 1px rgba(255, 255, 255);
+  border-top: solid 2px rgb(216, 214, 214);
+  border-bottom: dashed 1px rgb(245, 239, 239);
 }
 
 #form-content {
   margin: 0 5rem;
   height: 15rem;
+}
+
+.btn-lg {
+  border-radius: 45px;
+  font-size: 18px;
+  padding: 10px 40px;
+  line-height: 25px;
+  background-color: rgb(36, 43, 151);
+}
+
+#form-content {
+  border-bottom: solid 2px rgb(216, 214, 214);
 }
