@@ -1,9 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&family=Roboto:ital,wght@0,300;0,400;1,100;1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  src: local("※"), url("../fonts/Roboto-Regular.eot"),
+    url("../fonts/Roboto-Regular.eot#iefix") format("embedded-opentype")
+      url("../fonts/Roboto-Regular.woff") format("woff"),
+    url("../fonts/Roboto-Regular.otf") format("opentype"),
+    url("../fonts/Roboto-Regular.ttf") format("truetype");
+  unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+}
 * {
   box-sizing: border-box;
   color: white;
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Roboto", "Noto Sans KR", "sans-serif";
   color: rgba(255, 255, 250, 0.7);
 }
 
@@ -14,8 +26,8 @@ header {
 
 header h1 {
   font-size: 9rem;
-  font-family: "Anton", sans-serif;
-  text-shadow: 3px 2px 2px gray;
+  font-family: "Roboto", "Noto Sans KR", "sans-serif";
+  text-shadow: 3px 1px 1px gray;
 }
 header h1:nth-of-type(2) {
   margin-right: 3rem;

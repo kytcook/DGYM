@@ -37,6 +37,8 @@
     <!-- firebase CDN -->
     <script src="../../config/config.js"></script>
     <script src="../../service/logincheck.js" defer></script>
+    <link rel="stylesheet" href="../../style/style.css"></script>
+
   <body
     class="d-flex flex-column min-vh-100"
     style="
@@ -92,7 +94,7 @@
             </li>
           </ul>
           <div class="d-flex mt-3 btn-group" style="width: 12rem">
-            <a href="../../../login.html">
+            <a href="../member/login.html">
               <button
                 type="button"
                 class="btn btn-primary btn-sm me-1"
@@ -110,10 +112,10 @@
     <header class="container-fluid">
         <div class="row gx-5 ">
             <div class="my-5">
-                <h1 class="title text-warning tracking-in-expand-fwd-bottom" >
+                <h1 class="text-warning tracking-in-expand-fwd-bottom" >
                   Amazing Experience
                 </h1>
-              <h1 class="title text-warning text-end tracking-in-expand-fwd-bottom" >
+              <h1 class="text-warning text-end tracking-in-expand-fwd-bottom" >
                 With D-gym
               </h1>
             </div>
@@ -122,14 +124,50 @@
     <!---------------------------------- Header End------------------------------->
     <!---------------------------------- Main Start------------------------------->
     <main>
-      <section class="d-flex justify-content-center">
-        <div data-aos="fade-right" >
+      <section class="d-flex justify-content-center title">
+        <div data-aos="fade-right">
           <h2>
             짐박스에서만 누릴 수 있는
           </h2>
-          <h2>특별한 경험</h2>
+          <h2 class="ms-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;특별한 경험</h2>
         </div>
       </section>
+          <!-- About section one-->
+            <section class="py-5 scroll-target">
+                <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 subject-img"><img class="img-fluid rounded mb-5 mb-lg-0" src="../../img/center.jpg" alt="..." /></div>
+                        <div class="col-lg-6 subject-content">
+                            <h2 class="fw-bolder">최고의 시설</h2>
+                            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About section two-->
+            <section class="py-5 scroll-target" >
+                <div data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"   class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="../../img/강사.jpg" alt="..." /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder">체계적 시스템</h2>
+                            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About section three-->
+            <section class="py-5 scroll-target" >
+                <div data-aos="fade-right"  data-aos-offset="300" data-aos-easing="ease-in-sine" class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="../../img/전문강사.jpg" alt="..." /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder">전문강사</h2>
+                            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
       
       <section class="kakaoMap container-fluid justify-content-center">
         <div class="container">
@@ -188,29 +226,20 @@
           level: 3, // 지도의 확대 레벨
         };
       var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-      // 마커가 표시될 위치입니다
       var markerPosition = new kakao.maps.LatLng(37.499011, 127.032819);
-      // 마커를 생성합니다
       var marker = new kakao.maps.Marker({
         position: markerPosition,
       });
-      // 마커가 지도 위에 표시되도록 설정합니다
       marker.setMap(map);
-      // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-      // marker.setMap(null);
       var mapContainer = document.getElementById("map"), // 지도를 표시할 div
         mapOption = {
           center: new kakao.maps.LatLng(37.499011, 127.032819), // 지도의 중심좌표
           level: 3, // 지도의 확대 레벨
         };
-      // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
       var mapTypeControl = new kakao.maps.MapTypeControl();
 
-      // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-      // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
       map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
-      // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
       var zoomControl = new kakao.maps.ZoomControl();
       map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     </script>
