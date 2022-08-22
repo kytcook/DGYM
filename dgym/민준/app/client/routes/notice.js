@@ -21,25 +21,19 @@ db.collection("board")
       console.log(num);
       if (lastItemNum === i - numPerPage) break;
       const templete = `
-                                        <tr>
-                                          <th scope="row" class="text-center text-light">${++num}</th>
-                                          <td class="text-center"><a class= "text-light" href="./detailNotice.html?id=${
-                                            snapshot.docs[i - numPerPage].id
-                                          }" style="text-decoration: none; color:black;" >
-                                            ${
-                                              snapshot.docs[
-                                                i - numPerPage
-                                              ].data().제목
-                                            }</a></td>
-                                          <td class="text-center text-light">${
-                                            snapshot.docs[i - numPerPage].data()
-                                              .작성자
-                                          }</td>
-                                          <td class="text-center text-light">${
-                                            snapshot.docs[i - numPerPage].data()
-                                              .작성일
-                                          }</td>
-                                        </tr>
+                      <tr>
+                        <th scope="row" class="text-center text-light">${++num}</th>
+                        <td class="text-center"><a class= "text-light" href="./detailNotice.html?id=${
+                          snapshot.docs[i - numPerPage].id
+                        }" style="text-decoration: none; color:black;" >
+                          ${snapshot.docs[i - numPerPage].data().제목}</a></td>
+                        <td class="text-center text-light">${
+                          snapshot.docs[i - numPerPage].data().작성자
+                        }</td>
+                        <td class="text-center text-light">${
+                          snapshot.docs[i - numPerPage].data().작성일
+                        }</td>
+                      </tr>
                     `;
       $(".board-content").append(templete); // 데이터가 저장된 만큼 찍힌다.
     }
@@ -68,6 +62,7 @@ if (startPage - 1 > 0) {
     alert("이전페이지는 존재하지 않습니다❗");
   });
 }
+
 // 마지막 페이지 판별하는 함수
 function lastPageBar() {
   if (startPage + numPerPage <= lastPage) {
