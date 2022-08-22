@@ -29,7 +29,6 @@ $(".btn-primary").on("click", () => {
           <button class="btn btn-success" onclick="update()">수정 완료</button>
           `
   );
-  console.log("버튼클릭");
   $("#form-title").html(
     `<div">
             <label>제목:</label>

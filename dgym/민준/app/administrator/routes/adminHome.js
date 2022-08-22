@@ -1,16 +1,15 @@
 const db = firebase.firestore();
-const chartOne = document.getElementById("myChart").getContext("2d");
+const chartOne = document.getElementById("doughnutChart").getContext("2d");
 const chartTwo = document.getElementById("lineChart").getContext("2d");
-////////////
-
+////////////////////////////////////////////////////////////////////////////////
 const pieChart = new Chart(chartOne, {
   type: "doughnut", // pie, line, doughnut, polarArea
   data: {
-    labels: ["헬스3개월", "헬스6개월", "헬스pt", "필라테스", "크로스핏"],
+    labels: ["헬스3개월", "헬스6개월", "헬스pt", "필라테스"],
     datasets: [
       {
         label: "상품 판매 건수",
-        data: [20, 30, 10, 15, 25],
+        data: [20, 30, 10, 15],
         backgroundColor: [
           "rgba(255, 99, 132, 0.4)",
           "rgba(54, 162, 235, 0.4)",
@@ -186,32 +185,3 @@ db.collection("insturctor")
         $("#crossfitIns").html(`${cIns}명`);
       });
   });
-
-// db.collection("user")
-//   .get()
-//   .then((snapshot) => {
-//     let totalUser = snapshot.docs.length;
-//     console.log(totalUser);
-//     $("#").html(`${totalUser}명`);
-//   });
-
-// 모든 문서 돌아야할 때
-// function searchList(snapshot, totalMem, hMem, pMem, cMem, callback) {
-//   for (let i = 0; i < totalMem; i++) {
-//     const docRef = snapshot.docs[i].id;
-//     db.collection("member")
-//       .doc(docRef)
-//       .collection("payment")
-//       .get()
-//       .then((snapshot) => {
-//         snapshot.forEach((item) => {
-//           let sort = item.data().sort;
-//           console.log(sort);
-//           if (sort == "헬스") ++hMem;
-//           else if (sort == "필라테스") ++pMem;
-//           else if (sort == "크로스핏") ++cMem;
-//         });
-//       });
-//   }
-//   callback(hMem, pMem, cMem);
-// }
