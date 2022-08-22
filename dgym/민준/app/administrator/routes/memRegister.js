@@ -14,7 +14,7 @@ db.collection("instructor")
     const select = $("#teacher");
     teacherName.forEach((item, i) => {
       const template2 = `
-          <option value="${i + 2}">&nbsp;&nbsp;${item}</option>
+          <option value="${i + 2}">${item}</option>
     `;
       select.append(template2);
     });
@@ -24,10 +24,13 @@ $("#btnInsert").click(() => {
   if (nullCheck()) {
     memInsert();
   } else {
-    console.log("값을 모두 입력하세요");
+    alert("값을 모두 입력하세요.");
   }
 });
 
+function test() {
+  console.log("gdgdgd");
+}
 // 유효성 체크함수
 function nullCheck() {
   if (
@@ -59,9 +62,10 @@ function membershipPrice() {
     return 450000;
   }
 }
+
 // 운동 분류
-let sort = null;
 // 사용자 입력값 db에 저장하는 함수
+let sort = null;
 function memInsert() {
   const name = $("#name").val();
   const age = $("#age").val();
@@ -72,15 +76,15 @@ function memInsert() {
   const teacher = $("#teacher option:selected").text();
   const price = membershipPrice();
   let memNum = 0;
+  console.log(price);
+  console.log(sort);
 
-  // 멤버 등록시 sort컬렉션에 헬스 or 크로스핏 or 필라테스 멤버 +1 (대시보드에서 사용)
+  console.log(price);
   db.collection("sort")
-    .doc(sort)
+    .doc("corssfit")
     .get()
-    .then((doc) => {
-      memNum = doc.data().member;
-      addMemNum(memNum);
-    });
+    .then((doc) => {});
+
   function addMemNum(memNum) {
     db.collection("sort")
       .doc(sort)
@@ -88,7 +92,14 @@ function memInsert() {
         member: memNum + 1,
       });
   }
-
+  //멤버 등록시 sort컬렉션에 헬스 or 크로스핏 or 필라테스 멤버 +1 (대시보드에서 사용)
+  db.collection("sort")
+    .doc(sort)
+    .get()
+    .then((doc) => {
+      memNum = doc.data().member;
+      addMemNum(memNum);
+    });
   db.collection("member")
     .add({
       name: name,
@@ -113,4 +124,3 @@ function memInsert() {
         });
     });
 }
-// db조회를 해서 같은 회원이 있을 경우 결제 금액에 대하여

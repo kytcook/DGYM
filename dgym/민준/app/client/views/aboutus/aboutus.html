@@ -133,7 +133,6 @@
           </h2>
           </div>
           <h2 class="ms-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D-GYM을 특별하게 만드는 <span class ="text-warning">3가지</span></h2> 
-     
         </div>
       </section>
           <!-- About section one-->
@@ -144,7 +143,7 @@
                         <div class="col-lg-6 subject-content">
                             <h2 class="fw-bolder text-warning">쾌적한 환경</h2>
                             <p class="lead fw-normal text-light mb-0"> 🏋🏻‍♂️D-GYM은 고객님이 오직 <span class="text-warning">운동</span>에만 집중할 수 있도록 쾌적한 환경을 위해 노력합니다. 방역수칙을 준수한 운영은 기본, 하루 3회 소독을 원칙으로 하고있습니다.
-                           또한 1500평 규모의 넓은 공간을 효율적으로 나누어 헬스, 크로스핏, 필라테스존을 배치하였습니다. 
+                            또한 1500평 규모의 넓은 공간을 효율적으로 나누어 헬스, 크로스핏, 필라테스존을 배치하였습니다. 
                             고객님들이 운동을 하며 삶과 함께 호흡할 수 있도록 앞으로도 D-GYM은 노력하겠습니다.
                             </p>
                         </div>
@@ -175,7 +174,7 @@
                             <h2 class="fw-bolder  text-warning">전문적 강사진</h2>
                             <p class="lead fw-normal text-light mb-0">🤸🏻‍♀️고객님의 마음을 알아주는 <span class="text-warning">맞춤형 강사.</span> 저희 D-GYM은 꼼꼼한 면접하에 경력과 실력으로 검증된 강사진을 고용하였습니다.
                               D-GYM에 등록 전, 모든 상담은 1:1로 이루어집니다. 고객님의 성향과 목표에 가장 적합한 강사님을 추천해드립니다. 모든 고객님께는 수업직후 강사님의 1:1 피드백을 어플로 받아보실 수 있습니다.
-                               </p>
+                          </p>
                         </div>
                     </div>
                 </div>
@@ -225,35 +224,6 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=deac87efce2c95532950b8ccd2ba3d60"
     ></script>
-    <script>
-      var container = document.getElementById("map");
-      var options = {
-        center: new kakao.maps.LatLng(37.499011, 127.032819),
-        level: 3,
-      };
-      var map = new kakao.maps.Map(container, options);
-      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-        mapOption = {
-          center: new kakao.maps.LatLng(37.499011, 127.032819), // 지도의 중심좌표
-          level: 3, // 지도의 확대 레벨
-        };
-      var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-      var markerPosition = new kakao.maps.LatLng(37.499011, 127.032819);
-      var marker = new kakao.maps.Marker({
-        position: markerPosition,
-      });
-      marker.setMap(map);
-      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-        mapOption = {
-          center: new kakao.maps.LatLng(37.499011, 127.032819), // 지도의 중심좌표
-          level: 3, // 지도의 확대 레벨
-        };
-      var mapTypeControl = new kakao.maps.MapTypeControl();
-
-      map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
-      var zoomControl = new kakao.maps.ZoomControl();
-      map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-    </script>
+    <script src="../../routes/abouUs.js"></script>
   </body>
 </html>
