@@ -57,7 +57,7 @@ $("#submit").click(function () {
       })
       .then(() => {
         alert("접수가 완료 되었습니다.");
-        window.location.replace("./reservation.html");
+        window.location.replace("./resersvation.html");
       })
       .catch((error) => {
         console.error("Error removing document: ", error);
