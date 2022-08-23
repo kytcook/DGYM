@@ -268,7 +268,37 @@
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div class="modal-body" style="overflow-y: scroll">
+                  <div class="modal-body" style="overflow-y: scroll;">
+                    <div class="card card-wrap mb-3 col-7" style="display:none">
+                      <div class="card-body">
+                        <label>등록일자</label>
+                        <input type="date" id="regDate" class="mb-3"></input>
+                        <br/>
+                        <div class="dropdown mb-3">
+                          <select class="mdb-select md-form col-7" id="membership">
+                            <option value="" disabled selected>멤버십</option>
+                            <option value="1">헬스3개월</option>
+                            <option value="2">pt30회</option>
+                            <option value="3">필라테스3개월</option>
+                            <option value="4">크로스핏3개월</option>
+                          </select>
+                        </div>
+                        <div class="dropdown mb-3">
+                          <select class="mdb-select md-form col-7" id="teacher">
+                          <!-- 배정강사 동적 바인딩 -->
+                          </select>
+                        </div>
+                        <div class="dropdown mb-3">
+                          <select class="mdb-select md-form col-7" id="payment">
+                            <option value="" disabled selected>결제수단</option>
+                            <option value="1">카드</option>
+                            <option value="2">현금</option>
+                            <option value="3">계좌이체</option>
+                          </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary col-12" id="btn-paymentAdd">추가하기</button>
+                  </div>
                     <!-- 결제 정보 들어 갈 곳 -->
                   </div>
                   <div class="modal-footer">

@@ -97,63 +97,60 @@ function membershipPrice() {
     return 450000;
   }
 }
+function searchTeacher() {
+  let teacherName = [];
+  let template1 = `
+    <option value="" disabled selected>배정강사</option>
+    <option value="1">없음</option>
+  `;
+  let template2 = ``;
+  db.collection("instructor")
+    .get()
+    .then((snapshot) => {
+      snapshot.forEach((item) => {
+        let pName = item.data().p_name;
+        teacherName.push(pName);
+      });
+    })
+    .then(() => {
+      for (let i = 0; i < teacherName.length; i++) {
+        template2 = `
+          <option value="${i + 2}">${teacherName[i]}</option>
+    `;
+        template1 += template2;
+      }
+      $("#teacher").append(template1);
+    });
+}
 
 // 재등록 이벤트
 $("#btn-insert").click(() => {
-  const templete = `
-                  <div class="card modal-card mb-3 col-7">
-                    <div class="card-body">
-                      <label>등록일자</label>
-                      <input type="date" id="regDate" class="mb-3"></input>
-                      <br/>
-                      <div class="dropdown mb-3">
-                        <select class="mdb-select md-form col-7" id="membership">
-                          <option value="" disabled selected>멤버십</option>
-                          <option value="1">헬스3개월</option>
-                          <option value="2">pt30회</option>
-                          <option value="3">필라테스3개월</option>
-                          <option value="4">크로스핏3개월</option>
-                        </select>
-                      </div>
-                      <div class="dropdown mb-3">
-                        <select class="mdb-select md-form col-7" id="teacher">
-                          <option value="" disabled selected>배정강사</option>
-                          <option value="1">없음</option>
-                          <option value="2">김명진</option>
-                          <option value="3">임은택</option>
-                          <option value="4">양호정</option>
-                          <option value="5">김민준</option>
-                        </select>
-                      </div>
-                      <div class="dropdown mb-3">
-                        <select class="mdb-select md-form col-7" id="payment">
-                          <option value="" disabled selected>결제수단</option>
-                          <option value="1">카드</option>
-                          <option value="2">현금</option>
-                          <option value="3">계좌이체</option>
-                        </select>
-                      </div>
-                    </div>
-                    <button class="btn btn-primary" id="btn-paymentAdd">추가하기</button>
-                  </div>
-                  `;
-  $(".modal-body").prepend(templete);
-  $("#btn-paymentAdd").click(() => {
-    const regDate = $("#regDate").val();
-    const membership = $("#membership option:selected").text();
-    const teacher = $("#teacher option:selected").text();
-    const payment = $("#payment option:selected").text();
-    const price = membershipPrice();
-    db.collection("member").doc(docRef).collection("payment").add({
-      regDate: regDate,
-      membership: membership,
-      price: price,
-      teacher: teacher,
-      payment: payment,
-    });
-    alert("등록이 완료되었습니다^o^");
-    paymentSearch(docRef);
+  $(".card-wrap").css("display", "block");
+  $("#teacher").empty();
+  searchTeacher();
+});
+// 추가하기 이벤트
+$("#btn-paymentAdd").click(() => {
+  const regDate = $("#regDate").val();
+  const membership = $("#membership option:selected").text();
+  const teacher = $("#teacher option:selected").text();
+  const payment = $("#payment option:selected").text();
+  const price = membershipPrice();
+  db.collection("member").doc(docRef).collection("payment").add({
+    regDate: regDate,
+    membership: membership,
+    price: price,
+    teacher: teacher,
+    payment: payment,
   });
+  $(".card-wrap").css("display", "none");
+  alert("등록이 완료되었습니다^o^");
+  paymentSearch(docRef);
+});
+
+// 재등록 visible 초기화
+$("#btn-cancel").click(() => {
+  $(".card-wrap").css("display", "none");
 });
 
 // 조건검색
@@ -172,7 +169,6 @@ function searchList() {
             <tr>
               <td class="text-center">
                 <button
-                  button
                   type="button"
                   class="btn-detail"
                   data-bs-toggle="modal"
