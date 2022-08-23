@@ -21,8 +21,8 @@ db.collection("enquire")
                         <td>${data.registDate}</td>
                         <th class="table-danger">${data.reservDate}</th>
                         <td>${data.p_name}</td>
-                        <td id="${doc.id}" class="bg-white">
-                          <button class="del">상담완료</button></td>
+                        <td id="${doc.id}">
+                          <button class="del table-warning">상담완료</button></td>
                           </tr>
                           `;
       // <th>${data.userInfo}</th>
