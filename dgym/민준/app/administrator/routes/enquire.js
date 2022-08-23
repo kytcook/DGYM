@@ -12,7 +12,7 @@ db.collection("enquire")
       // console.log(item.data());
       const data = doc.data(); // doc.data() -> data
       const template = `
-                      <tr class = "table-secondary">
+                      <tr class = "table  ">
                         <th scope="row" class="table-primary">${++num}</th>
                         <th>${data.name}</th>
                         <td>${data.gender}</td>
@@ -22,7 +22,7 @@ db.collection("enquire")
                         <th class="table-danger">${data.reservDate}</th>
                         <td>${data.p_name}</td>
                         <td id="${doc.id}" class="bg-white">
-                          <button class="del bg-warning">상담완료</button></td>
+                          <button class="del">상담완료</button></td>
                           </tr>
                           `;
       // <th>${data.userInfo}</th>
