@@ -3,7 +3,7 @@ const db = firebase.firestore();
 let params = new URL(document.location).searchParams;
 let page = params.get("page");
 let num = 0; // 페이지 순번 담음
-let numPerPage = 3; // 한페이지에 몇개씩 뿌릴건가
+let numPerPage = 5; // 한페이지에 몇개씩 뿌릴건가
 // 로드 될 때 page 1에 해당하는 것만 불러와
 // page 2에 해당하는 것만 불러와라
 let startPage = page - ((page - 1) % numPerPage);

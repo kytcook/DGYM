@@ -3,7 +3,7 @@ const db = firebase.firestore();
 let params = new URL(document.location).searchParams;
 let page = params.get("page");
 let num = 0; // 페이지 순번 담음
-let numPerPage = 3; // 한페이지에 몇개씩 뿌릴건가
+let numPerPage = 5; // 한페이지에 몇개씩 뿌릴건가
 // 로드 될 때 page 1에 해당하는 것만 불러와
 // page 2에 해당하는 것만 불러와라
 let startPage = page - ((page - 1) % numPerPage);
@@ -21,25 +21,19 @@ db.collection("board")
       console.log(num);
       if (lastItemNum === i - numPerPage) break;
       const templete = `
-                                        <tr>
-                                          <th scope="row" class="text-center ">${++num}</th>
-                                          <td class="text-center"><a href="./detailNotice.html?id=${
-                                            snapshot.docs[i - numPerPage].id
-                                          }" style="text-decoration: none; color:black;" >
-                                            ${
-                                              snapshot.docs[
-                                                i - numPerPage
-                                              ].data().제목
-                                            }</a></td>
-                                          <td class="text-center">${
-                                            snapshot.docs[i - numPerPage].data()
-                                              .작성자
-                                          }</td>
-                                          <td class="text-center">${
-                                            snapshot.docs[i - numPerPage].data()
-                                              .작성일
-                                          }</td>
-                                        </tr>
+                <tr>
+                  <th scope="row" class="text-center ">${++num}</th>
+                  <td class="text-center"><a href="./detailNotice.html?id=${
+                    snapshot.docs[i - numPerPage].id
+                  }" style="text-decoration: none; color:black;" >
+                    ${snapshot.docs[i - numPerPage].data().제목}</a></td>
+                  <td class="text-center">${
+                    snapshot.docs[i - numPerPage].data().작성자
+                  }</td>
+                  <td class="text-center">${
+                    snapshot.docs[i - numPerPage].data().작성일
+                  }</td>
+                </tr>
                     `;
       $(".board-content").append(templete); // 데이터가 저장된 만큼 찍힌다.
     }
