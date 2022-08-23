@@ -28,9 +28,6 @@ $("#btnInsert").click(() => {
   }
 });
 
-function test() {
-  console.log("gdgdgd");
-}
 // 유효성 체크함수
 function nullCheck() {
   if (
