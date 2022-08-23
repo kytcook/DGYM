@@ -1,9 +1,7 @@
 $(document).ready(searchTotalList());
-
 const db = firebase.firestore();
 let docRef = ""; // 클릭한 데이터의 문서 id(전역변수)
 // 전체 회원 조회 함수
-
 function searchTotalList() {
   $("#memberContent").empty(); // content의 하위태그 모두 삭제(초기화)
   const db = firebase.firestore();
@@ -41,7 +39,6 @@ function searchTotalList() {
       });
     });
 }
-
 // 결제내역 조회
 function paymentSearch(docRef) {
   $(".modal-card").remove(); // 초기화
@@ -144,8 +141,8 @@ $("#btn-paymentAdd").click(() => {
     payment: payment,
   });
   $(".card-wrap").css("display", "none");
-  alert("등록이 완료되었습니다^o^");
   paymentSearch(docRef);
+  alert("등록이 완료되었습니다^o^");
 });
 
 // 재등록 visible 초기화
