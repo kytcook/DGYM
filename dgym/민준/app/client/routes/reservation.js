@@ -65,3 +65,46 @@ $("#submit").click(function () {
   }
 });
 /*===============  추가 End ===============*/
+
+/////////////////최소 날짜•시간 조건문
+// 희망날짜 input의 아이디 가져옴
+let time = document.getElementById("time");
+
+// 날짜 최댓값
+// 현재날짜에 +3개월 -> UTC시간을 (로컬)현재시간으로 변환
+let futureDate = new Date();
+futureDate.setMonth(futureDate.getMonth() + 3);
+console.log(futureDate);
+let maxDate = new Date(
+  futureDate.getTime() - futureDate.getTimezoneOffset() * 60000
+)
+  .toISOString()
+  .slice(0, -5);
+console.log(maxDate);
+
+// 날짜 최솟값(=현재날짜)
+// YYYY-MM-DDTHH:mm:ss 형식의 시간 필요(ISO형식)
+// UTC시간을 (로컬)현재시간으로 변환
+let minDate = new Date(
+  new Date().getTime() - new Date().getTimezoneOffset() * 60000
+)
+  .toISOString()
+  .slice(0, -5);
+
+time.value = minDate;
+time.setAttribute("min", minDate);
+time.setAttribute("max", maxDate);
+
+function setMinValue() {
+  if (time.value < minDate) {
+    alert("현재 시간보다 이전의 날짜는 선택할 수 없습니다.");
+    time.value = minDate;
+  }
+}
+function setMaxValue() {
+  if (time.value > maxDate) {
+    alert("3개월 이후는 아직 선택할 수 없습니다.");
+    time.value = minDate;
+  }
+}
+/* 자료 : https://wildeveloperetrain.tistory.com/15  */

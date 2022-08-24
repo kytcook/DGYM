@@ -172,7 +172,7 @@
                         <!--==== 희망날짜S ====-->
                         <div class="form group col-md-11 input-group-sm mb-3">
                           <label class="text-white-50 font-weight-medium mb-1">희망하는 상담 시간 *평일 기준</label>
-                          <input type="text" class="form-control" id="time" placeholder="MM월 DD일 오전/오후 HH시 MM분" required>
+                          <input type="datetime-local" class="form-control" id="time" onchange="setMinValue(),setMaxValue()" required>
                         </div>
                         <!--==== 희망날짜E ====-->
                         <!--==== 희망강사S ====-->
