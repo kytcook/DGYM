@@ -2,7 +2,7 @@
 const db = firebase.firestore();
 let num = 0; //
 db.collection("enquire")
-  .orderBy("registDate", "asc") //오름차순 정렬
+  .orderBy("reservDate", "asc") //오름차순 정렬
   .get()
   .then((snapshot) => {
     console.log(snapshot);
