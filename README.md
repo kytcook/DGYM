@@ -22,4 +22,5 @@ administrator/views/adminHome.html
 
 ---------------------------------------------------------------------------------------------
 ### 로그인이용자의 저장된 프로필 데이터를 읽어옴
-![image](https://user-images.githubusercontent.com/98031858/187030689-1e81980a-0809-42d4-a577-d390f7898482.png)
+![image](https://user-images.githubusercontent.com/98031858/187032861-88480c66-f5ef-4901-a8fc-85b13844a180.png)
+
