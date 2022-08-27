@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About us</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
+    </style>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="../../style/aboutus/aboutus.css">
+    <link rel="stylesheet" href="../../style/style.css"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../components/navbar.css" />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    <!-- firebase CDN -->
+    <script src="../../config/config.js"></script>
+    <script src="../../service/logincheck.js" defer></script>
+  <body
+    class="d-flex flex-column min-vh-100"
+    style="
+      font-family: Archivo, sans-serif;
+      background-color: rgba(0, 0, 0, 0.945);
+    "
+  >
+    <script>
+      AOS.init();
+    </script>
+    <!---------------------------------- navbar ------------------------------->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-4 text-light" href="../../../index.html"
+          ><img src="../../img/logo-white.png " alt="짐로고" width="100"
+        /></a>
+        <button
+          class="navbar-toggler custom-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul
+            class="navbar-nav me-auto mb-2 mb-lg-0 container-fluid justify-content-center ms-4 mt-3"
+            style="font-size: 1.2rem"
+          >
+            <li class="nav-item me-5">
+              <a class="nav-link text-light" href="./aboutus.html"
+                >About Us</a
+              >
+            </li>
+            <li class="nav-item me-5">
+              <a class="nav-link text-light" href="../program/program.html">Program</a>
+            </li>
+            <li class="nav-item me-5">
+              <a class="nav-link text-light" href="../center/center.html">Center</a>
+            </li>
+            <!--[[[[[[[[[[[contact 링크수정함 ]]]]]]]]]]]  -->
+            <li class="nav-item me-5">
+              <a class="nav-link text-light" href="../contact/contact.html">Contact</a>
+            </li>
+            <li class="nav-item me-5">
+              <a
+                class="nav-link text-light"
+                href="../notice/notice.html?page=1"
+                >Notice</a
+              >
+            </li>
+          </ul>
+          <div class="d-flex mt-3 btn-group" style="width: 12rem">
+            <a href="../member/login.html">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm me-1"
+                id="login"
+              >
+                login
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!---------------------------------- navbar ------------------------------->
+    <!---------------------------------- Header ------------------------------->
+    <header class="container-fluid">
+        <div class="row gx-5 ">
+            <div class="my-5">
+                <h1 class="tracking-in-expand-fwd-bottom"  >
+                  Amazing Experience
+                </h1>
+              <h1 class="text-warning text-end tracking-in-expand-fwd-bottom" >
+                With D-GYM
+              </h1>
+            </div>
+        </div>
+    </header>
+    <!---------------------------------- Header End------------------------------->
+    <!---------------------------------- Main Start------------------------------->
+    <main>
+      <section class="d-flex justify-content-center title">
+        <div data-aos="fade-right">
+          <div article class="mb-5">
+          <h2>
+            What's diffrence ?
+          </h2>
+          </div>
+          <h2 class="ms-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D-GYM을 특별하게 만드는 <span class ="text-warning">3가지</span></h2> 
+        </div>
+      </section>
+          <!-- About section one-->
+            <section class="py-5 scroll-target">
+                <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 subject-img"><img class="img-fluid rounded mb-5 mb-lg-0" src="../../img/aboutus1.jpg" alt="..." /></div>
+                        <div class="col-lg-6 subject-content">
+                            <h2 class="fw-bolder text-warning">쾌적한 환경</h2>
+                            <p class="lead fw-normal text-light mb-0"> 🏋🏻‍♂️D-GYM은 고객님이 오직 <span class="text-warning">운동</span>에만 집중할 수 있도록 쾌적한 환경을 위해 노력합니다. 방역수칙을 준수한 운영은 기본, 하루 3회 소독을 원칙으로 하고있습니다.
+                            또한 1500평 규모의 넓은 공간을 효율적으로 나누어 헬스, 크로스핏, 필라테스존을 배치하였습니다. 
+                            고객님들이 운동을 하며 삶과 함께 호흡할 수 있도록 앞으로도 D-GYM은 노력하겠습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About section two-->
+            <section class="py-5 scroll-target" >
+                <div data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"   class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="../../img/aboutus2.png" alt="..." /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder  text-warning">다양한 부대시설</h2>
+                            <p class="lead fw-normal text-light mb-0">
+                              🤽🏻‍♂️ D-GYM에서는 다양한 운동기구는 기본, 고객님들이 조금 더 즐거운 경험을 하실 수 있도록 다양한 <span class="text-warning">부대시설</span>을 갖추었습니다.
+                              회원권을 구입하면 제공되는 고급 수영장, 사우나, 카페 라운지 휴식공간 등 단순히 운동공간을 넘어 고객님의 라이프 공간이 되고싶은 마음을 담았습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About section three-->
+            <section class="py-5 scroll-target" >
+                <div data-aos="fade-right"  data-aos-offset="300" data-aos-easing="ease-in-sine" class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="../../img/aboutus3.jpg" alt="..." /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder  text-warning">전문적 강사진</h2>
+                            <p class="lead fw-normal text-light mb-0">🤸🏻‍♀️고객님의 마음을 알아주는 <span class="text-warning">맞춤형 강사.</span> 저희 D-GYM은 꼼꼼한 면접하에 경력과 실력으로 검증된 강사진을 고용하였습니다.
+                              D-GYM에 등록 전, 모든 상담은 1:1로 이루어집니다. 고객님의 성향과 목표에 가장 적합한 강사님을 추천해드립니다. 모든 고객님께는 수업직후 강사님의 1:1 피드백을 어플로 받아보실 수 있습니다.
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+      
+      <section class="kakaoMap container-fluid justify-content-center">
+        <div class="container">
+          <h2 class="map-title text-center">오시는길</h2>
+        </div>
+        <div
+          id="map"
+          class="container"
+          style="width: 60rem; height: 30rem"
+        ></div>
+        <div class="container d-flex justify-content-evenly mt-5 mb-5">
+          <div>
+            <h3>대중교통🚇</h3><hr>
+            <p>2호선 역삼역 3번출구 도보 3분</p>
+            <p><strong>버스:&nbsp;</strong>5500번 5501번 5502번 5503번</p> 
+          </div>
+          <div>
+            <h3>운영시간⏰</h3><hr>
+            <p>공휴일을 제외한 24시간 오픈</p>
+          </div>
+          <div>
+            <h3>주차장🚕</h3><hr>
+            <p>3시간 무료</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!------------------------------------- Main END----------------------------------->
+    <!----------------------------------  Footer Start  ------------------------------->
+    <footer class="footer mt-auto py-3">
+      <div class="container d-md-flex flex-column align-items-center">
+        <span class="text-muted" style="font-size: 0.1rem"
+          >(주)D-GYM ㅣ 대표: 김민준 ㅣ 주소: 서울특별시 강남구 테헤란로 14길 6
+          5층~7층 ㅣ 등록번호 123-12-123456 ㅣ info@dgym.co.kr ㅣ 전화번호
+          02-123-1234</span
+        ><span class="text-muted" style="font-size: 0.1rem"
+          >ⓒ2022 Supplies.Inc. All rights reserved.</span
+        >
+      </div>
+    </footer>
+    <!------------------------------------ Footer End ---------------------------------->
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=deac87efce2c95532950b8ccd2ba3d60"
+    ></script>
+    <script src="../../routes/abouUs.js"></script>
+  </body>
+</html>

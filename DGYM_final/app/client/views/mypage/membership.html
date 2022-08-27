@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to DGYM-HOME</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
+    </style>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../components/navbar.css" />
+    <link rel="stylesheet" href="../../style/style.css"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    <!-- firebase CDN -->
+    <script src="../../config/config.js"></script>
+    
+  <body
+    class="d-flex flex-column min-vh-100"
+    style="
+      font-family: Archivo, sans-serif;
+      background-color: rgba(0, 0, 0, 0.945);
+    "
+  >
+  <!---------------------------------- navbar  Start------------------------------->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-4 text-light" href="../../../index.html"
+          ><img src="../../img/logo-white.png" alt="짐로고" width="100"
+        /></a>
+        <button
+          class="navbar-toggler custom-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul
+            class="navbar-nav me-auto mb-2 mb-lg-0 container-fluid justify-content-center ms-4 mt-3"
+            style="font-size: 1.2rem"
+          >
+            <li class="nav-item me-5">
+              <a class="nav-link text-light" href="../aboutus/aboutus.html"
+                >About Us</a
+              >
+            </li>
+            <li class="nav-item me-5">
+              <a class="nav-link text-light" href="../program/program.html"
+                >Program</a
+              >
+            </li>
+            <li class="nav-item me-5">
+              <a class="nav-link text-light" href="../center/center.html"
+                >Center</a
+              >
+            </li>
+            <li class="nav-item me-5">
+              <a class="nav-link text-light" href="../contact/contact.html"
+                >Contact</a
+              >
+            </li>
+              <li class="nav-item me-5">
+              <a
+                class="nav-link text-light"
+                href="../notice/notice.html?page=1"
+                >Notice</a
+              >
+            </li>
+          </ul>
+          <div class="d-flex mt-3 btn-group" style="width: 12rem">
+            <a href="../../../login.html">
+              <button
+                type="button"
+                class="btn btn-primary btn-sm me-1"
+                id="login"
+              >
+                login
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!---------------------------------- navbar ------------------------------->
+    <body>
+      <div class="container-fluid d-flex flex-row">
+    <!----------------------------------- sidebar start -------------------------------->
+    <aside class="navbar navbar-expand-md navbar-light d-flex flex-column mt-5 ms-3">
+      <ul class="navbar-nav flex-column text-center">
+        <li class="mb-2">
+          <a class="nav-link text-info" href="./membership.html">Membership</a>
+        </li>
+        <li class="mb-2">
+          <a class="nav-link text-light" href="./inbody.html">Inbody</a>
+        </li>
+        <li class="mb-2">
+          <a class="nav-link text-light" href="./payment.html">Payment</a>
+        </li>
+      </ul>            
+    </aside>
+    <!----------------------------------- sidebar end --------------------------------->
+    <!----------------------------------- main start ---------------------------------->
+
+        <main class="ps-0 ps-md-5 flex-grow-1">
+          <div class="container col-md-8 col-lg-10 col-sm-10 bg-black box-shadow mt-md-5">
+            <header class="col-12 text-white-50 d-flex justify-content-center mb-md-5">
+              <h3>마이페이지</h3>
+            </header>
+            <article class="col-md-12 mx-auto pt-5 d-inline-block d-flex justify-content-center">
+              <div id="image">
+                <!-- <img src="../../img/default_img.png" alt="프로필사진" class="img" width="250" height="250"> -->
+                </div>
+                <div class="text-white-50 col-4 d-inline-block ms-md-5 mt-md-3">
+                  <p id="intro-start"></p> <!-- 가져온 데이터가 아래쪽으로 붙는 곳입니다. -->
+                <button class="modybtn btn-outline-dark btn-sm ms-sm-3 text-white btn-success"
+                id="mem_modi"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">내 정보 수정</button>
+                <button class="change_pw btn-outline-dark btn-sm ms-sm-3 text-white btn-info"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop2">비밀번호 변경</button>
+              </div>
+              </article>
+            </div>
+          </main>
+        </div>
+        <!---------------------------------- main end ------------------------------------->
+    
+        <!------------------------------ Modal Start _ 수정하기 ------------------------------------->
+        <div
+        class="modal fade container-fluid"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+        role="dialog"
+      >
+        <div class="modal-dialog" role="document">
+          <!--------------------------------- Modal content --------------------------------->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="staticBackdropLabel">
+                💜 회원 정보 수정 💜
+              </h4>
+            </div>
+            <!--------------------------------- Modal body --------------------------------->
+            <div class="modal-body" id="modal-memberData">
+              <!-- 동적처리 -->
+            </div>
+            <!--------------------------------- Modal footer --------------------------------->
+            </div>
+          </div>
+        </div>
+      <!------------------------------ Modal End _ 수정하기 ------------------------------------>
+
+      <!------------------------------ Modal Start _ 비밀번호 변경 ------------------------------------->
+        <div
+        class="modal fade container-fluid"
+        id="staticBackdrop2"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+        role="dialog"
+        >
+          <div class="modal-dialog" role="document">
+      <!--------------------------------- Modal content --------------------------------->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="staticBackdropLabel">
+                💛 비밀번호 변경 💛
+              </h4>
+            </div>
+      <!--------------------------------- Modal body --------------------------------->
+          <div class="modal-body">
+            <div class="card-body">
+              <div class="col-md-11 d-flex mb-lg-2">
+                <label class="form-label" for="name" style="width: 50%"
+                  ><b>새 비밀번호</b></label
+                  >
+                <input
+                  type="password"
+                  class="form-control form-control-sm"
+                  id="change_pw"
+                  placeholder="비밀번호는 6자리 이상이어야 합니다."
+                  required
+                  />
+              </div>
+              <div class="col-md-11 d-flex mb-lg-2">
+                <label class="form-label" for="age" style="width: 50%"
+                  ><b>새 비밀번호 확인</b></label
+                  >
+                <input
+                  class="form-control form-control-sm"
+                  type="password"
+                  id="check_pw"
+                  placeholder="새 비밀번호를 다시 입력해 주세요."
+                />
+              </div>
+            </div>
+          </div>
+      <!--------------------------------- Modal footer --------------------------------->
+          <div class="modal-footer d-flex">
+            <button
+              type="submit"
+              class="btn btn-default border-dark"
+              data-bs-dismiss="modal"
+              id="pw_save"
+            >
+              저장하기
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              닫기
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <!------------------------------ Modal End _ 비밀번호 변경 ------------------------------------>
+      <!----------------------------------  Footer start  ------------------------------->
+        <footer class="footer mt-auto py-3">
+          <div class="container d-md-flex flex-column align-items-center">
+            <span class="text-muted" style="font-size: 0.1rem">
+              (주)D-GYM ㅣ 대표: 김민준 ㅣ 주소: 서울특별시 강남구 테헤란로 14길 6
+              5층~7층 ㅣ 등록번호 123-12-123456 ㅣ info@dgym.co.kr ㅣ 전화번호
+              02-123-1234</span>
+            <span class="text-muted" style="font-size: 0.1rem">
+              ⓒ2022 Supplies.Inc. All rights reserved.</span>
+          </div>
+        </footer>
+      <!--------------------------------- Footer End ----------------------------------->
+            <script src="../../routes/membership.js"></script>
+          </body>
+        </html>

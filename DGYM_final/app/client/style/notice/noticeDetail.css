@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  margin-top: 3rem;
+}
+
+.board-box {
+  width: 1460px;
+}
+.board-detail {
+  margin: 0 10rem;
+  height: 30rem;
+}
+
+.board-top {
+  margin: 0 5rem;
+  padding: 1rem;
+  border-top: solid 2px rgb(216, 214, 214);
+  border-bottom: dashed 1px rgb(245, 239, 239);
+}
+
+#form-content {
+  margin: 0 5rem;
+  height: 15rem;
+  display: table;
+}
+#content {
+  display: table-row;
+}
+
+.btn-lg {
+  border-radius: 45px;
+  font-size: 18px;
+  padding: 10px 40px;
+  line-height: 25px;
+  background-color: rgb(36, 43, 151);
+}
+
+.footer {
+  margin: 0 5rem;
+  border-top: solid 2px rgb(216, 214, 214);
+}
