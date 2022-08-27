@@ -8,7 +8,7 @@
 
 
 #### client페이지와 admim페이지를 나눔
-![image](https://user-images.githubusercontent.com/98031858/187029315-39f23f1b-ab79-4eec-9b00-04564a139a02.png){: width="50%" height="50%"}
+![image](https://user-images.githubusercontent.com/98031858/187029315-39f23f1b-ab79-4eec-9b00-04564a139a02.png)
 ![image](https://user-images.githubusercontent.com/98031858/187030034-066d7577-c68d-46bf-a9c7-c4cdc3abd40c.png)
 administrator/views/adminHome.html
 
