@@ -15,7 +15,7 @@ administrator/views/adminHome.html
 
 #### 이용자가 상담예약 남기면 파이어베이스를 거쳐 관리자 예약관리에서 누적된 데이터 확인 가능
 -> 이런식으로 대부분의 기능들이 파이어베이스 api를 이용하여 CRUD가 이뤄짐
-![image](https://user-images.githubusercontent.com/98031858/187030116-61d8855b-0c32-4233-8b1b-fb1944201a22.png)
+![image](https://user-images.githubusercontent.com/98031858/187030622-1dd92a30-6aef-4719-8c1d-52600243805f.png)
 ![image](https://user-images.githubusercontent.com/98031858/187030162-4ee06439-b4fe-47f3-91c2-15ef3db05509.png)
 
 
