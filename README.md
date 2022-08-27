@@ -1,5 +1,5 @@
 # DGYM 헬스장 웹사이트 : firebase
------------
+
 ### 개요
 파이어베이스를 이용한 헬스장 웹사이트 구현
 기간 : 2022-07-15 ~ 2022-08-25
@@ -10,7 +10,7 @@
 ![image](https://user-images.githubusercontent.com/98031858/187030034-066d7577-c68d-46bf-a9c7-c4cdc3abd40c.png)
 administrator/views/adminHome.html
 
-
+--
 ## 이용자가 상담예약 남기면 파이어베이스를 거쳐 관리자 예약관리에서 누적된 데이터 확인 가능
 -> 이런식으로 대부분의 기능들이 파이어베이스 api를 이용하여 CRUD가 이뤄짐
 ![image](https://user-images.githubusercontent.com/98031858/187030622-1dd92a30-6aef-4719-8c1d-52600243805f.png)
