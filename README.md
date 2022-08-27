@@ -8,9 +8,10 @@
 회의록-notion : https://www.notion.so/messenger-kh/D-GYM-b3dba709e94a4264833fac6186b2f802
 
 ----------------------------------------------------------------------------------------------
-### client페이지와 admim페이지를 나눔
+### client페이지와 admim페이지를 나눔!
+
 ![image](https://user-images.githubusercontent.com/98031858/187029315-39f23f1b-ab79-4eec-9b00-04564a139a02.png)
-![image](https://user-images.githubusercontent.com/98031858/187030034-066d7577-c68d-46bf-a9c7-c4cdc3abd40c.png)
+[관리자로그인1](https://user-images.githubusercontent.com/98031858/187032595-80934347-0799-4ccf-8eab-3a5cd5b1a7d4.jpg)
 administrator/views/adminHome.html
 
 ---------------------------------------------------------------------------------------------
