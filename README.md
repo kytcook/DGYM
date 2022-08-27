@@ -11,7 +11,8 @@
 ### client페이지와 admim페이지를 나눔!
 
 ![image](https://user-images.githubusercontent.com/98031858/187029315-39f23f1b-ab79-4eec-9b00-04564a139a02.png)
-[관리자로그인1](https://user-images.githubusercontent.com/98031858/187032595-80934347-0799-4ccf-8eab-3a5cd5b1a7d4.jpg)
+![관리자로그인1](https://user-images.githubusercontent.com/98031858/187032679-d283904c-c63f-4d57-9522-2dbb72ea5a16.jpg)
+
 administrator/views/adminHome.html
 
 ---------------------------------------------------------------------------------------------
