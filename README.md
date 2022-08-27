@@ -8,4 +8,4 @@
 client페이지와 admim페이지를 나눔
 
 
-![image](https://user-images.githubusercontent.com/98031858/187029163-ac81011b-ced9-45b3-9eb1-b5617501931c.png)
+![image](https://user-images.githubusercontent.com/98031858/187029315-39f23f1b-ab79-4eec-9b00-04564a139a02.png)
