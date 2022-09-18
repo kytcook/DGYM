@@ -4,9 +4,7 @@
 
 파이어베이스를 이용한 헬스장 웹사이트 구현<br/>
 기간 : 2022-07-15 ~ 2022-08-25<br/>
-프로젝트 작업 　👉　https://github.com/kytcook/DGYM_repo<br/>
-회의록-notion　 👉　https://www.notion.so/messenger-kh/D-GYM-b3dba709e94a4264833fac6186b2f802<br/>
-발표•시연 영상　👉　https://youtu.be/Q2odBzFEsWU
+링크 👉
 <li>
   <a href="https://github.com/kytcook/DGYM_repo">프로젝트 작업</a>
 </li>
