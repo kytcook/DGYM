@@ -4,7 +4,7 @@
 
 파이어베이스를 이용한 헬스장 웹사이트 구현<br/>
 기간 : 2022-07-15 ~ 2022-08-25<br/>
-링크 👉
+기타자료👇
 <li>
   <a href="https://github.com/kytcook/DGYM_repo">프로젝트 작업</a>
 </li>
