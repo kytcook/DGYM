@@ -7,7 +7,15 @@
 프로젝트 작업 　👉　https://github.com/kytcook/DGYM_repo<br/>
 회의록-notion　 👉　https://www.notion.so/messenger-kh/D-GYM-b3dba709e94a4264833fac6186b2f802<br/>
 발표•시연 영상　👉　https://youtu.be/Q2odBzFEsWU
-
+<li>
+  <a href="https://github.com/kytcook/DGYM_repo">프로젝트 작업</a>
+</li>
+<li>
+  <a href="https://www.notion.so/messenger-kh/D-GYM-b3dba709e94a4264833fac6186b2f802">회의록-notion</a>
+</li>
+<li>
+  <a href="https://youtu.be/Q2odBzFEsWU">발표•시연 영상</a>
+</li>
 ----------------------------------------------------------------------------------------------
 ### client페이지와 admim페이지를 나눔!
 
