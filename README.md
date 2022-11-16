@@ -28,11 +28,11 @@
 ![image](https://user-images.githubusercontent.com/98031858/187032933-a627ddfb-e49a-4945-8ddd-1650527fc7a4.png)
 
 ---------------------------------------------------------------------------------------------
-## 공정표
+### 공정표
 ![image](https://user-images.githubusercontent.com/98031858/187032013-a4157ed9-5b36-471d-8655-c937e9e50315.png)
-## 메뉴트리
+### 메뉴트리
 ![메뉴트리](https://user-images.githubusercontent.com/98031858/187031992-ad2a2893-342a-4002-be9e-d6ae8099945a.jpg)
-## 사용기술
+### 사용기술
 ![사용기술](https://user-images.githubusercontent.com/98031858/187031994-df95d673-c12f-4769-a044-5721f714328b.jpg)
-## 와이어프레임
+### 와이어프레임
 ![와이어프레임_1](https://user-images.githubusercontent.com/98031858/187031995-796b6194-79dd-4ac3-b761-7e6a3d0f2902.jpg)
