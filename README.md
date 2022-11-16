@@ -28,7 +28,7 @@
 ![image](https://user-images.githubusercontent.com/98031858/187032933-a627ddfb-e49a-4945-8ddd-1650527fc7a4.png)
 
 ---------------------------------------------------------------------------------------------
-## 
+## 기타자료
 ### 공정표
 ![image](https://user-images.githubusercontent.com/98031858/187032013-a4157ed9-5b36-471d-8655-c937e9e50315.png)
 ### 메뉴트리
