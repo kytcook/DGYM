@@ -16,12 +16,6 @@
   <a href="https://youtu.be/Q2odBzFEsWU">발표•시연 영상</a>
 </li>
 
-----------------------------------------------------------------------------------------------
-### client페이지와 admim페이지를 나눔!
-
-![image](https://user-images.githubusercontent.com/98031858/187029315-39f23f1b-ab79-4eec-9b00-04564a139a02.png)
-![image](https://user-images.githubusercontent.com/98031858/187032708-e9716f34-cd02-41c8-90af-f9fd53049aea.png)
-administrator/views/adminHome.html
 
 ---------------------------------------------------------------------------------------------
 ### 이용자가 상담예약 남기면 파이어베이스를 거쳐 관리자 예약관리에서 누적된 데이터 확인 가능
