@@ -23,7 +23,7 @@
 ![image](https://user-images.githubusercontent.com/98031858/187032736-36d6e6b8-2ebd-47ca-b4ea-340b9e376fb4.png)
 ![예약관리](https://user-images.githubusercontent.com/98031858/187032765-86575f92-2831-4e9a-9ff2-62d6fb689ada.jpg)
 ---------------------------------------------------------------------------------------------
-로그인이용자의 저장된 프로필 데이터를 읽어옴
+로그인이용자의 저장된 프로필 데이터 조회
 
 ![image](https://user-images.githubusercontent.com/98031858/187032933-a627ddfb-e49a-4945-8ddd-1650527fc7a4.png)
 
