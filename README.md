@@ -7,9 +7,6 @@
 #
 기타자료👇
 <li>
-  <a href="https://github.com/kytcook/DGYM_repo">프로젝트 작업</a>
-</li>
-<li>
   <a href="https://www.notion.so/messenger-kh/D-GYM-b3dba709e94a4264833fac6186b2f802">회의록-notion</a>
 </li>
 <li>
